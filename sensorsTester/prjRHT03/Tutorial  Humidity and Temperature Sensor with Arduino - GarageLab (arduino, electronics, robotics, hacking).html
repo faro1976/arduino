@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<!-- saved from url=(0089)http://garagelab.com/profiles/blogs/tutorial-humidity-and-temperature-sensor-with-arduino -->
+<html lang="en" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml"><head data-layout-view="default" class="xj_layout_head"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">    
+    <title>Tutorial: Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)</title>
+    <link rel="icon" href="http://garagelab.com/favicon.ico" type="image/x-icon">
+    <link rel="SHORTCUT ICON" href="http://garagelab.com/favicon.ico" type="image/x-icon">
+    <meta name="description" content="The humidity and temperature sensor RHT03 is an affordable and easy to use sensor. This sensor just need an external resistor to work and you can easily read…">
+    <meta name="keywords" content="arduino, humidity, sensor, temperature, tutorial">
+<meta name="title" content="Tutorial: Humidity and Temperature Sensor with Arduino">
+<meta property="og:type" content="website">
+<meta property="og:url" content="http://garagelab.com/profiles/blogs/tutorial-humidity-and-temperature-sensor-with-arduino">
+<meta property="og:title" content="Tutorial: Humidity and Temperature Sensor with Arduino">
+<link rel="image_src" href="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/10167-01.jpg">
+<script async="" src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/beacon.js"></script><script type="text/javascript" async="" src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/ga.js"></script><script src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/cb=gapi.loaded_1" async=""></script><script src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/cb=gapi.loaded_0" async=""></script><script type="text/javascript" async="" src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/dc.js"></script><script type="text/javascript" async="" src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/plusone.js" gapi_processed="true"></script><script type="text/javascript">
+    djConfig = { baseScriptUri: 'http://garagelab.com/xn/static-6.11.8.1/js/dojo-0.3.1-ning/', isDebug: false }
+ning = {"CurrentApp":{"premium":true,"iconUrl":"http:\/\/api.ning.com\/icons\/appatar\/6484258?default=6484258&width=64&height=64","url":"http:\/\/garagelabnet.ning.com","domains":["garagelab.com"],"online":true,"privateSource":true,"id":"garagelabnet","appId":"6484258","description":"Social Network for Science and Technology Independent Developers","name":"GarageLab (arduino, electronics, robotics, hacking)","owner":"1a9ge5orm670v","createdDate":"2012-02-14T18:39:33.556Z","runOwnAds":false,"category":{"garage":null,"lab":null,"developer":null,"science":null,"technology":null,"electronic":null,"robotic":null,"programming":null},"tags":["garage","lab","developer","science","technology","electronic","robotic","programming"]},"CurrentProfile":null,"maxFileUploadSize":7};
+        (function(){
+            if (!window.ning) { return; }
+
+            var age, gender, rand, obfuscated, combined;
+
+            obfuscated = document.cookie.match(/xgdi=([^;]+)/);
+            if (obfuscated) {
+                var offset = 100000;
+                obfuscated = parseInt(obfuscated[1]);
+                rand = obfuscated / offset;
+                combined = (obfuscated % offset) ^ rand;
+                age = combined % 1000;
+                gender = (combined / 1000) & 3;
+                gender = (gender == 1 ? 'm' : gender == 2 ? 'f' : 0);
+                ning.viewer = {"age":age,"gender":gender};
+            }
+        })();
+
+        if (window.location.hash.indexOf('#!/') == 0) {
+        window.location.replace(window.location.hash.substr(2));
+    }
+    window.xg = window.xg || {};
+xg.addOnRequire = function(f) { xg.addOnRequire.functions.push(f); };
+xg.addOnRequire.functions = [];
+xg.addOnFacebookLoad = function (f) { xg.addOnFacebookLoad.functions.push(f); };
+xg.addOnFacebookLoad.functions = [];
+xg._loader = {
+    p: 0,
+    loading: function(set) { this.p++; },
+    onLoad: function(set) {
+        this.p--;
+        if (this.p == 0 && typeof(xg._loader.onDone) == 'function') {
+            xg._loader.onDone();
+        }
+    }
+};
+xg._loader.loading('xnloader');
+if (window.bzplcm) {
+    window.bzplcm._profileCount = 0;
+    window.bzplcm._profileSend = function() { if (window.bzplcm._profileCount++ == 1) window.bzplcm.send(); };
+}
+xg._loader.onDone = function() {
+        if(window.bzplcm)window.bzplcm.start('ni');
+        xg.shared.util.parseWidgets();    var addOnRequireFunctions = xg.addOnRequire.functions;
+    xg.addOnRequire = function(f) { f(); };
+    try {
+        if (addOnRequireFunctions) { dojo.lang.forEach(addOnRequireFunctions, function(onRequire) { onRequire.apply(); }); }
+    } catch (e) {
+        if(window.bzplcm)window.bzplcm.ts('nx').send();
+        throw e;
+    }
+    if(window.bzplcm) { window.bzplcm.stop('ni'); window.bzplcm._profileSend(); }
+};
+window.xn = { track: { _globals: { screen_name: null, subdomain: "garagelabnet", is_owner: false, is_admin: false, is_member: false, join_date: 0, request_method: "GET", trace: "668768bf-d292-4363-b790-eb148d87d3ca"}, event: function() {}, pageView: function() {}, registerCompletedFlow: function() {}, registerError: function() {}, timer: function() { return { lapTime: function() {} }; }, _trackingHost: "coll.ning.com", _jsDebug: false } };</script>
+<meta name="medium" content="blog"><link rel="alternate" type="application/atom+xml" title="GarageLab&#39;s Posts - GarageLab (arduino, electronics, robotics, hacking)" href="http://garagelab.com/profiles/blog/feed?user=07vo24emx05ab&xn_auth=no"><link rel="alternate" type="application/atom+xml" title="Comments - Tutorial: Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)" href="http://garagelab.com/profiles/comment/feed?attachedTo=6484258%3ABlogPost%3A4991&xn_auth=no"><link rel="alternate" type="application/rss+xml" title="Latest Activity - GarageLab (arduino, electronics, robotics, hacking)" href="http://garagelab.com/activity/log/list?fmt=rss">
+<style type="text/css" media="screen,projection">
+@import url(http://static.ning.com/socialnetworkmain/widgets/index/css/common-982.min.css?xn_version=3283718252);
+@import url(http://static.ning.com/socialnetworkmain/widgets/profiles/css/component.min.css?xn_version=2627375134);
+
+</style>
+
+<style type="text/css" media="screen,projection">
+@import url(http://static.ning.com/garagelabnet/instances/css/embed_1381193467.css?xn_version=201309182045);
+
+</style>
+
+<style type="text/css" media="screen,projection">
+@import url(http://static.ning.com/garagelabnet/instances/css/theme-982_1379538813.css?xn_version=201309182045);
+
+</style>
+
+<!--[if IE 6]>
+    <link rel="stylesheet" type="text/css" href="http://static.ning.com/socialnetworkmain/widgets/index/css/common-ie6.min.css?xn_version=4160739512" />
+<![endif]-->
+<!--[if IE 7]>
+<link rel="stylesheet" type="text/css" href="http://static.ning.com/socialnetworkmain/widgets/index/css/common-ie7.css?xn_version=2712659298" />
+<![endif]-->
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://garagelab.com/profiles/blog/rsd">
+<script type="text/javascript">(function(a,b){if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(a)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0,4)))window.location=b})(navigator.userAgent||navigator.vendor||window.opera,'http://garagelab.com/m/blogpost?id=6484258%3ABlogPost%3A4991');</script><script type="text/javascript" async="" src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/glamadapt_jsapi_track.act"></script><script type="text/javascript" src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/jquery.autoResize.js"></script><script type="text/javascript" src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/jquery.jsonp.min.js"></script><script type="text/javascript" src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/jquery-ui.min.js"></script><script type="text/javascript" src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/modernizr.custom.js"></script><script type="text/javascript" src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/jstorage.min.js"></script><script type="text/javascript" src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/Base64.js"></script><script type="text/javascript" src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/set_common.min.js"></script><script type="text/javascript" src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/set_shared_c0.min.js"></script><script type="text/javascript" src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/set_sidebar_u.min.js"></script><style type="text/css">.mceToolbar {display: none}</style><style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}
+.fb_invisible{display:none}
+.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}
+.fb_reset > div{overflow:hidden}
+.fb_link img{border:none}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}
+.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}
+.fb_dialog_content{background:#fff;color:#333}
+.fb_dialog_close_icon{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;_background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif);cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px;top:8px\9;right:7px\9}
+.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}
+.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}
+.fb_dialog_close_icon:hover{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;_background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif)}
+.fb_dialog_close_icon:active{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;_background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif)}
+.fb_dialog_loader{background-color:#f2f2f2;border:1px solid #606060;font-size:24px;padding:20px}
+.fb_dialog_top_left,
+.fb_dialog_top_right,
+.fb_dialog_bottom_left,
+.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}
+.fb_dialog_top_left{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}
+.fb_dialog_top_right{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}
+.fb_dialog_bottom_left{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}
+.fb_dialog_bottom_right{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}
+.fb_dialog_vert_left,
+.fb_dialog_vert_right,
+.fb_dialog_horiz_top,
+.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}
+.fb_dialog_vert_left,
+.fb_dialog_vert_right{width:10px;height:100%}
+.fb_dialog_vert_left{margin-left:-10px}
+.fb_dialog_vert_right{right:0;margin-right:-10px}
+.fb_dialog_horiz_top,
+.fb_dialog_horiz_bottom{width:100%;height:10px}
+.fb_dialog_horiz_top{margin-top:-10px}
+.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}
+.fb_dialog_iframe{line-height:0}
+.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #3b5998;color:#fff;font-size:14px;font-weight:bold;margin:0}
+.fb_dialog_content .dialog_title > span{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yd/r/Cou7n-nqK52.gif)
+no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}
+body.fb_hidden{-webkit-transform:none;height:100%;margin:0;overflow:visible;position:absolute;top:-10000px;left:0;width:100%}
+.fb_dialog.fb_dialog_mobile.loading{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ya/r/3rhSv5V8j3o.gif)
+white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}
+.fb_dialog.fb_dialog_mobile.loading.centered{max-height:590px;min-height:590px;max-width:500px;min-width:500px}
+#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;left:0;top:0;width:100%;min-height:100%;z-index:10000}
+#fb-root #fb_dialog_ipad_overlay.hidden{display:none}
+.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}
+.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0 0, 0 100%, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}
+.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100%
+}
+.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px
+}
+.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px
+}
+.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0 0, 0 100%, from(#4966A6),
+color-stop(0.5, #355492), to(#2A4887));border:1px solid #29447e;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset,
+rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}
+.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}
+.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}
+.fb_dialog_content .dialog_content{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #555;border-bottom:0;border-top:0;height:150px}
+.fb_dialog_content .dialog_footer{background:#f2f2f2;border:1px solid #555;border-top-color:#ccc;height:40px}
+#fb_dialog_loader_close{float:left}
+.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}
+.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}
+.fb_iframe_widget{display:inline-block;position:relative}
+.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}
+.fb_iframe_widget iframe{position:absolute}
+.fb_iframe_widget_lift{z-index:1}
+.fb_hide_iframes iframe{position:relative;left:-10000px}
+.fb_iframe_widget_loader{position:relative;display:inline-block}
+.fb_iframe_widget_fluid{display:inline}
+.fb_iframe_widget_fluid span{width:100%}
+.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}
+.fb_iframe_widget_loader .FB_Loader{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/y9/r/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50%;z-index:4}
+.fb_connect_bar_container div,
+.fb_connect_bar_container span,
+.fb_connect_bar_container a,
+.fb_connect_bar_container img,
+.fb_connect_bar_container strong{background:none;border-spacing:0;border:0;direction:ltr;font-style:normal;font-variant:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal;vertical-align:baseline}
+.fb_connect_bar_container{position:fixed;left:0 !important;right:0 !important;height:42px !important;padding:0 25px !important;margin:0 !important;vertical-align:middle !important;border-bottom:1px solid #333 !important;background:#3b5998 !important;z-index:99999999 !important;overflow:hidden !important}
+.fb_connect_bar_container_ie6{position:absolute;top:expression(document.compatMode=="CSS1Compat"? document.documentElement.scrollTop+"px":body.scrollTop+"px")}
+.fb_connect_bar{position:relative;margin:auto;height:100%;width:100%;padding:6px 0 0 0 !important;background:none;color:#fff !important;font-family:"lucida grande", tahoma, verdana, arial, sans-serif !important;font-size:13px !important;font-style:normal !important;font-variant:normal !important;font-weight:normal !important;letter-spacing:normal !important;line-height:1 !important;text-decoration:none !important;text-indent:0 !important;text-shadow:none !important;text-transform:none !important;white-space:normal !important;word-spacing:normal !important}
+.fb_connect_bar a:hover{color:#fff}
+.fb_connect_bar .fb_profile img{height:30px;width:30px;vertical-align:middle;margin:0 6px 5px 0}
+.fb_connect_bar div a,
+.fb_connect_bar span,
+.fb_connect_bar span a{color:#bac6da;font-size:11px;text-decoration:none}
+.fb_connect_bar .fb_buttons{float:right;margin-top:7px}
+.fb_edge_widget_with_comment{position:relative;*z-index:1000}
+.fb_edge_widget_with_comment span.fb_edge_comment_widget{position:absolute}
+.fb_edge_widget_with_comment span.fb_send_button_form_widget{z-index:1}
+.fb_edge_widget_with_comment span.fb_send_button_form_widget .FB_Loader{left:0;top:1px;margin-top:6px;margin-left:0;background-position:50% 50%;background-color:#fff;height:150px;width:394px;border:1px #666 solid;border-bottom:2px solid #283e6c;z-index:1}
+.fb_edge_widget_with_comment span.fb_send_button_form_widget.dark .FB_Loader{background-color:#000;border-bottom:2px solid #ccc}
+.fb_edge_widget_with_comment span.fb_send_button_form_widget.siderender
+.FB_Loader{margin-top:0}
+.fbpluginrecommendationsbarleft,
+.fbpluginrecommendationsbarright{position:fixed !important;bottom:0;z-index:999}
+.fbpluginrecommendationsbarleft{left:10px}
+.fbpluginrecommendationsbarright{right:10px}</style><script>window["_GOOG_TRANS_EXT_VER"] = "1";</script></head>
+<body>
+    <div class="xj_before_content"><div id="fb-root" class=" fb_reset"><script src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/all.js" async=""></script><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe name="fb_xdm_frame_http" frameborder="0" allowtransparency="true" scrolling="no" id="fb_xdm_frame_http" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tab-index="-1" src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/xd_arbiter.html" style="border: none;"></iframe><iframe name="fb_xdm_frame_https" frameborder="0" allowtransparency="true" scrolling="no" id="fb_xdm_frame_https" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tab-index="-1" src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/xd_arbiter(1).html" style="border: none;"></iframe></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div></div></div></div>
+<script>
+  window.fbAsyncInit = function () {
+    FB.init({
+      appId      : '221401287994697', 
+      status     : true,   
+      cookie     : true,   
+      xfbml      : true,  
+      oauth      : true,   
+      channelUrl : 'http://garagelab.com/xn_resources/widgets/index/js/facebookapp/channel.html'
+    });
+    var n = xg.addOnFacebookLoad.functions.length;
+    for (var i = 0; i < n; i++) {
+      xg.addOnFacebookLoad.functions[i]();
+    }
+    xg.addOnFacebookLoad = function (f) { f(); };
+    xg.addOnFacebookLoad.functions = [];
+  };
+  (function() {
+    var e = document.createElement('script');
+    e.src = document.location.protocol + '//connect.facebook.net/en_US/all.js';
+    e.async = true;
+    document.getElementById('fb-root').appendChild(e);
+  })();
+</script>        <div id="xn_bar">
+            <div id="xn_bar_menu">
+                <div id="xn_bar_menu_branding">
+                                    </div>
+
+                <div id="xn_bar_menu_more">
+                    <form id="xn_bar_menu_search" method="GET" action="http://garagelab.com/main/search/search">
+                        <fieldset>
+                            <input type="text" name="q" id="xn_bar_menu_search_query" value="Search GarageLab (arduino, electronics, robotics, hacking)" _hint="Search GarageLab (arduino, electronics, robotics, hacking)" accesskey="4" class="text xj_search_hint">
+                            <a id="xn_bar_menu_search_submit" href="http://garagelab.com/profiles/blogs/tutorial-humidity-and-temperature-sensor-with-arduino#" onclick="document.getElementById(&#39;xn_bar_menu_search&#39;).submit();return false">Search</a>
+                        </fieldset>
+                    </form>
+                </div>
+
+                            <ul id="xn_bar_menu_tabs">
+                                            <li><a href="http://garagelab.com/main/authorization/signUp?target=http%3A%2F%2Fgaragelab.com%2Fprofiles%2Fblogs%2Ftutorial-humidity-and-temperature-sensor-with-arduino">Sign Up</a></li>
+                                                <li><a href="http://garagelab.com/main/authorization/signIn?target=http%3A%2F%2Fgaragelab.com%2Fprofiles%2Fblogs%2Ftutorial-humidity-and-temperature-sensor-with-arduino">Sign In</a></li>
+                                    </ul>
+                        </div>
+        </div>
+            <script src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/glamadapt_jsapi.act"></script>
+    <script>
+        try {
+            GlamCreateSlot("183770529", "728x90", "Ning_Top_Leaderboard");
+            GlamSetSlotData("Ning_Top_Leaderboard", "ningid=6484258");
+            GlamCreateSlot("183770529", "300x250", "Ning_Top_Right");
+            GlamSetSlotData("Ning_Top_Right", "ningid=6484258");
+            GlamTrack("183770529");
+        } catch (e) {}
+    </script>
+    </div>
+    <div class="xg_theme" data-layout-pack="brutus">
+        <div id="xg_themebody">
+            <div id="xg_ad_above_header" class="xg_ad xj_ad_above_header dy-displaynone">
+                    
+                </div>        
+            <div id="xg_head">
+                <div id="xg_masthead">
+                    <h1 id="xg_sitename" class="xj_site_name"><a id="application_name_header_link" href="http://garagelab.com/"><img src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/teste.png" alt="GarageLab (arduino, electronics, robotics, hacking)"></a></h1>
+                    <p id="xg_sitedesc" class="xj_site_desc">#42</p>
+                </div>
+                <div id="xg_navigation" class="xj_navigation"><ul>
+    <li id="xg_tab_xn3" class="xg_subtab"><a href="http://garagelab.com/"><span>Home</span></a></li><li id="xg_tab_xn8" class="xg_subtab"><a href="http://www.garagelabstore.com/store"><span>Store</span></a></li><li id="xg_tab_xn1" class="xg_subtab"><a href="http://garagelab.com/page/tutorials"><span>Tutorials</span></a></li><li id="xg_tab_xn0" class="xg_subtab"><a href="http://garagelab.com/page/projects"><span>Projects</span></a></li><li id="xg_tab_xn5" class="xg_subtab"><a href="http://garagelab.com/profiles"><span>Profile</span></a></li><li id="xg_tab_profile" class="xg_subtab"><a href="http://garagelab.com/profiles/members/"><span>Makers</span></a></li><li id="xg_tab_forum" class="xg_subtab"><a href="http://garagelab.com/forum"><span>Forum</span></a></li><li id="xg_tab_blogs" class="xg_subtab this"><a href="http://garagelab.com/profiles/blog/list"><span>Blogs</span></a></li><li dojotype="SubTabHover" id="xg_tab_xn4" class="xg_subtab"><a href="http://garagelab.com/photo"><span>Gallery</span></a><div class="xg_subtab" style="display:none;position:absolute;"><ul class="xg_subtab" style="display:block;"><li style="list-style:none !important;display:block;text-align:left;"><a href="http://garagelab.com/photo" style="float:none;"><span>Photos</span></a></li><li style="list-style:none !important;display:block;text-align:left;"><a href="http://garagelab.com/video" style="float:none;"><span>Videos</span></a></li></ul></div></li><li id="xg_tab_groups" class="xg_subtab"><a href="http://garagelab.com/groups"><span>Groups</span></a></li><li id="xg_tab_xn2" class="xg_subtab"><a href="http://garagelab.com/main/invitation/new?xg_source=tab"><span>Invite</span></a></li><li id="xg_tab_xn6" class="xg_subtab"><a href="http://garagelab.com/page/about"><span>About</span></a></li></ul>
+</div>
+            </div>
+            <div id="xg_ad_below_header" class="xg_ad xj_ad_below_header dy-displaynone">
+                        
+                    </div>
+            <div id="xg" class="xg_widget_profiles xg_widget_profiles_blog xg_widget_profiles_blog_show">
+            	 
+                <div id="xg_body">
+                   
+                    <div class="xj_notifications"></div>
+                    <div class="xg_column xg_span-16" id="column1">
+                        <div id="xg_canvas" class="xj_canvas">
+                            <ul class="navigation easyclear"><li><a href="http://garagelab.com/profiles/blog/list">All Blog Posts</a></li><li><a href="http://garagelab.com/profiles/blog/list?my=1">My Blog</a></li><li class="right  xg_lightborder navbutton"><a href="http://garagelab.com/profiles/blog/new" class="xg_sprite xg_sprite-add">Add</a></li></ul>
+<div class="xg_module xg_blog xg_blog_detail xg_blog_mypage xg_module_with_dialog">
+        <div class="xg_headline xg_headline-img xg_headline-2l">
+    <div class="ib"><span class="xg_avatar"><a class="fn url" href="http://garagelab.com/profile/GarageLab" title="GarageLab"><span class="dy-avatar dy-avatar-64 "><img class="photo photo" src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/663591140.jpeg" alt=""></span></a></span></div>
+<div class="tb"><h1>Tutorial: Humidity and Temperature Sensor with Arduino</h1>
+        <ul class="navigation byline">
+            <li><a class="nolink">Posted by </a><a href="http://garagelab.com/profile/GarageLab">GarageLab</a><a class="nolink"> on June 1, 2012 at 1:16pm</a></li>
+            <li><a class="xg_sprite xg_sprite-view" href="http://garagelab.com/profiles/blog/list?user=07vo24emx05ab">View Blog</a></li>
+        </ul>
+    </div>
+</div>
+    <div class="xg_module_body">
+        <div class="postbody">
+                    <div class="xg_user_generated">
+                <p><a href="http://dlnmh9ip6v2uc.cloudfront.net/images/products/10167-01.jpg" target="_blank"><img src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/10167-01.jpg" width="350" class="align-full"></a></p>
+<p>The&nbsp;humidity and temperature&nbsp;sensor RHT03 is an affordable and easy to use sensor. This sensor just need an external resistor to work and you can easily read the data from only one pin. Also, that sensor comes already calibrated.</p>
+<p>To use it with your Arduino, you have to download the DHT library&nbsp;<a href="http://arduino.cc/playground/Main/DHTLib" target="_blank">here</a>. The files dht.cpp and dht.h are posted in the page, not in a download link. Copy and paste it on a text file in the libraries folder of your IDE.</p>
+<p>Reading the RHT03&nbsp;<a rel="nofollow" href="http://dlnmh9ip6v2uc.cloudfront.net/datasheets/Sensors/Weather/RHT03.pdf" target="_blank">datasheet</a>, we can check the sensor pinout:</p>
+<p><a href="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/RHT03pinos1.png" target="_self"><img src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/RHT03pinos1.png" width="429" class="align-full"></a></p>
+<p>Make the following circuit:</p>
+<p><a href="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/RHT03arduino1.png" target="_self"><img src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/RHT03arduino1.png" width="404" class="align-full"></a></p>
+<p>The RHT03 works from 3.3V to 6V, so we will use the 5V provided by the Arduino board. The sensor pin 2 goes to the Arduino pin 5, with a 1Kohm pull-up resistor, like shown in the datasheet:</p>
+<p><a href="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/RHT03pinos2.png" target="_self"><img src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/RHT03pinos2.png" width="392" class="align-full"></a></p>
+<p>Open your IDE and paste the code, adapted from&nbsp;<a rel="nofollow" href="http://arduino.cc/playground/Main/DHTLib" target="_blank">here</a>:</p>
+<p><span style="font-family: &#39;courier new&#39;, courier;">#include &lt;dht.h&gt;</span></p>
+<p><span style="font-family: &#39;courier new&#39;, courier;">dht DHT;</span></p>
+<p><br> <span style="font-family: &#39;courier new&#39;, courier;">#define DHT22_PIN 5</span></p>
+<p><span style="font-family: &#39;courier new&#39;, courier;">void setup()</span><br> <span style="font-family: &#39;courier new&#39;, courier;">{</span><br><span style="font-family: &#39;courier new&#39;, courier;">&nbsp; &nbsp; Serial.begin(9600);</span><br><span style="font-family: &#39;courier new&#39;, courier;">&nbsp; &nbsp; Serial.println("DHT TEST PROGRAM ");</span><br><span style="font-family: &#39;courier new&#39;, courier;">&nbsp; &nbsp; Serial.print("LIBRARY VERSION: ");</span><br><span style="font-family: &#39;courier new&#39;, courier;">&nbsp; &nbsp; Serial.println(DHT_LIB_VERSION);</span><br><span style="font-family: &#39;courier new&#39;, courier;">&nbsp; &nbsp; Serial.println();</span><br><span style="font-family: &#39;courier new&#39;, courier;">&nbsp; &nbsp; Serial.println("Type,\tstatus,\tHumidity (%),\tTemperature (C)");</span><br> <span style="font-family: &#39;courier new&#39;, courier;">}</span></p>
+<p><span style="font-family: &#39;courier new&#39;, courier;">void loop()</span><br> <span style="font-family: &#39;courier new&#39;, courier;">{</span><br><span style="font-family: &#39;courier new&#39;, courier;">&nbsp; &nbsp; // READ DATA</span><br><span style="font-family: &#39;courier new&#39;, courier;">&nbsp; &nbsp; Serial.print("DHT22, \t");</span><br><span style="font-family: &#39;courier new&#39;, courier;">&nbsp; &nbsp; int chk = DHT.read22(DHT22_PIN);</span><br><span style="font-family: &#39;courier new&#39;, courier;">&nbsp; &nbsp; switch (chk)</span><br><span style="font-family: &#39;courier new&#39;, courier;">&nbsp; &nbsp; {</span><br><span style="font-family: &#39;courier new&#39;, courier;">&nbsp; &nbsp; &nbsp; &nbsp; case DHTLIB_OK:&nbsp;</span><br><span style="font-family: &#39;courier new&#39;, courier;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Serial.print("OK,\t");&nbsp;</span><br><span style="font-family: &#39;courier new&#39;, courier;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; break;</span><br><span style="font-family: &#39;courier new&#39;, courier;">&nbsp; &nbsp; &nbsp; &nbsp; case DHTLIB_ERROR_CHECKSUM:&nbsp;</span><br><span style="font-family: &#39;courier new&#39;, courier;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Serial.print("Checksum error,\t");&nbsp;</span><br><span style="font-family: &#39;courier new&#39;, courier;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; break;</span><br><span style="font-family: &#39;courier new&#39;, courier;">&nbsp; &nbsp; &nbsp; &nbsp; case DHTLIB_ERROR_TIMEOUT:&nbsp;</span><br><span style="font-family: &#39;courier new&#39;, courier;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Serial.print("Time out error,\t");&nbsp;</span><br><span style="font-family: &#39;courier new&#39;, courier;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; break;</span><br><span style="font-family: &#39;courier new&#39;, courier;">&nbsp; &nbsp; &nbsp; &nbsp; default:&nbsp;</span><br><span style="font-family: &#39;courier new&#39;, courier;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Serial.print("Unknown error,\t");&nbsp;</span><br><span style="font-family: &#39;courier new&#39;, courier;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; break;</span><br><span style="font-family: &#39;courier new&#39;, courier;">&nbsp; &nbsp; }</span><br><span style="font-family: &#39;courier new&#39;, courier;">&nbsp; &nbsp; // DISPLAY DATA</span><br><span style="font-family: &#39;courier new&#39;, courier;">&nbsp; &nbsp; Serial.print(DHT.humidity, 1);</span><br><span style="font-family: &#39;courier new&#39;, courier;">&nbsp; &nbsp; Serial.print(",\t");</span><br><span style="font-family: &#39;courier new&#39;, courier;">&nbsp; &nbsp; Serial.println(DHT.temperature, 1);</span></p>
+<p><span style="font-family: &#39;courier new&#39;, courier;">&nbsp; &nbsp; delay(1000);</span></p>
+<p><span style="font-family: &#39;courier new&#39;, courier;">}</span></p>
+<p>If everything went right, you should see something like this on your serial monitor:</p>
+<p><a href="http://api.ning.com/files/5aKyVFhenSXWiUnaI4*f7zOhORjwcm2RQO365QeaJRuDO*bbSJsu-HicMuLVoFhibWnemv613LcS1Zv1UvvmY7JG2QX3jVnY/SerialmonitorRHT03.png" target="_self"><img src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/SerialmonitorRHT03.png" width="500" class="align-full"></a></p>
+<p>References:</p>
+<p><a rel="nofollow" href="http://arduino.cc/playground/Main/DHTLib">http://arduino.cc/playground/Main/DHTLib</a></p>
+<p><a rel="nofollow" href="http://www.sparkfun.com/products/10167">http://www.sparkfun.com/products/10167</a></p>            </div>
+        </div>
+        <div class="left-panel">
+                          <script>xg.addOnRequire(function () { xg.post('/main/viewcount/update?xn_out=json', {key: '6484258:BlogPost:4991', x: '8f2c8ef'}); });</script>                <p class="small dy-clear view-count-container">
+    <span class="view-count-label">Views:</span> <span class="view-count">10560</span></p>
+
+                            <p class="small object-detail" id="tagsList">
+                    Tags: <a href="http://garagelab.com/profiles/blog/list?tag=arduino">arduino</a>, <a href="http://garagelab.com/profiles/blog/list?tag=humidity">humidity</a>, <a href="http://garagelab.com/profiles/blog/list?tag=sensor">sensor</a>, <a href="http://garagelab.com/profiles/blog/list?tag=temperature">temperature</a>, <a href="http://garagelab.com/profiles/blog/list?tag=tutorial">tutorial</a>                </p>
+            <div class="likebox likebox-ning">
+    <div class="ning-like">
+                <div class="xg_lightborder like-button like-button-1">
+            <a data-content-id="6484258:BlogPost:4991" data-content-type="BlogPost" data-sign-up-url="http://garagelab.com/main/authorization/signUp?target=http%3A%2F%2Fgaragelab.com%2Fprofiles%2Fblogs%2Ftutorial-humidity-and-temperature-sensor-with-arduino" data-like-url="/main/like/like" data-unlike-url="/main/like/unlike" data-page-type="detail" class="xg_sprite" href="http://garagelab.com/profiles/blogs/tutorial-humidity-and-temperature-sensor-with-arduino#">
+                Like            </a>
+        </div>
+                <div class="like-count dy-displaynone">
+            <a href="http://garagelab.com/profiles/blogs/tutorial-humidity-and-temperature-sensor-with-arduino#" class="view-liked" _id="6484258:BlogPost:4991">0 members like this</a>
+        </div>
+    </div>
+</div>
+<p class="share-links clear"><a class="xg_sprite xg_sprite-share" href="http://garagelab.com/main/sharing/share?id=6484258%253ABlogPost%253A4991">Share</a>        <a class="post_to_twitter" href="http://garagelab.com/main/tweet/create?url=http%3A%2F%2Fgaragelab.com%2Fprofiles%2Fblogs%2Ftutorial-humidity-and-temperature-sensor-with-arduino&message=Checking%20out%20%22Tutorial%3A%20Humidity%20and%20Temperature%20Sensor%20with%20Arduino%22%20on%20GarageLab%20(arduino%2C%20electronics%2C%3A" _message="Checking out &quot;Tutorial: Humidity and Temperature Sensor with Arduino&quot; on GarageLab (arduino, electronics,:" _url="http://garagelab.com/profiles/blogs/tutorial-humidity-and-temperature-sensor-with-arduino" _urlshortenerkey="352325775698" _screenname="" _twitterauthenticationneeded="" _source="content" target="_blank">Twitter</a>
+        <span class="google-plusone" data-content-type="BlogPost" data-content-id="6484258:BlogPost:4991" data-page-type="detail">
+    <div id="___plusone_0" style="text-indent: 0px; margin: 0px; padding: 0px; background-color: transparent; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 32px; height: 20px; background-position: initial initial; background-repeat: initial initial;"><iframe frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 32px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 20px;" tabindex="0" vspace="0" width="100%" id="I2_1381219461771" name="I2_1381219461771" src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/fastbutton.html" data-gapiattached="true" title="+1"></iframe></div>
+</span>
+
+        <a class="post_to_facebook xj_post_to_facebook_stream dy-displaynone" href="http://www.facebook.com/share.php?u=http%3A%2F%2Fgaragelab.com%2Fprofiles%2Fblogs%2Ftutorial-humidity-and-temperature-sensor-with-arduino%3Fxg_source%3Dfacebook&t=Tutorial%3A%20Humidity%20and%20Temperature%20Sensor%20with%20Arduino%20on%20GarageLab%20%28arduino%2C%20electronics%2C%20robotics%2C%20hacking%29" _args="{&quot;name&quot;:&quot;Tutorial: Humidity and Temperature Sensor with Arduino on GarageLab (arduino, electronics, robotics, hacking)&quot;,&quot;href&quot;:&quot;http:\/\/garagelab.com\/profiles\/blogs\/tutorial-humidity-and-temperature-sensor-with-arduino?xg_source=facebook&quot;,&quot;media&quot;:[{&quot;type&quot;:&quot;image&quot;,&quot;src&quot;:&quot;http:\/\/dlnmh9ip6v2uc.cloudfront.net\/images\/products\/10167-01.jpg?width=350&quot;,&quot;href&quot;:&quot;http:\/\/garagelab.com\/profiles\/blogs\/tutorial-humidity-and-temperature-sensor-with-arduino?xg_source=facebook&quot;},{&quot;type&quot;:&quot;image&quot;,&quot;src&quot;:&quot;http:\/\/api.ning.com\/files\/O2KxVUr1QDrb6O2aQOYhKUQttmB3P4PrmEm-kVIwIUiufATCY39AMyeimX*SwDvTsz7bsvj0SBJm*wy8P*OyvZco0-a1LqrL\/RHT03pinos1.png&quot;,&quot;href&quot;:&quot;http:\/\/garagelab.com\/profiles\/blogs\/tutorial-humidity-and-temperature-sensor-with-arduino?xg_source=facebook&quot;},{&quot;type&quot;:&quot;image&quot;,&quot;src&quot;:&quot;http:\/\/api.ning.com\/files\/PKFE7DukclQO*V1lbgx2A1Xd*8ffMCvXqAA4Qd-*7J2cFd9DkoZyqDjdIURURatYsNTYNDLc77VSqOklXk-YnQmKI4l6dfie\/RHT03arduino1.png&quot;,&quot;href&quot;:&quot;http:\/\/garagelab.com\/profiles\/blogs\/tutorial-humidity-and-temperature-sensor-with-arduino?xg_source=facebook&quot;},{&quot;type&quot;:&quot;image&quot;,&quot;src&quot;:&quot;http:\/\/api.ning.com\/files\/DCHd3HyKN3-r8FNWyDt1SbNmyrV2RDGfApfxelEAgS3A--0oi6GZJRS7XQGUoQSKejmD6YYksuORaGYruZHtIkaoXkgk4VGE\/RHT03pinos2.png&quot;,&quot;href&quot;:&quot;http:\/\/garagelab.com\/profiles\/blogs\/tutorial-humidity-and-temperature-sensor-with-arduino?xg_source=facebook&quot;},{&quot;type&quot;:&quot;image&quot;,&quot;src&quot;:&quot;http:\/\/api.ning.com\/files\/5aKyVFhenSXWiUnaI4*f7zOhORjwcm2RQO365QeaJRuDO*bbSJsu-HicMuLVoFhibWnemv613LcS1Zv1UvvmY7JG2QX3jVnY\/SerialmonitorRHT03.png?width=500&quot;,&quot;href&quot;:&quot;http:\/\/garagelab.com\/profiles\/blogs\/tutorial-humidity-and-temperature-sensor-with-arduino?xg_source=facebook&quot;}],&quot;actionLink&quot;:{&quot;text&quot;:&quot;Full Post&quot;,&quot;href&quot;:&quot;http:\/\/garagelab.com\/profiles\/blogs\/tutorial-humidity-and-temperature-sensor-with-arduino?xg_source=facebook&quot;},&quot;description&quot;:&quot;\nThe\u00a0humidity and temperature\u00a0sensor RHT03 is an affordable and easy to use sensor. This sensor just need an external resistor to work and you can easily read the data from only one pin. Also, that sensor comes already calibrated.\nTo use it with your Arduino, you have to download the DHT library\u00a0here. The files dht.cpp and dht.h are posted in the page, not in a download link. Copy and paste it on a text file in the libraries folder of your IDE.\nReading the RHT03\u00a0datasheet, we can check the sensor pinout:\n\nMake the following circuit:\n\nThe RHT03 works from 3.3V to 6V, so we will use the 5V provided by the Arduino board. The sensor pin 2 goes to the Arduino pin 5, with a 1Kohm pull-up resistor, like shown in the datasheet:\n\nOpen your IDE and paste the code, adapted from\u00a0here:\n#include &lt;dht.h&gt;\ndht DHT;\n #define DHT22_PIN 5\nvoid setup() {\u00a0 \u00a0 Serial.begin(9600);\u00a0 \u00a0 Serial.println(\&quot;DHT TEST PROGRAM \&quot;);\u00a0 \u00a0 Serial.print(\&quot;LIBRARY VERSION: \&quot;);\u00a0 \u00a0 Serial.println(DHT_LIB_VERSION);\u00a0 \u00a0 Serial.println();\u00a0 \u00a0 Serial.println(\&quot;Type,\\tstatus,\\tHumidity (%),\\tTemperature (C)\&quot;); }\nvoid loop() {\u00a0 \u00a0 \/\/ READ DATA\u00a0 \u00a0 Serial.print(\&quot;DHT22, \\t\&quot;);\u00a0 \u00a0 int chk = DHT.read22(DHT22_PIN);\u00a0 \u00a0 switch (chk)\u00a0 \u00a0 {\u00a0 \u00a0 \u00a0 \u00a0 case DHTLIB_OK:\u00a0\u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 Serial.print(\&quot;OK,\\t\&quot;);\u00a0\u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 break;\u00a0 \u00a0 \u00a0 \u00a0 case DHTLIB_ERROR_CHECKSUM:\u00a0\u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 Serial.print(\&quot;Checksum error,\\t\&quot;);\u00a0\u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 break;\u00a0 \u00a0 \u00a0 \u00a0 case DHTLIB_ERROR_TIMEOUT:\u00a0\u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 Serial.print(\&quot;Time out error,\\t\&quot;);\u00a0\u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 break;\u00a0 \u00a0 \u00a0 \u00a0 default:\u00a0\u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 Serial.print(\&quot;Unknown error,\\t\&quot;);\u00a0\u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 break;\u00a0 \u00a0 }\u00a0 \u00a0 \/\/ DISPLAY DATA\u00a0 \u00a0 Serial.print(DHT.humidity, 1);\u00a0 \u00a0 Serial.print(\&quot;,\\t\&quot;);\u00a0 \u00a0 Serial.println(DHT.temperature, 1);\n\u00a0 \u00a0 delay(1000);\n}\nIf everything went right, you should see something like this on your serial monitor:\n\nReferences:\nhttp:\/\/arduino.cc\/playground\/Main\/DHTLib\nhttp:\/\/www.sparkfun.com\/products\/10167&quot;,&quot;log&quot;:{&quot;module&quot;:&quot;profiles&quot;,&quot;page&quot;:&quot;blog&quot;,&quot;action&quot;:&quot;show&quot;},&quot;private&quot;:false,&quot;user&quot;:null,&quot;contentId&quot;:null,&quot;display&quot;:false,&quot;userMessage&quot;:&quot;&quot;,&quot;pageId&quot;:null,&quot;text&quot;:&quot;Facebook&quot;}">Facebook</a>
+    </p><div class="likebox">
+    <div class="facebook-like" data-content-type="BlogPost" data-content-id="6484258:BlogPost:4991" data-page-type="detail">
+        <fb:like href="http://garagelab.com/xn/detail/6484258:BlogPost:4991" layout="button_count" show_faces="false" width="450" fb-xfbml-state="rendered" class="fb_edge_widget_with_comment fb_iframe_widget"><span style="height: 20px; width: 73px;"><iframe id="f369f6838" name="f3db39099c" scrolling="no" title="Like this content on Facebook." class="fb_ltr" src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/like.html" style="border: none; overflow: hidden; height: 20px; width: 73px;"></iframe></span></fb:like>
+    </div>
+</div>
+<p></p>        </div>
+                    <ul class="pagination smallpagination">
+                            <li class="left"><a href="http://garagelab.com/profiles/blogs/communication-robot" title="Communication Robot">&lt; Previous Post</a></li>                             <li class="right"><a title="Robotic Arm" href="http://garagelab.com/profiles/blogs/robotic-arm">Next Post &gt;</a></li>
+                        </ul>
+            </div>
+</div>
+
+        <div class="xg_module">
+                                <div class="xg_module_body" id="comments" style="display: none" _numcomments="0" _scrollto="">
+                    </div>
+                    <div class="xg_module_body">
+                    <p id="add-comment">Comment</p>
+                                            <div class="comment-join">
+                            <h3>You need to be a member of GarageLab (arduino, electronics, robotics, hacking) to add comments!</h3>
+                                                <p><a href="http://garagelab.com/main/authorization/signUp?target=http%3A%2F%2Fgaragelab.com%2Fprofiles%2Fblogs%2Ftutorial-humidity-and-temperature-sensor-with-arduino">Join GarageLab (arduino, electronics, robotics, hacking)</a></p>
+                                                </div>
+                                                        </div>
+                            <div class="xg_module_foot" id="xj_comments_footer" style="display:none">
+                                            <p class="left">
+                            <a class="xg_icon xg_icon-rss" href="http://garagelab.com/profiles/comment/feed?attachedTo=6484258%3ABlogPost%3A4991&xn_auth=no">RSS</a>
+                        </p>
+                                    </div>
+                    </div>
+    
+      <input type="hidden" id="incrementViewCountEndpoint" value="http://garagelab.com/profiles/blog/incrementViewCount?id=6484258%3ABlogPost%3A4991&amp;xn_out=json">
+
+                        </div>
+                    </div>
+                    <div class="xg_column xg_span-5 xg_last" id="column2">
+                        <div class="xj_user_info">    <div class="xg_module" id="xg_module_account">
+        <div class="xg_module_body xg_signup xg_lightborder">
+            <p>Welcome to<br>GarageLab (arduino, electronics, robotics, hacking)</p>
+                        <p class="last-child"><big><strong><a href="http://garagelab.com/main/authorization/signUp?target=http%3A%2F%2Fgaragelab.com%2Fprofiles%2Fblogs%2Ftutorial-humidity-and-temperature-sensor-with-arduino">Sign Up</a></strong></big><br>or <a href="http://garagelab.com/main/authorization/signIn?target=http%3A%2F%2Fgaragelab.com%2Fprofiles%2Fblogs%2Ftutorial-humidity-and-temperature-sensor-with-arduino" style="white-space:nowrap">Sign In</a></p>
+                            <div class="xg_external_signup xg_lightborder xj_signup">
+                    <p class="dy-small">Or sign in with:</p>
+                    <ul class="providers">
+            <li data-provider-name="Facebook"><a onclick="window.open(&#39;https://garagelab.networkauth.com/facebook/connect_start?ext_perm=user_birthday%2Cuser_location%2Cemail&amp;token_url=http%3A%2F%2Fgaragelab.com%2Fmain%2Fauthorization%2FprocessExternalAuth%3Ftarget%3Dhttp%253A%252F%252Fgaragelab.com%252Fprofiles%252Fblogs%252Ftutorial-humidity-and-temperature-sensor-with-arduino%26source%3DsignUp%26close%3D1%26provider%3Dfacebook&#39;, null, &#39;width=626,height=436,location=no,menubar=no,resizable=yes,scrollbars=yes,toolbar=no,status=no&#39;); return false;" href="https://garagelab.networkauth.com/facebook/connect_start?ext_perm=user_birthday%2Cuser_location%2Cemail&token_url=http%3A%2F%2Fgaragelab.com%2Fmain%2Fauthorization%2FprocessExternalAuth%3Ftarget%3Dhttp%253A%252F%252Fgaragelab.com%252Fprofiles%252Fblogs%252Ftutorial-humidity-and-temperature-sensor-with-arduino%26source%3DsignUp%26close%3D0%26provider%3Dfacebook">
+                            <span class="mini-service mini-service-facebook" title="Facebook"></span>
+                    </a></li>
+            <li data-provider-name="Twitter"><a onclick="window.open(&#39;https://garagelab.networkauth.com/twitter/start?token_url=http%3A%2F%2Fgaragelab.com%2Fmain%2Fauthorization%2FprocessExternalAuth%3Ftarget%3Dhttp%253A%252F%252Fgaragelab.com%252Fprofiles%252Fblogs%252Ftutorial-humidity-and-temperature-sensor-with-arduino%26source%3DsignUp%26close%3D1%26provider%3Dtwitter&#39;, null, &#39;width=860,height=440,location=no,menubar=no,resizable=yes,scrollbars=yes,toolbar=no,status=no&#39;); return false;" href="https://garagelab.networkauth.com/twitter/start?token_url=http%3A%2F%2Fgaragelab.com%2Fmain%2Fauthorization%2FprocessExternalAuth%3Ftarget%3Dhttp%253A%252F%252Fgaragelab.com%252Fprofiles%252Fblogs%252Ftutorial-humidity-and-temperature-sensor-with-arduino%26source%3DsignUp%26close%3D0%26provider%3Dtwitter">
+            <span class="mini-service mini-service-twitter" title="Twitter"></span>
+        </a></li>
+            <li data-provider-name="Google"><a onclick="window.open(&#39;https://garagelab.networkauth.com/openid/start?openid_identifier=https%3A%2F%2Fwww.google.com%2Faccounts%2Fo8%2Fid&amp;token_url=http%3A%2F%2Fgaragelab.com%2Fmain%2Fauthorization%2FprocessExternalAuth%3Ftarget%3Dhttp%253A%252F%252Fgaragelab.com%252Fprofiles%252Fblogs%252Ftutorial-humidity-and-temperature-sensor-with-arduino%26source%3DsignUp%26close%3D1%26provider%3Dgoogle&#39;, null, &#39;width=530,height=480,location=no,menubar=no,resizable=yes,scrollbars=yes,toolbar=no,status=no&#39;); return false;" href="https://garagelab.networkauth.com/openid/start?openid_identifier=https%3A%2F%2Fwww.google.com%2Faccounts%2Fo8%2Fid&token_url=http%3A%2F%2Fgaragelab.com%2Fmain%2Fauthorization%2FprocessExternalAuth%3Ftarget%3Dhttp%253A%252F%252Fgaragelab.com%252Fprofiles%252Fblogs%252Ftutorial-humidity-and-temperature-sensor-with-arduino%26source%3DsignUp%26close%3D0%26provider%3Dgoogle">
+            <span class="mini-service mini-service-google" title="Google"></span>
+        </a></li>
+            <li data-provider-name="Yahoo!"><a onclick="window.open(&#39;https://garagelab.networkauth.com/openid/start?openid_identifier=http%3A%2F%2Fme.yahoo.com%2F&amp;token_url=http%3A%2F%2Fgaragelab.com%2Fmain%2Fauthorization%2FprocessExternalAuth%3Ftarget%3Dhttp%253A%252F%252Fgaragelab.com%252Fprofiles%252Fblogs%252Ftutorial-humidity-and-temperature-sensor-with-arduino%26source%3DsignUp%26close%3D1%26provider%3Dyahoo&#39;, null, &#39;width=500,height=480,location=no,menubar=no,resizable=yes,scrollbars=yes,toolbar=no,status=no&#39;); return false;" href="https://garagelab.networkauth.com/openid/start?openid_identifier=http%3A%2F%2Fme.yahoo.com%2F&token_url=http%3A%2F%2Fgaragelab.com%2Fmain%2Fauthorization%2FprocessExternalAuth%3Ftarget%3Dhttp%253A%252F%252Fgaragelab.com%252Fprofiles%252Fblogs%252Ftutorial-humidity-and-temperature-sensor-with-arduino%26source%3DsignUp%26close%3D0%26provider%3Dyahoo">
+            <span class="mini-service mini-service-yahoo" title="Yahoo!"></span>
+        </a></li>
+    </ul>
+                </div>
+                    </div>
+    </div>
+</div>
+                        <div class="xj_sidebar_content"><div class="xg_module html_module module_text xg_reset" data-module_name="text">
+            <div class="xg_module_body xg_user_generated">
+            <center>
+<p><a href="http://garagelabstore.com/store/" target="_blank"><img src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/usa.png" width="43"></a><a target="_blank" href="http://labdegaragem.com/"><img src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/br.png" alt="" width="43"></a></p>
+<p><a target="_self" href="http://garagelab.com/main/authorization/signUp?"><img src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/joinus.png" width="190"></a></p>
+<p><a href="http://garagelab.com/main/authorization/signUp?" target="_self">Join us to receive our News and<br>
+updates about tutorials, projects,<br>
+and much more!</a></p>
+<p style="text-align: center;"><a href="http://garagelabstore.com/store/embedded/beagle-bone-black.html" target="_blank"><img src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/rev_a5a.jpg" alt="" width="175" class="align-center"></a></p>
+<p style="text-align: center;"><strong><a href="http://garagelabstore.com/store/embedded/beagle-bone-black.html" target="_blank">BeagleBone Black</a></strong></p>
+<p style="text-align: center;"><strong>$40.50</strong></p>
+<p style="text-align: center;"><a href="http://garagelabstore.com/store/shields/bluetooth-shield.html" target="_blank"><img src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/bluetooth_shield.jpg" width="175" class="align-center"></a></p>
+<p style="text-align: center;"><strong><a href="http://garagelabstore.com/store/shields/bluetooth-shield.html" target="_blank">Bluetooth Shield</a></strong></p>
+<p style="text-align: center;"><strong>$20.61</strong></p>
+<p style="text-align: center;"><a href="http://garagelabstore.com/store/motors/big-easy-driver.html" target="_blank"><img src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/10735-01c.jpg" alt="" width="175" class="align-center"></a></p>
+<p style="text-align: center;"><strong><a href="http://garagelabstore.com/store/motors/big-easy-driver.html" target="_blank">Big Easy Driver</a></strong></p>
+<p style="text-align: center;"><strong>$20.66</strong></p>
+<p style="text-align: center;"><a href="http://garagelabstore.com/store/robotics/servo-arm-with-mk-robotic-claw.html" target="_blank"><img src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/45_82_mk_ii_gripper.jpg" width="175" class="align-center"></a></p>
+<p style="text-align: center;"><strong><a href="http://garagelabstore.com/store/robotics/servo-arm-with-mk-robotic-claw.html" target="_blank">Servo arm with MK Ⅱ robotic claw<br></a></strong></p>
+<p style="text-align: center;"><strong>$65.03</strong></p>
+<p><a target="_blank" href="http://www.facebook.com/pages/GarageLab/357068494357039"><img src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/facebook.png" width="70"></a><a target="_blank" href="https://twitter.com/#%21/garagelab_"><img src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/twitter.png" width="70"></a></p>
+<p>&nbsp;</p>
+</center>
+        </div>
+            </div>
+<div id="xg_network_activity" class="xg_module xg_module_activity indented_content column_1" dojotype="ActivityModule" data-module_name="activity" _isprofile="" _isadmin="" _activityoptionsavailable="1" _columncount="1" _maxembedwidth="220" _embedlocatorid="1/homepage/index" _refreshurl="http://garagelab.com/activity/embed/refresh?id=1%2Fhomepage%2Findex&amp;xn_out=json" _activitynum="20" data-owner-name="" data-excerpt-length="100" data-get-items-url="http://garagelab.com/activity/index/getActivityItems?xn_out=json">
+
+    <div class="xg_module_head">
+        <h2>Latest Activity</h2>
+    </div>
+    <div class="xg_module_body activity-feed-skinny">
+            <div class="xg_new_activity_items_container dy-displaynone" style="display: none;">
+            <button class="xj-new-feed-items xg_show_activity_items">
+                <span class="xg_more_activity_arrow"></span>
+                <span class="xj-new-item-text"></span>
+            </button>
+        </div>
+        <div class="module module-feed">
+            <div id="feed-c6c43b04f62c4c3c55bd802b289e3899" class="feed-story  xg_separator xj_activity_item"><a href="http://garagelab.com/"><span class="feed-avatar"><img class="" width="32" height="32" alt="Profile Icon" src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/6484258"></span></a><span class="feed-story-header dy-clearfix"><a href="http://garagelab.com/profile/StellaKwale?xg_source=activity">Stella Kwale</a>, <a href="http://garagelab.com/profile/Hwangsangwon?xg_source=activity">Hwang sangwon</a> and <a href="http://garagelab.com/profile/MosabAhmad?xg_source=activity">Mosab Ahmad</a> joined GarageLab (arduino, electronics, robotics, hacking)</span><div class="feed-story-body dy-clearfix"><div class="rich"><div class="rich-thumbs rich-thumbs-32"><a href="http://garagelab.com/profile/StellaKwale?xg_source=activity"><span class="dy-avatar dy-avatar-32 "><img class="photo " src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/429877290.png" alt=""></span></a><a href="http://garagelab.com/profile/Hwangsangwon?xg_source=activity"><span class="dy-avatar dy-avatar-32 "><img class="photo " src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/429877290.png" alt=""></span></a><a href="http://garagelab.com/profile/MosabAhmad?xg_source=activity"><span class="dy-avatar dy-avatar-32 "><img class="photo " src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/429877290.png" alt=""></span></a></div></div></div><div class="feed-event-info "><span class="event-info-timestamp xg_lightfont" data-time="Mon, 07 Oct 2013 13:53:53 +0000">18 hours ago</span></div></div><div id="feed-f08aef9b9e9907f8dc033819033bac48" class="feed-story  xg_separator xj_activity_item"><a href="http://garagelab.com/profile/GarageLab?xg_source=activity"><span class="dy-avatar dy-avatar-32 feed-avatar"><img class="photo " src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/663591140(1).jpeg" alt=""></span></a><span class="feed-story-header dy-clearfix"><a href="http://garagelab.com/profile/GarageLab?xg_source=activity">GarageLab</a> posted a blog post</span><div class="feed-story-body dy-clearfix"><div class="rich"><h3 class="feed-story-title"><a href="http://garagelab.com/xn/detail/6484258:BlogPost:25660?xg_source=activity">Adafruit DIY LED Watch: Pixel O’clock</a></h3><div class="rich-detail"><div class="rich-excerpt"><div data-contentid="6484258:BlogPost:25660">Adafruit continues its wonderful marketing campaign with another fun and functional gadget that you…<a class="continue-link" href="http://garagelab.com/profiles/blogs/adafruit-diy-led-watch-pixel-o-clock">See More</a></div></div></div></div></div><div class="feed-event-info "><span class="event-info-timestamp xg_lightfont" data-time="Mon, 07 Oct 2013 13:11:13 +0000">19 hours ago</span></div>                <div class="feed-reactions">
+                                    <a href="http://garagelab.com/profiles/blogs/adafruit-diy-led-watch-pixel-o-clock#comments" data-page-type="detail" data-contentid="6484258:BlogPost:25660" data-user-avatar-url="" data-user-profile-url="" data-user-fullname="" class="xg_sprite xg_sprite-comment xj_commentable">
+                <span class="comments-number">
+                    <span class="xj_comment_count">0</span>
+                    <span class="details">Comments</span>
+                </span>
+                </a>
+                            <a href="http://garagelab.com/profiles/blogs/adafruit-diy-led-watch-pixel-o-clock" class="xg_sprite like-link-1 like-link" data-like-url="http://garagelab.com/main/like/like?xg_source=activity" data-unlike-url="http://garagelab.com/main/like/unlike?xg_source=activity" data-content-id="6484258:BlogPost:25660" data-content-type="BlogPost" data-sign-up-url="http://garagelab.com/main/authorization/signUp?target=http%3A%2F%2Fgaragelab.com%2Fprofiles%2Fblogs%2Ftutorial-humidity-and-temperature-sensor-with-arduino" data-page-type="detail">
+                    0 <span class="details">Likes</span>
+                </a>
+                            </div>
+            </div><div id="feed-58ebe890f751b8ffb04cd8ec6852d261" class="feed-story  xg_separator xj_activity_item"><a href="http://garagelab.com/profile/ThomasMarcusWittig?xg_source=activity"><span class="dy-avatar dy-avatar-32 feed-avatar"><img class="photo " src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/1040888562.jpeg" alt=""></span></a><span class="feed-story-header dy-clearfix"><a href="http://garagelab.com/profile/ThomasMarcusWittig?xg_source=activity">Thomas Marcus Wittig</a> posted a photo</span><div class="feed-story-body dy-clearfix"><div class="rich"><div class="rich-thumb"><div class=" dy-content-thumb-link xg_lightborder"> <a href="http://garagelab.com/photo/kickstarter-project-launch-world-smallest-digital-storage"><img src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/KS100.JPG" width="128" alt="Thumbnail" style="max-width:128px;max-height:128px;"></a></div></div><h3 class="feed-story-title"><a href="http://garagelab.com/photo/kickstarter-project-launch-world-smallest-digital-storage">Kickstarter Project Launch: World-smallest digital storage oscilloscope with color LCD</a></h3><div class="rich-detail"><div class="rich-excerpt">The new developed digital storage oscilloscope for mobile measurement tasks and easy PC-Connection…</div></div></div></div><div class="feed-event-info "><span class="event-info-timestamp xg_lightfont" data-time="Mon, 07 Oct 2013 08:52:55 +0000">23 hours ago</span></div>                <div class="feed-reactions">
+                                    <a href="http://garagelab.com/photo/kickstarter-project-launch-world-smallest-digital-storage#comments" data-page-type="detail" data-contentid="6484258:Photo:25817" data-user-avatar-url="" data-user-profile-url="" data-user-fullname="" class="xg_sprite xg_sprite-comment xj_commentable">
+                <span class="comments-number">
+                    <span class="xj_comment_count">0</span>
+                    <span class="details">Comments</span>
+                </span>
+                </a>
+                            <a href="http://garagelab.com/photo/kickstarter-project-launch-world-smallest-digital-storage" class="xg_sprite like-link-1 like-link" data-like-url="http://garagelab.com/main/like/like?xg_source=activity" data-unlike-url="http://garagelab.com/main/like/unlike?xg_source=activity" data-content-id="6484258:Photo:25817" data-content-type="Photo" data-sign-up-url="http://garagelab.com/main/authorization/signUp?target=http%3A%2F%2Fgaragelab.com%2Fprofiles%2Fblogs%2Ftutorial-humidity-and-temperature-sensor-with-arduino" data-page-type="detail">
+                    0 <span class="details">Likes</span>
+                </a>
+                            </div>
+            </div><div id="feed-190b2ca8dfccbcb2c39b2b57de3d806f" class="feed-story feed-story-status xg_separator xj_activity_item"><a href="http://garagelab.com/profile/wesleywortman?xg_source=activity"><span class="dy-avatar dy-avatar-32 feed-avatar"><img class="photo " src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/1039911286.jpeg" alt=""></span></a><span class="feed-story-header dy-clearfix"><a href="http://garagelab.com/profile/wesleywortman?xg_source=activity">wesley wortman</a> posted a <a href="http://garagelab.com/profiles/status/show?id=6484258%3AStatus%3A25655">status</a></span><div class="feed-story-body dy-clearfix"><div class="rich"><div class="rich-detail"><div class="status-update">"3D printer or CNC construction Ideas"</div></div></div></div><div class="feed-event-info "><span class="event-info-timestamp xg_lightfont" data-time="Sun, 06 Oct 2013 20:12:19 +0000">yesterday</span></div>                <div class="feed-reactions">
+                                    <a href="http://garagelab.com/profiles/status/show?id=6484258%3AStatus%3A25655#comments" data-page-type="detail" data-contentid="6484258:Status:25655" data-user-avatar-url="" data-user-profile-url="" data-user-fullname="" class="xg_sprite xg_sprite-comment xj_commentable">
+                <span class="comments-number">
+                    <span class="xj_comment_count">0</span>
+                    <span class="details">Comments</span>
+                </span>
+                </a>
+                            <a href="http://garagelab.com/profiles/status/show?id=6484258%3AStatus%3A25655" class="xg_sprite like-link-1 like-link" data-like-url="http://garagelab.com/main/like/like?xg_source=activity" data-unlike-url="http://garagelab.com/main/like/unlike?xg_source=activity" data-content-id="6484258:Status:25655" data-content-type="Status" data-sign-up-url="http://garagelab.com/main/authorization/signUp?target=http%3A%2F%2Fgaragelab.com%2Fprofiles%2Fblogs%2Ftutorial-humidity-and-temperature-sensor-with-arduino" data-page-type="detail">
+                    0 <span class="details">Likes</span>
+                </a>
+                            </div>
+            </div><div id="feed-b1f2caf459c91c1460216c84ee7ea9d8" class="feed-story  xg_separator xj_activity_item"><a href="http://garagelab.com/profile/wesleywortman?xg_source=activity"><span class="dy-avatar dy-avatar-32 feed-avatar"><img class="photo " src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/1039911286.jpeg" alt=""></span></a><span class="feed-story-header dy-clearfix"><a href="http://garagelab.com/profile/wesleywortman?xg_source=activity">wesley wortman</a> posted photos</span><div class="feed-story-body dy-clearfix"><div class="rich"><div class="rich-thumbs rich-thumbs-2592"><div class=" dy-content-thumb-link xg_lightborder"> <a href="http://garagelab.com/photo/3d-printer-or-cnc-construction-12"><img src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/IMG_0094.JPG2.JPG" width="128" alt="Thumbnail" style="max-width:128px;max-height:128px;"></a></div><div class=" dy-content-thumb-link xg_lightborder"> <a href="http://garagelab.com/photo/3d-printer-or-cnc-construction-13"><img src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/IMG_0093.JPG2.JPG" width="128" alt="Thumbnail" style="max-width:128px;max-height:128px;"></a></div><div class=" dy-content-thumb-link xg_lightborder last-thumb"> <a href="http://garagelab.com/photo/3d-printer-or-cnc-construction-3"><img src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/IMG_0104.JPG2.JPG" width="128" alt="Thumbnail" style="max-width:128px;max-height:128px;"></a></div></div></div><div class="feed-more"><a href="http://garagelab.com/photo/album/show?id=6484258%3AAlbum%3A25640&xg_source=activity">11 more…</a></div></div><div class="feed-event-info "><span class="event-info-timestamp xg_lightfont" data-time="Sun, 06 Oct 2013 20:09:18 +0000">yesterday</span></div></div><div id="feed-882b5a66b270d080368c575bbfb432aa" class="feed-story  xg_separator xj_activity_item"><a href="http://garagelab.com/profile/LuizLima?xg_source=activity"><span class="dy-avatar dy-avatar-32 feed-avatar"><img class="photo " src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/1040837652.jpeg" alt=""></span></a><span class="feed-story-header dy-clearfix"><a href="http://garagelab.com/profile/LuizLima?xg_source=activity">Luiz Lima</a> posted photos</span><div class="feed-story-body dy-clearfix"><div class="rich"><div class="rich-thumbs rich-thumbs-243"><div class=" dy-content-thumb-link xg_lightborder"> <a href="http://garagelab.com/photo/1367762350509"><img src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/1367762350509.jpg" height="128" alt="Thumbnail" style="max-width:128px;max-height:128px;"></a></div><div class=" dy-content-thumb-link xg_lightborder"> <a href="http://garagelab.com/photo/vaio-rover2"><img src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/VaioRover2.jpg" width="128" alt="Thumbnail" style="max-width:128px;max-height:128px;"></a></div><div class=" dy-content-thumb-link xg_lightborder last-thumb"> <a href="http://garagelab.com/photo/1364384601084"><img src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/1364384601084.jpg" width="128" alt="Thumbnail" style="max-width:128px;max-height:128px;"></a></div></div></div></div><div class="feed-event-info "><span class="event-info-timestamp xg_lightfont" data-time="Sun, 06 Oct 2013 19:42:23 +0000">yesterday</span></div></div><div id="feed-bc669efd4a672b84410b390c5cb126fb" class="feed-story  xg_separator xj_activity_item"><a href="http://garagelab.com/profile/wesleywortman?xg_source=activity"><span class="dy-avatar dy-avatar-32 feed-avatar"><img class="photo " src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/1039911286.jpeg" alt=""></span></a><span class="feed-story-header dy-clearfix"><a href="http://garagelab.com/profile/wesleywortman?xg_source=activity">wesley wortman</a> posted photos</span><div class="feed-story-body dy-clearfix"><div class="rich"><div class="rich-thumbs rich-thumbs-1936"><div class=" dy-content-thumb-link xg_lightborder"> <a href="http://garagelab.com/photo/tv-breakdown-11"><img src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/makerfaire068.JPG" height="128" alt="Thumbnail" style="max-width:128px;max-height:128px;"></a></div><div class=" dy-content-thumb-link xg_lightborder"> <a href="http://garagelab.com/photo/tv-breakdown-3"><img src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/makerfaire080.JPG" width="128" alt="Thumbnail" style="max-width:128px;max-height:128px;"></a></div><div class=" dy-content-thumb-link xg_lightborder last-thumb"> <a href="http://garagelab.com/photo/tv-breakdown-2"><img src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/makerfaire081.JPG" width="128" alt="Thumbnail" style="max-width:128px;max-height:128px;"></a></div></div></div><div class="feed-more"><a href="http://garagelab.com/photo/album/show?id=6484258%3AAlbum%3A25491&xg_source=activity">9 more…</a></div></div><div class="feed-event-info "><span class="event-info-timestamp xg_lightfont" data-time="Sun, 06 Oct 2013 19:28:32 +0000">yesterday</span></div></div><div id="feed-931ed97740acd714274b73a2d4557b8e" class="feed-story  xg_separator xj_activity_item"><a href="http://garagelab.com/"><span class="feed-avatar"><img class="" width="32" height="32" alt="Profile Icon" src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/6484258"></span></a><span class="feed-story-header dy-clearfix"><a href="http://garagelab.com/profile/ThomasMarcusWittig?xg_source=activity">Thomas Marcus Wittig</a> and <a href="http://garagelab.com/profile/LuizLima?xg_source=activity">Luiz Lima</a> joined GarageLab (arduino, electronics, robotics, hacking)</span><div class="feed-story-body dy-clearfix"><div class="rich"><div class="rich-thumbs rich-thumbs-32"><a href="http://garagelab.com/profile/ThomasMarcusWittig?xg_source=activity"><span class="dy-avatar dy-avatar-32 "><img class="photo " src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/1040888562.jpeg" alt=""></span></a><a href="http://garagelab.com/profile/LuizLima?xg_source=activity"><span class="dy-avatar dy-avatar-32 "><img class="photo " src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/1040837652.jpeg" alt=""></span></a></div></div></div><div class="feed-event-info "><span class="event-info-timestamp xg_lightfont" data-time="Sun, 06 Oct 2013 11:38:14 +0000">yesterday</span></div></div><div id="feed-bcc5db22f58dea2b0747e0da4d2f1a6f" class="feed-story  xg_separator xj_activity_item"><a href="http://garagelab.com/profile/GarageLab?xg_source=activity"><span class="dy-avatar dy-avatar-32 feed-avatar"><img class="photo " src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/663591140(1).jpeg" alt=""></span></a><span class="feed-story-header dy-clearfix"><a href="http://garagelab.com/profile/GarageLab?xg_source=activity">GarageLab</a> posted a blog post</span><div class="feed-story-body dy-clearfix"><div class="rich"><h3 class="feed-story-title"><a href="http://garagelab.com/xn/detail/6484258:BlogPost:25603?xg_source=activity">Visualize Your Heartbeat With This Homemade Pulse Sensor</a></h3><div class="rich-detail"><div class="rich-excerpt"><div data-contentid="6484258:BlogPost:25603">&nbsp;The IR Pulse Sensor is a unique combination of hardware and software, and it’s a great all-around…<a class="continue-link" href="http://garagelab.com/profiles/blogs/visualize-your-heartbeat-with-this-homemade-pulse-sensor">See More</a></div></div></div></div></div><div class="feed-event-info "><span class="event-info-timestamp xg_lightfont" data-time="Fri, 04 Oct 2013 13:54:07 +0000">Friday</span></div>                <div class="feed-reactions">
+                                    <a href="http://garagelab.com/profiles/blogs/visualize-your-heartbeat-with-this-homemade-pulse-sensor#comments" data-page-type="detail" data-contentid="6484258:BlogPost:25603" data-user-avatar-url="" data-user-profile-url="" data-user-fullname="" class="xg_sprite xg_sprite-comment xj_commentable">
+                <span class="comments-number">
+                    <span class="xj_comment_count">0</span>
+                    <span class="details">Comments</span>
+                </span>
+                </a>
+                            <a href="http://garagelab.com/profiles/blogs/visualize-your-heartbeat-with-this-homemade-pulse-sensor" class="xg_sprite like-link-1 like-link" data-like-url="http://garagelab.com/main/like/like?xg_source=activity" data-unlike-url="http://garagelab.com/main/like/unlike?xg_source=activity" data-content-id="6484258:BlogPost:25603" data-content-type="BlogPost" data-sign-up-url="http://garagelab.com/main/authorization/signUp?target=http%3A%2F%2Fgaragelab.com%2Fprofiles%2Fblogs%2Ftutorial-humidity-and-temperature-sensor-with-arduino" data-page-type="detail">
+                    0 <span class="details">Likes</span>
+                </a>
+                            </div>
+            </div><div id="feed-4d7ee1b6bfadee676ef44ce30c96d751" class="feed-story  xg_separator xj_activity_item"><a href="http://garagelab.com/profile/Connie?xg_source=activity"><span class="dy-avatar dy-avatar-32 feed-avatar"><img class="photo " src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/429877290.png" alt=""></span></a><span class="feed-story-header dy-clearfix"><a href="http://garagelab.com/profile/Connie?xg_source=activity">Connie</a> is now a member of GarageLab (arduino, electronics, robotics, hacking)</span><div class="feed-event-info "><span class="event-info-timestamp xg_lightfont" data-time="Fri, 04 Oct 2013 12:57:29 +0000">Friday</span></div>                <div class="feed-reactions">
+                    <a class="xg_sprite xg_sprite-megaphone" href="http://garagelab.com/profile/Connie?xg_source=activity#add_comment">Welcome Them!</a>                </div>
+            </div><div id="feed-d5d333db88e25b37289d74104d1bed21" class="feed-story  xg_separator xj_activity_item"><a href="http://garagelab.com/profile/AtariPunkConsole?xg_source=activity"><span class="dy-avatar dy-avatar-32 feed-avatar"><img class="photo " src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/984735818.jpeg" alt=""></span></a><span class="feed-story-header dy-clearfix"><a href="http://garagelab.com/profile/AtariPunkConsole?xg_source=activity">Atari Punk Console</a> posted photos</span><div class="feed-story-body dy-clearfix"><div class="rich"><div class="rich-thumbs rich-thumbs-1936"><div class=" dy-content-thumb-link xg_lightborder"> <a href="http://garagelab.com/photo/chaos-delay-noise-box"><img src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/IMG_1217.JPG" width="128" alt="Thumbnail" style="max-width:128px;max-height:128px;"></a></div><div class=" dy-content-thumb-link xg_lightborder"> <a href="http://garagelab.com/photo/inside-the-chaos-delay-noise-box"><img src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/IMG_1211.JPG" width="128" alt="Thumbnail" style="max-width:128px;max-height:128px;"></a></div></div></div></div><div class="feed-event-info "><span class="event-info-timestamp xg_lightfont" data-time="Fri, 04 Oct 2013 06:23:29 +0000">Friday</span></div></div><div id="feed-71ec68f866b10aa7ab8ca00ded26491c" class="feed-story  xg_separator xj_activity_item"><a href="http://garagelab.com/profile/AtariPunkConsole?xg_source=activity"><span class="dy-avatar dy-avatar-32 feed-avatar"><img class="photo " src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/984735818.jpeg" alt=""></span></a><span class="feed-story-header dy-clearfix"><a href="http://garagelab.com/profile/AtariPunkConsole?xg_source=activity">Atari Punk Console</a> <a href="http://garagelab.com/xn/detail/6484258:Comment:25535?xg_source=activity">commented</a> on <a href="http://garagelab.com/profile/JohnMalone?xg_source=activity">John Malone's</a> <a href="http://garagelab.com/xn/detail/6484258:Photo:22959?xg_source=activity">photo</a></span><div class="feed-story-body dy-clearfix"><div class="rich"><div class="rich-thumb"><a href="http://garagelab.com/photo/perfboard-hackduino-component-side"><img src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/IMG_6848.JPG" width="64" alt="Thumbnail" style="max-width:64px;max-height:64px;"></a></div><h3 class="feed-story-title"><a href="http://garagelab.com/xn/detail/6484258:Photo:22959?xg_source=activity">Perfboard Hackduino - Component Side</a></h3><div class="rich-detail"><div class="content-comment">"This is very nice. I love the Arduino and have built many of them myself."</div></div></div></div><div class="feed-event-info "><span class="event-info-timestamp xg_lightfont" data-time="Fri, 04 Oct 2013 06:15:58 +0000">Friday</span></div></div><div id="feed-ae5ed2830df2a0ad0cb3b2624bc89dac" class="feed-story  xg_separator xj_activity_item"><a href="http://garagelab.com/profile/GarageLab?xg_source=activity"><span class="dy-avatar dy-avatar-32 feed-avatar"><img class="photo " src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/663591140(1).jpeg" alt=""></span></a><span class="feed-story-header dy-clearfix"><a href="http://garagelab.com/profile/GarageLab?xg_source=activity">GarageLab</a> posted a blog post</span><div class="feed-story-body dy-clearfix"><div class="rich"><h3 class="feed-story-title"><a href="http://garagelab.com/xn/detail/6484258:BlogPost:25531?xg_source=activity">Grad students build nanometer-resolution atomic force microscope using Lego and 3D printing</a></h3><div class="rich-detail"><div class="rich-excerpt"><div data-contentid="6484258:BlogPost:25531"><a class="continue-link" href="http://garagelab.com/profiles/blogs/grad-students-build-nanometer-resolution-atomic-force-microscope-">See More</a></div></div></div></div></div><div class="feed-event-info "><span class="event-info-timestamp xg_lightfont" data-time="Thu, 03 Oct 2013 13:21:52 +0000">Thursday</span></div>                <div class="feed-reactions">
+                                    <a href="http://garagelab.com/profiles/blogs/grad-students-build-nanometer-resolution-atomic-force-microscope-#comments" data-page-type="detail" data-contentid="6484258:BlogPost:25531" data-user-avatar-url="" data-user-profile-url="" data-user-fullname="" class="xg_sprite xg_sprite-comment xj_commentable">
+                <span class="comments-number">
+                    <span class="xj_comment_count">0</span>
+                    <span class="details">Comments</span>
+                </span>
+                </a>
+                            <a href="http://garagelab.com/profiles/blogs/grad-students-build-nanometer-resolution-atomic-force-microscope-" class="xg_sprite like-link-1 like-link" data-like-url="http://garagelab.com/main/like/like?xg_source=activity" data-unlike-url="http://garagelab.com/main/like/unlike?xg_source=activity" data-content-id="6484258:BlogPost:25531" data-content-type="BlogPost" data-sign-up-url="http://garagelab.com/main/authorization/signUp?target=http%3A%2F%2Fgaragelab.com%2Fprofiles%2Fblogs%2Ftutorial-humidity-and-temperature-sensor-with-arduino" data-page-type="detail">
+                    0 <span class="details">Likes</span>
+                </a>
+                            </div>
+            </div><div id="feed-5b60ab41fc78698bd38097ac19e1253d" class="feed-story  xg_separator xj_activity_item"><a href="http://garagelab.com/"><span class="feed-avatar"><img class="" width="32" height="32" alt="Profile Icon" src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/6484258"></span></a><span class="feed-story-header dy-clearfix"><a href="http://garagelab.com/profile/GuyNicholas?xg_source=activity">Guy Nicholas</a> and <a href="http://garagelab.com/profile/MarkGreco?xg_source=activity">Mark Greco</a> joined GarageLab (arduino, electronics, robotics, hacking)</span><div class="feed-story-body dy-clearfix"><div class="rich"><div class="rich-thumbs rich-thumbs-32"><a href="http://garagelab.com/profile/GuyNicholas?xg_source=activity"><span class="dy-avatar dy-avatar-32 "><img class="photo " src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/429877290.png" alt=""></span></a><a href="http://garagelab.com/profile/MarkGreco?xg_source=activity"><span class="dy-avatar dy-avatar-32 "><img class="photo " src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/429877290.png" alt=""></span></a></div></div></div><div class="feed-event-info "><span class="event-info-timestamp xg_lightfont" data-time="Thu, 03 Oct 2013 12:17:30 +0000">Thursday</span></div></div><div id="feed-22e5048b0f60f7075e3b968a826282c1" class="feed-story  xg_separator xj_activity_item"><a href="http://garagelab.com/profile/GarageLab?xg_source=activity"><span class="dy-avatar dy-avatar-32 feed-avatar"><img class="photo " src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/663591140(1).jpeg" alt=""></span></a><span class="feed-story-header dy-clearfix"><a href="http://garagelab.com/profile/GarageLab?xg_source=activity">GarageLab</a> posted blog posts</span><div class="feed-story-body dy-clearfix"><div class="rich"><div class="rich-detail"><ul class="links"><li><h3 class="feed-story-title"><a href="http://garagelab.com/xn/detail/6484258:BlogPost:25389?xg_source=activity">DIY: Robotic Hand Controlled by a Glove and Arduino</a></h3></li><li><h3 class="feed-story-title"><a href="http://garagelab.com/xn/detail/6484258:BlogPost:25455?xg_source=activity">Man controls new prosthetic leg using thought alone</a></h3></li></ul></div></div></div><div class="feed-event-info "><span class="event-info-timestamp xg_lightfont" data-time="Tue, 01 Oct 2013 13:11:17 +0000">Oct 1</span></div></div><div id="feed-cda6d4c896017cd8aba9e4744dfdb3e8" class="feed-story  xg_separator xj_activity_item"><a href="http://garagelab.com/"><span class="feed-avatar"><img class="" width="32" height="32" alt="Profile Icon" src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/6484258"></span></a><span class="feed-story-header dy-clearfix"><a href="http://garagelab.com/profile/hamzah?xg_source=activity">hamzah</a>, <a href="http://garagelab.com/profile/JasonBedard?xg_source=activity">Jason Bedard</a>, <a href="http://garagelab.com/profile/khalidabghay?xg_source=activity">khalid abghay</a> and 3 more joined GarageLab (arduino, electronics, robotics, hacking)</span><div class="feed-story-body dy-clearfix"><div class="rich"><div class="rich-thumbs rich-thumbs-32"><a href="http://garagelab.com/profile/hamzah?xg_source=activity"><span class="dy-avatar dy-avatar-32 "><img class="photo " src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/429877290.png" alt=""></span></a><a href="http://garagelab.com/profile/JasonBedard?xg_source=activity"><span class="dy-avatar dy-avatar-32 "><img class="photo " src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/429877290.png" alt=""></span></a><a href="http://garagelab.com/profile/khalidabghay?xg_source=activity"><span class="dy-avatar dy-avatar-32 "><img class="photo " src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/429877290.png" alt=""></span></a><a href="http://garagelab.com/profile/sebindavisc?xg_source=activity"><span class="dy-avatar dy-avatar-32 "><img class="photo " src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/429877290.png" alt=""></span></a><a href="http://garagelab.com/profile/HassanIbrahim?xg_source=activity"><span class="dy-avatar dy-avatar-32 "><img class="photo " src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/429877290.png" alt=""></span></a><a href="http://garagelab.com/profile/JafarAbbas?xg_source=activity"><span class="dy-avatar dy-avatar-32 "><img class="photo " src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/429877290.png" alt=""></span></a></div></div></div><div class="feed-event-info "><span class="event-info-timestamp xg_lightfont" data-time="Tue, 01 Oct 2013 12:23:17 +0000">Oct 1</span></div></div><div id="feed-337c669f6d81a6acf5dd7a6fa3bf119d" class="feed-story  xg_separator xj_activity_item"><a href="http://garagelab.com/profile/JosueDread?xg_source=activity"><span class="dy-avatar dy-avatar-32 feed-avatar"><img class="photo " src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/429877290.png" alt=""></span></a><span class="feed-story-header dy-clearfix"><a href="http://garagelab.com/profile/JosueDread?xg_source=activity">Josué Dread</a> <a href="http://garagelab.com/xn/detail/6484258:Comment:25525?xg_source=activity">commented</a> on <a href="http://garagelab.com/profile/GarageLab?xg_source=activity">GarageLab's</a> blog post <a href="http://garagelab.com/xn/detail/6484258:BlogPost:7049?xg_source=activity">Project: Flex sensor + servo motor + arduino</a></span><div class="feed-story-body dy-clearfix"><div class="rich"><div class="rich-detail"><div class="content-comment">"Hey Cesar, thanks, your English is really well too. Ok, i have a source code that can help to test…"</div></div></div></div><div class="feed-event-info "><span class="event-info-timestamp xg_lightfont" data-time="Mon, 30 Sep 2013 18:17:36 +0000">Sep 30</span></div></div><div id="feed-bc2987f080205b76b148b19cb8526ccb" class="feed-story  xg_separator xj_activity_item"><a href="http://garagelab.com/profile/CesarBernstein?xg_source=activity"><span class="dy-avatar dy-avatar-32 feed-avatar"><img class="photo " src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/429877290.png" alt=""></span></a><span class="feed-story-header dy-clearfix"><a href="http://garagelab.com/profile/CesarBernstein?xg_source=activity">Cesar Bernstein</a> <a href="http://garagelab.com/xn/detail/6484258:Comment:25454?xg_source=activity">commented</a> on <a href="http://garagelab.com/profile/GarageLab?xg_source=activity">GarageLab's</a> blog post <a href="http://garagelab.com/xn/detail/6484258:BlogPost:7049?xg_source=activity">Project: Flex sensor + servo motor + arduino</a></span><div class="feed-story-body dy-clearfix"><div class="rich"><div class="rich-detail"><div class="content-comment">"Hi Josué, your english is very well, english is not my native lenguage too....the servo are…"</div></div></div></div><div class="feed-event-info "><span class="event-info-timestamp xg_lightfont" data-time="Mon, 30 Sep 2013 13:03:08 +0000">Sep 30</span></div></div><div id="feed-2d5c774ecdbe0fe7161eb19ce152e7b9" class="feed-story  xg_separator xj_activity_item"><a href="http://garagelab.com/profile/JosueDread?xg_source=activity"><span class="dy-avatar dy-avatar-32 feed-avatar"><img class="photo " src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/429877290.png" alt=""></span></a><span class="feed-story-header dy-clearfix"><a href="http://garagelab.com/profile/JosueDread?xg_source=activity">Josué Dread</a> <a href="http://garagelab.com/xn/detail/6484258:Comment:25520?xg_source=activity">commented</a> on <a href="http://garagelab.com/profile/GarageLab?xg_source=activity">GarageLab's</a> blog post <a href="http://garagelab.com/xn/detail/6484258:BlogPost:7049?xg_source=activity">Project: Flex sensor + servo motor + arduino</a></span><div class="feed-story-body dy-clearfix"><div class="rich"><div class="rich-detail"><div class="content-comment">"I'm not an expert with this topic but, i had used this code to make something similar and it…"</div></div></div></div><div class="feed-event-info "><span class="event-info-timestamp xg_lightfont" data-time="Mon, 30 Sep 2013 05:19:25 +0000">Sep 30</span></div></div><div id="feed-78689e9992002683d2d07297ed6110fb" class="feed-story  xg_separator xj_activity_item"><a href="http://garagelab.com/profile/CesarBernstein?xg_source=activity"><span class="dy-avatar dy-avatar-32 feed-avatar"><img class="photo " src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/429877290.png" alt=""></span></a><span class="feed-story-header dy-clearfix"><a href="http://garagelab.com/profile/CesarBernstein?xg_source=activity">Cesar Bernstein</a> <a href="http://garagelab.com/xn/detail/6484258:Comment:25453?xg_source=activity">commented</a> on <a href="http://garagelab.com/profile/GarageLab?xg_source=activity">GarageLab's</a> blog post <a href="http://garagelab.com/xn/detail/6484258:BlogPost:7049?xg_source=activity">Project: Flex sensor + servo motor + arduino</a></span><div class="feed-story-body dy-clearfix"><div class="rich"><div class="rich-detail"><div class="content-comment">"the servos dont move, i can see that have power ok for the sound.... What can i do?"</div></div></div></div><div class="feed-event-info "><span class="event-info-timestamp xg_lightfont" data-time="Mon, 30 Sep 2013 01:41:16 +0000">Sep 30</span></div></div>        </div>
+    </div>
+
+    <div class="xg_module_foot">
+                    <button class="xj_see_more xg_show_activity_items">
+                More...            </button>
+                <ul class="feed_foot_icons">
+                    <li class="left"><a class="xg_icon xg_icon-rss" href="http://garagelab.com/activity/log/list?fmt=rss">RSS</a></li>
+         </ul>
+        </div></div>
+</div>
+                    </div>
+                </div>
+            </div>
+            <div id="xg_foot">
+                <div id="xg_footcontent">
+                    <div class="xj_foot_content"><p class="left">
+    © 2013             &nbsp; Created by <a href="http://garagelab.com/profile/MarceloRodrigues">Marcelo Rodrigues</a>.        </p>
+    <p class="right xg_lightfont">
+                    <a href="http://garagelab.com/main/embeddable/list">Badges</a> &nbsp;|&nbsp;
+                        <a href="http://garagelab.com/main/authorization/signUp?target=http%3A%2F%2Fgaragelab.com%2Fmain%2Findex%2Freport" dojotype="PromptToJoinLink" _joinprompttext="Please sign up or sign in to complete this step." _hassignup="true" _signinurl="http://garagelab.com/main/authorization/signIn?target=http%3A%2F%2Fgaragelab.com%2Fmain%2Findex%2Freport">Report an Issue</a> &nbsp;|&nbsp;
+                        <a href="http://garagelab.com/main/authorization/termsOfService?previousUrl=http%3A%2F%2Fgaragelab.com%2Fprofiles%2Fblogs%2Ftutorial-humidity-and-temperature-sensor-with-arduino">Terms of Service</a>
+            </p>
+</div>
+                </div>
+            </div>
+			<div id="xg_ad_below_footer" class="xg_ad xj_ad_below_footer dy-displaynone">
+				
+			</div>
+        </div>
+    </div>
+    <div class="xj_after_content"><div id="xj_baz17246" class="xg_theme"></div>
+<div id="xg_overlay" style="display:none;">
+<!--[if lte IE 6.5]><iframe></iframe><![endif]-->
+</div>
+<!--googleoff: all--><noscript>
+	&lt;style type="text/css" media="screen"&gt;
+        #xg { position:relative;top:120px; }
+        #xn_bar { top:120px; }
+	&lt;/style&gt;
+	&lt;div class="errordesc noscript"&gt;
+		&lt;div&gt;
+            &lt;h3&gt;&lt;strong&gt;Hello, you need to enable JavaScript to use GarageLab (arduino, electronics, robotics, hacking).&lt;/strong&gt;&lt;/h3&gt;
+            &lt;p&gt;Please check your browser settings or contact your system administrator.&lt;/p&gt;
+			&lt;img src="/xn_resources/widgets/index/gfx/jstrk_off.gif" alt="" height="1" width="1" /&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+</noscript><!--googleon: all-->
+<script type="text/javascript" src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/core.min.js"></script>        <script>
+            var sources = ["http:\/\/static.ning.com\/socialnetworkmain\/widgets\/lib\/js\/jquery\/jquery.autoResize.js?xn_version=201309182045","http:\/\/static.ning.com\/socialnetworkmain\/widgets\/lib\/js\/jquery\/jquery.jsonp.min.js?xn_version=1071124156","http:\/\/static.ning.com\/socialnetworkmain\/widgets\/lib\/js\/jquery\/jquery-ui.min.js?xn_version=2186421962","http:\/\/static.ning.com\/socialnetworkmain\/widgets\/lib\/js\/modernizr\/modernizr.custom.js?xn_version=201309182045","http:\/\/static.ning.com\/socialnetworkmain\/widgets\/lib\/js\/jquery\/jstorage.min.js?xn_version=1968060033","http:\/\/static.ning.com\/socialnetworkmain\/widgets\/lib\/js\/Base64.js?xn_version=201309182045","http:\/\/static.ning.com\/garagelabnet\/instances\/shared\/js\/set_common.min.js?r=1379538533","http:\/\/static.ning.com\/garagelabnet\/instances\/shared\/js\/set_shared_c0.min.js?r=1379538534","http:\/\/static.ning.com\/garagelabnet\/instances\/shared\/js\/set_sidebar_u.min.js?r=1379538534"];
+            var numSources = sources.length;
+            var heads = document.getElementsByTagName('head');
+            var node = heads.length > 0 ? heads[0] : document.body;
+            var onloadFunctionsObj = {};
+
+            var createScriptTagFunc = function(source) {
+                var script = document.createElement('script');
+                
+                script.type = 'text/javascript';
+                                var currentOnLoad = function() {xg._loader.onLoad(source);};
+                if (script.readyState) { //for IE (including IE9)
+                    script.onreadystatechange = function() {
+                        if (script.readyState == 'complete' || script.readyState == 'loaded') {
+                            script.onreadystatechange = null;
+                            currentOnLoad();
+                        }
+                    }
+                } else {
+                   script.onerror = script.onload = currentOnLoad;
+                }
+
+                script.src = source;
+                node.appendChild(script);
+            };
+
+            for (var i = 0; i < numSources; i++) {
+                xg._loader.loading(sources[i]);
+                createScriptTagFunc(sources[i]);
+            }
+        </script>
+    <script type="text/javascript">
+if (!ning._) {ning._ = {}}
+ning._.compat = { encryptedToken: "<empty>" }
+ning._.CurrentServerTime = "2013-10-08T07:28:47+00:00";
+ning._.probableScreenName = "";
+ning._.domains = {
+    base: 'ning.com',
+    ports: { http: '80', ssl: '443' }
+};
+ning.loader.version = '201309182045_9'; // DEP-8190:d3512a4 33
+djConfig.parseWidgets = false;
+</script>
+        <script type="text/javascript">
+          (function() {
+            var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+            po.src = 'https://apis.google.com/js/plusone.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+          })();
+        </script>
+        <script type="text/javascript">
+        xg.token = '';
+xg.canTweet = false;
+xg.cdnHost = 'static.ning.com';
+xg.version = '201309182045';
+xg.useMultiCdn = true;
+xg.staticRoot = 'socialnetworkmain';
+xg.xnTrackHost = "coll.ning.com";
+    xg.cdnDefaultPolicyHost = 'static';
+    xg.cdnPolicy = [];
+xg.global = xg.global || {};
+xg.global.currentMozzle = 'profiles';
+xg.global.userCanInvite = false;
+xg.global.requestBase = '';
+xg.global.locale = 'en_US';
+xg.num_thousand_sep = ",";
+xg.num_decimal_sep = ".";
+(function() {
+    dojo.addOnLoad(function() {
+        if(window.bzplcm) { window.bzplcm.ts('hr'); window.bzplcm._profileSend(); }
+            });
+            ning.loader.require('xg.profiles.blog.show', 'xg.index.like.likeButton', 'xg.index.tweet.PostToTwitterLink', 'xg.index.googlePlusOne', 'xg.shared.PostToFacebookStreamLink', 'xg.index.facebookLike', 'xg.activity.embed.seeMore', 'xg.index.index.inlineComments', 'xg.activity.embed.ActivityFeedUpdater', 'xg.activity.embed.socialActivity', 'xg.activity.socialFeeds.reader', function() { xg._loader.onLoad('xnloader'); });
+    })();    </script>
+    <div class="xg_chat chatFooter signedOut" style="font-family:Arial, &#39;Helvetica Neue&#39;, Helvetica, sans-serif">
+        <div id="userListContainer" class="xg_verticalPane xg_userWidth">
+            <div class="xg_chatBar xg_bottomBar xg_userBar">
+                <a class="xg_info xg_info_full" href="http://garagelab.com/main/authorization/signIn?chat=true">Sign in to chat!</a>            </div>
+        </div>
+    </div>
+<script type="text/javascript" src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/xn_track.min.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-39931615-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+<!-- Google Code for First page Conversion Page -->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 987648947;
+var google_conversion_language = "en";
+var google_conversion_format = "3";
+var google_conversion_color = "ffffff";
+var google_conversion_label = "Sv2zCL23jQUQs6f51gM";
+var google_conversion_value = 1;
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/conversion.js">
+</script><img height="1" width="1" border="0" alt="" src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/saved_resource">
+<noscript>
+&lt;div style="display:inline;"&gt;
+&lt;img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/987648947/?value=1&amp;amp;label=Sv2zCL23jQUQs6f51gM&amp;amp;guid=ON&amp;amp;script=0"/&gt;
+&lt;/div&gt;
+</noscript>    <script>
+        xg.tg = function () {
+    var cookies = document.cookie.split(';');
+    var re = /^\s*xn_visitor=([^\s]*)/;
+    var vc = '';
+    for (i in cookies) {
+        if (!cookies.hasOwnProperty(i)) {
+            continue
+        }
+        var match = re.exec(cookies[i]);
+        if (match) {
+            vc = match[1];
+            break;
+        }
+    }
+    var image = new Image();
+    var user = vc + ',,garagelabnet';
+    image.src = 'http://www22.glam.com/cTagsImgCmd.act?gname=ning_user&gvalue=' + user + '&gtid=5000059145&gcmd=setc&gexpires=604800&ord=' + Math.random()*1E16;
+    };
+    xg.tg();
+    </script>
+    <script type="text/javascript">
+    var ning_gaq = ning_gaq || [];
+    ning_gaq.push(['_ning_ga._setAccount', 'UA-2270114-6']);
+    ning_gaq.push(['_ning_ga._setNamespace', 'ning']);
+                    ning_gaq.push(['_ning_ga._setCustomVar', 1, 'member_type', 'anonymous', 3]);
+            ning_gaq.push(['_ning_ga._setCustomVar', 2, 'subdomain', 'garagelabnet.ning.com', 3]);
+            ning_gaq.push(['_ning_ga._setCustomVar', 3, 'category', 'technology', 3]);
+            ning_gaq.push(['_ning_ga._setCustomVar', 4, 'product_type', 'pro', 3]);
+            ning_gaq.push(['_ning_ga._setCustomVar', 5, 'ab_variation', '-', 3]);    ning_gaq.push(['_ning_ga._trackPageview']);
+    ning_gaq.push(['_ning_ga._trackPageLoadTime']);
+
+    (function() {
+     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+     ga.src = "http://static.ning.com/socialnetworkmain/widgets/index/js/google-analytics/ga.js?xn_version=201309182045";
+     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+     })();
+</script>
+<script>
+  var _comscore = _comscore || [];
+  _comscore.push({ c1: "2", c2: "6770185" });
+  (function() {
+    var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;
+    s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
+    el.parentNode.insertBefore(s, el);
+  })();
+</script>
+<noscript>
+  &lt;img src="http://b.scorecardresearch.com/p?c1=2&amp;c2=6770185&amp;cv=2.0&amp;cj=1" /&gt;
+</noscript>
+
+</div>
+
+
+<iframe name="oauth2relay368191693" id="oauth2relay368191693" src="./Tutorial  Humidity and Temperature Sensor with Arduino - GarageLab (arduino, electronics, robotics, hacking)_files/postmessageRelay.html" style="width: 1px; height: 1px; position: absolute; top: -100px;"></iframe></body></html>

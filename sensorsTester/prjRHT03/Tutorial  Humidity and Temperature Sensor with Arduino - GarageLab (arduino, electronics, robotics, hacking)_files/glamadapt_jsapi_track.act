@@ -1,0 +1,57 @@
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+setTimeout(function() {
+
+glam_img_728x90=new Image();
+glam_img_728x90.src='http://'+'www22.glam.com/cTags'+'ImgCmd.act?gcmd=imps&afid=183770529&reqsq=100&ord=6251822430640459&sz=728x90&tile=1&adid=5000048108';
+
+glam_img_300x250=new Image();
+glam_img_300x250.src='http://'+'www22.glam.com/cTags'+'ImgCmd.act?gcmd=imps&afid=183770529&reqsq=100&ord=6251822430640459&sz=300x250&tile=2&adid=5000048107';
+
+}, 3000);

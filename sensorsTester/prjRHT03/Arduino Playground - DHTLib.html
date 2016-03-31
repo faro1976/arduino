@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<!-- saved from url=(0040)http://playground.arduino.cc/Main/DHTLib -->
+<html class=" js no-touch boxshadow opacity fontface svg inlinesvg svgclippaths no-ie8compat" lang="en" style=""><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script type="text/javascript" src="./Arduino Playground - DHTLib_files/shares.json"></script><script id="LR1" type="text/javascript" async="" src="./Arduino Playground - DHTLib_files/client.js"></script><script type="text/javascript" src="./Arduino Playground - DHTLib_files/auth014.js"></script><script type="text/javascript" src="./Arduino Playground - DHTLib_files/counter016.js"></script><link rel="stylesheet" type="text/css" href="./Arduino Playground - DHTLib_files/counter013.css" media="all"><script type="text/javascript" src="./Arduino Playground - DHTLib_files/widgets.js"></script><link rel="stylesheet" type="text/css" href="./Arduino Playground - DHTLib_files/widget116.css" media="all">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  	<meta charset="utf-8">
+
+	<title>Arduino Playground - DHTLib </title>
+	<link rel="shortcut icon" type="image/x-icon" href="http://playground.arduino.cc//favicon.png">
+
+	<link rel="stylesheet" href="./Arduino Playground - DHTLib_files/WF-003562-000476.css" type="text/css">
+	<link rel="stylesheet" href="http://id.arduino.cc/css/arduino-icons.css">
+	<link rel="stylesheet" href="http://id.arduino.cc/css/animation.css"><!--[if IE 7]>
+	<link rel="stylesheet" href="http://id.arduino.cc/css/arduino-icons-ie7.css"><![endif]-->
+	<!--[if gte IE 9]><!-->
+	<link rel="stylesheet" href="./Arduino Playground - DHTLib_files/foundation2.css" type="text/css">
+	<!--[endif]---->
+	<!--[if IE 8]>
+		<link rel='stylesheet' href='http://id.arduino.cc/css/foundation_ie8.css' type='text/css' />	
+	<![endif]-->	
+	<link rel="stylesheet" href="./Arduino Playground - DHTLib_files/arduino_code_highlight.css" type="text/css">
+	<link rel="stylesheet" type="text/css" media="screen" href="./Arduino Playground - DHTLib_files/typeplate.css">
+	<link rel="stylesheet" href="./Arduino Playground - DHTLib_files/arduinoWide_SSO.css" type="text/css">
+	<link rel="stylesheet" href="./Arduino Playground - DHTLib_files/common.css" type="text/css">
+	  
+	<link href="https://plus.google.com/114839908922424087554" rel="publisher">
+	
+	<script type="text/javascript" async="" src="./Arduino Playground - DHTLib_files/ga.js"></script><script src="./Arduino Playground - DHTLib_files/custom.modernizr.js"></script>
+	
+<script>window["_GOOG_TRANS_EXT_VER"] = "1";</script><style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}
+.fb_invisible{display:none}
+.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}
+.fb_reset > div{overflow:hidden}
+.fb_link img{border:none}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}
+.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}
+.fb_dialog_content{background:#fff;color:#333}
+.fb_dialog_close_icon{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;_background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif);cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px;top:8px\9;right:7px\9}
+.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}
+.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}
+.fb_dialog_close_icon:hover{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;_background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif)}
+.fb_dialog_close_icon:active{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;_background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif)}
+.fb_dialog_loader{background-color:#f2f2f2;border:1px solid #606060;font-size:24px;padding:20px}
+.fb_dialog_top_left,
+.fb_dialog_top_right,
+.fb_dialog_bottom_left,
+.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}
+.fb_dialog_top_left{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}
+.fb_dialog_top_right{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}
+.fb_dialog_bottom_left{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}
+.fb_dialog_bottom_right{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}
+.fb_dialog_vert_left,
+.fb_dialog_vert_right,
+.fb_dialog_horiz_top,
+.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}
+.fb_dialog_vert_left,
+.fb_dialog_vert_right{width:10px;height:100%}
+.fb_dialog_vert_left{margin-left:-10px}
+.fb_dialog_vert_right{right:0;margin-right:-10px}
+.fb_dialog_horiz_top,
+.fb_dialog_horiz_bottom{width:100%;height:10px}
+.fb_dialog_horiz_top{margin-top:-10px}
+.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}
+.fb_dialog_iframe{line-height:0}
+.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #3b5998;color:#fff;font-size:14px;font-weight:bold;margin:0}
+.fb_dialog_content .dialog_title > span{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yd/r/Cou7n-nqK52.gif)
+no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}
+body.fb_hidden{-webkit-transform:none;height:100%;margin:0;overflow:visible;position:absolute;top:-10000px;left:0;width:100%}
+.fb_dialog.fb_dialog_mobile.loading{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ya/r/3rhSv5V8j3o.gif)
+white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}
+.fb_dialog.fb_dialog_mobile.loading.centered{max-height:590px;min-height:590px;max-width:500px;min-width:500px}
+#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;left:0;top:0;width:100%;min-height:100%;z-index:10000}
+#fb-root #fb_dialog_ipad_overlay.hidden{display:none}
+.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}
+.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0 0, 0 100%, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}
+.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100%
+}
+.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px
+}
+.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px
+}
+.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0 0, 0 100%, from(#4966A6),
+color-stop(0.5, #355492), to(#2A4887));border:1px solid #29447e;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset,
+rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}
+.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}
+.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}
+.fb_dialog_content .dialog_content{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #555;border-bottom:0;border-top:0;height:150px}
+.fb_dialog_content .dialog_footer{background:#f2f2f2;border:1px solid #555;border-top-color:#ccc;height:40px}
+#fb_dialog_loader_close{float:left}
+.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}
+.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}
+.fb_iframe_widget{display:inline-block;position:relative}
+.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}
+.fb_iframe_widget iframe{position:absolute}
+.fb_iframe_widget_lift{z-index:1}
+.fb_hide_iframes iframe{position:relative;left:-10000px}
+.fb_iframe_widget_loader{position:relative;display:inline-block}
+.fb_iframe_widget_fluid{display:inline}
+.fb_iframe_widget_fluid span{width:100%}
+.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}
+.fb_iframe_widget_loader .FB_Loader{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/y9/r/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50%;z-index:4}
+.fb_connect_bar_container div,
+.fb_connect_bar_container span,
+.fb_connect_bar_container a,
+.fb_connect_bar_container img,
+.fb_connect_bar_container strong{background:none;border-spacing:0;border:0;direction:ltr;font-style:normal;font-variant:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal;vertical-align:baseline}
+.fb_connect_bar_container{position:fixed;left:0 !important;right:0 !important;height:42px !important;padding:0 25px !important;margin:0 !important;vertical-align:middle !important;border-bottom:1px solid #333 !important;background:#3b5998 !important;z-index:99999999 !important;overflow:hidden !important}
+.fb_connect_bar_container_ie6{position:absolute;top:expression(document.compatMode=="CSS1Compat"? document.documentElement.scrollTop+"px":body.scrollTop+"px")}
+.fb_connect_bar{position:relative;margin:auto;height:100%;width:100%;padding:6px 0 0 0 !important;background:none;color:#fff !important;font-family:"lucida grande", tahoma, verdana, arial, sans-serif !important;font-size:13px !important;font-style:normal !important;font-variant:normal !important;font-weight:normal !important;letter-spacing:normal !important;line-height:1 !important;text-decoration:none !important;text-indent:0 !important;text-shadow:none !important;text-transform:none !important;white-space:normal !important;word-spacing:normal !important}
+.fb_connect_bar a:hover{color:#fff}
+.fb_connect_bar .fb_profile img{height:30px;width:30px;vertical-align:middle;margin:0 6px 5px 0}
+.fb_connect_bar div a,
+.fb_connect_bar span,
+.fb_connect_bar span a{color:#bac6da;font-size:11px;text-decoration:none}
+.fb_connect_bar .fb_buttons{float:right;margin-top:7px}
+.fb_edge_widget_with_comment{position:relative;*z-index:1000}
+.fb_edge_widget_with_comment span.fb_edge_comment_widget{position:absolute}
+.fb_edge_widget_with_comment span.fb_send_button_form_widget{z-index:1}
+.fb_edge_widget_with_comment span.fb_send_button_form_widget .FB_Loader{left:0;top:1px;margin-top:6px;margin-left:0;background-position:50% 50%;background-color:#fff;height:150px;width:394px;border:1px #666 solid;border-bottom:2px solid #283e6c;z-index:1}
+.fb_edge_widget_with_comment span.fb_send_button_form_widget.dark .FB_Loader{background-color:#000;border-bottom:2px solid #ccc}
+.fb_edge_widget_with_comment span.fb_send_button_form_widget.siderender
+.FB_Loader{margin-top:0}
+.fbpluginrecommendationsbarleft,
+.fbpluginrecommendationsbarright{position:fixed !important;bottom:0;z-index:999}
+.fbpluginrecommendationsbarleft{left:10px}
+.fbpluginrecommendationsbarright{right:10px}</style></head>
+<body style="padding-top: 49px;" data-twttr-rendered="true"><iframe id="twttrHubFrameSecure" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" name="twttrHubFrameSecure" src="./Arduino Playground - DHTLib_files/hub(1).html" style="position: absolute; top: -9999em; width: 10px; height: 10px;"></iframe><iframe id="twttrHubFrame" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" name="twttrHubFrame" src="./Arduino Playground - DHTLib_files/hub.html" style="position: absolute; top: -9999em; width: 10px; height: 10px;"></iframe>
+
+	<div id="menuWings" class="fixed" style="display: block;"></div>
+	<div id="page">
+		
+<script>
+	var userAgent = (navigator.userAgent || navigator.vendor || window.opera).toLowerCase();
+	if(userAgent.indexOf('mac')>0){
+		$("head").append('<style type="text/css">@-moz-document url-prefix() {h1 a, h2 a, h3 a, h4 a, h5 a, h1 a:hover, h2 a:hover, th a, th a:hover, h3 a:hover, h4 a:hover, h5 a:hover, #wikitext h2 a:hover, #wikitext h3 a:hover, #wikitext h4 a:hover {padding-bottom: 0.5em!important;} #pageheader .search input{font-family: "TyponineSans Regular 18";} #pagefooter .monospace{margin-top: -4px;} #navWrapper ul.left &gt; li{margin-top: -2px; padding-bottom: 2px;}#navWrapper ul.right &gt; li{margin-top: -5px; padding-bottom: 5px;}#navWrapper ul.right &gt; li ul{margin-top: 4px;} .slider-container .fixed-caption p{padding:8px 0 14px 0}}</style>');
+	}
+</script>
+
+<!--[if IE]>
+<link rel='stylesheet' href='https://id.arduino.cc//css/ie-monospace.css' type='text/css' />
+<![endif]-->
+
+<div id="menuWings" class="fixed"></div>
+
+<!--[if IE 8]>
+<div class="alert-box panel ie8alert">
+  <p><strong>Arduino.cc offers limited compatibility for Internet Explorer 8. Get a modern browser as Chrome, Firefox or Safari.</strong></p>
+  <a href="" class="close">&times;</a>
+</div>
+<![endif]-->
+
+<div id="pageheader">
+	<div class="row">
+		<div class="small-6 large-8 eight columns">
+			<div class="title"><a href="http://arduino.cc/">Arduino</a></div>
+		</div>
+		<div class="small-6 large-4 four columns search">
+			<div class="row collapse">
+				<form method="GET" action="http://www.google.com/search">
+	<div class="small-12 twelve columns">
+		<input type="hidden" name="ie" value="UTF-8">
+		<input type="hidden" name="oe" value="UTF-8">
+		<input type="text" name="q" size="25" maxlength="255" value="" placeholder="Search the Arduino Playground">
+		<input type="submit" name="btnG" value="search">
+		<input type="hidden" name="domains" value="http://playground.arduino.cc">
+		<input type="hidden" name="sitesearch" value="http://playground.arduino.cc">
+	</div>
+</form>			</div>
+		</div>
+	</div>
+
+	<!--[if gte IE 9]><!-->
+	<div id="navWrapper" class="sticky fixed">
+	<!--[endif]---->
+	<!--[if IE 8]>
+		<div id="navWrapper">
+	<![endif]-->
+		<nav class="top-bar" data-options="is_hover:true">
+			<ul class="title-area">
+				<li class="name"></li>
+			</ul>
+
+			
+		<section class="top-bar-section">
+				<ul class="left">
+					<li id="navLogo" style="display: block;">
+						<a href="http://arduino.cc/">
+							<img src="./Arduino Playground - DHTLib_files/logo_46.png" alt="userpicture">
+						</a>
+					</li>
+					<li id="navHome" style="display: none;"><a href="http://arduino.cc/">Home</a></li>
+					<li class="has-dropdown not-click"><a href="http://playground.arduino.cc/Main/DHTLib#">Buy</a>
+						<ul class="dropdown"><li class="title back js-generated"><h5><a href="http://playground.arduino.cc/Main/DHTLib#">« Back</a></h5></li>
+							<li><a href="http://store.arduino.cc/ww/index.php">Store</a></li>
+							<li><a href="http://arduino.cc/en/Main/Buy">Distributors</a></li>
+						</ul>
+					</li>
+					<li><a href="http://arduino.cc/en/Main/Software">Download</a></li>
+					<li><a href="http://arduino.cc/en/Main/Products">Products</a></li>
+					<li class="has-dropdown active not-click"><a href="http://playground.arduino.cc/Main/DHTLib#">Learning</a>
+						<ul class="dropdown"><li class="title back js-generated"><h5><a href="http://playground.arduino.cc/Main/DHTLib#">« Back</a></h5></li>
+							<li><a href="http://arduino.cc/en/Guide/HomePage">Getting started</a></li>
+							<li><a href="http://arduino.cc/en/Tutorial/HomePage">Examples</a></li>
+							<li><a href="http://playground.arduino.cc/">Playground</a></li>
+						</ul>
+					</li>
+					<li><a href="http://arduino.cc/en/Reference/HomePage">Reference</a></li>
+					<li class="has-dropdown not-click"><a href="http://playground.arduino.cc/Main/DHTLib#">Support</a>
+						<ul class="dropdown"><li class="title back js-generated"><h5><a href="http://playground.arduino.cc/Main/DHTLib#">« Back</a></h5></li>
+							<li><a href="http://arduino.cc/en/Main/FAQ">FAQ</a></li>
+							<li><a href="http://forum.arduino.cc/">Forum</a></li>
+						</ul>
+					</li>
+					<li><a href="http://blog.arduino.cc/">Blog</a></li>
+				</ul>
+
+								<ul class="right">
+					<li><a href="https://id.arduino.cc/auth/login/?returnurl=http%3A%2F%2Fplayground.arduino.cc%2FMain%2FDHTLib" class="cart">LOG IN</a></li>
+					<li><a href="https://id.arduino.cc/auth/register" class="cart">SIGN UP</a></li>
+				</ul>
+							</section></nav>
+	</div>
+</div>
+
+
+		
+		<br class="clear">
+		
+		<!--PageLeftFmt-->
+		<div id="pagenav">
+		  <p>paRgoe  &lt;a href="<a class="urllink" href="http://wyerparnhwmi.com/" rel="nofollow">http://wyerparnhwmi.com/</a>"&gt;wyerparnhwmi&lt;/a&gt;, [url=<a class="urllink" href="http://vopccedypglu.com/" rel="nofollow">http://vopccedypglu.com/</a>]vopccedypglu[/url], [link=<a class="urllink" href="http://ylfrfrziloxh.com/" rel="nofollow">http://ylfrfrziloxh.com/</a>]ylfrfrziloxh[/link], <a class="urllink" href="http://wektloglfqbf.com/" rel="nofollow">http://wektloglfqbf.com/</a>
+</p>
+
+		</div>
+		<!--/PageLeftFmt-->
+		
+		<div id="pagetext">
+				<!--PageText-->
+<div id="wikitext">
+<h2>Class for <span class="wikiword">DHT11</span>, <span class="wikiword">DHT21</span> and <span class="wikiword">DHT22</span>.</h2>
+<p><a class="urllink" href="http://arduino.cc/forum/index.php/topic,58531.0.html" rel="nofollow">remarks &amp; comments</a>
+</p>
+<p class="vspace"></p><h3>Intro</h3>
+<p>The <span class="wikiword">DHT11</span>, <span class="wikiword">DHT21</span> and <span class="wikiword">DHT22</span> are relative cheap sensors for measuring temperature and humidity. This article describes a library for reading both values from these sensors. Recently I wrote a library for the <span class="wikiword">DHT11</span> only, see - <a class="urllink" href="http://playground.arduino.cc/Main/DHT11Lib" rel="nofollow">http://playground.arduino.cc/Main/DHT11Lib</a> - It has a smaller footprint so if you only use <span class="wikiword">DHT11</span> it might be preferred. 
+</p>
+<p class="vspace"></p><p>I contacted the manufacturer to get the details of the differences between the two DHT sensors to build a lib that supports both. The <span class="wikiword">DHT22</span> is quite similar to the <span class="wikiword">DHT11</span> and has a greater accuracy and range (temperature). The hardware pins and handshake are identical but it uses a different dataformat. 
+</p>
+<p class="vspace"></p><p>The library is confirmed to work on a <span class="wikiword">MEGA2560</span> by <span class="wikiword">SimKard</span>
+</p>
+<p class="vspace"></p><p>- update: The lib works on Arduino 2009 and UNO too.
+- update: 0.1.05 fixes negative temperatures for <span class="wikiword">DHT22</span> (Gave CRC error)
+- update: 0.1.07 added support for <span class="wikiword">DHT21</span> (math equals <span class="wikiword">DHT22</span>)
+</p>
+<p class="vspace"></p><h3>Alternative names</h3>
+<p>The DHT sensors are also available under other names.
+</p><ul><li><span class="wikiword">DHT11</span> = ??
+</li><li><span class="wikiword">DHT21</span> = <span class="wikiword">AM2301</span>, 
+</li><li><span class="wikiword">DHT22</span> = <span class="wikiword">AM2302</span>, <span class="wikiword">RHT03</span>, 
+</li></ul><p class="vspace"></p><h3>Other libraries:</h3>
+<ul><li> There is another library for the <span class="wikiword">DHT22</span> that is known to work with Arduino 1.0 on <span class="wikiword">ATmega328</span> Uno boards:  <a class="urllink" href="https://github.com/ringerc/Arduino-DHT22" rel="nofollow">https://github.com/ringerc/Arduino-DHT22 </a>; it is based on earlier work <a class="urllink" href="https://github.com/nethoncho/Arduino-DHT22" rel="nofollow">by nethoncho</a>.
+</li><li>And yet another library with real low memory and code size footprint, auto detect <span class="wikiword">DHT11/DHT22</span> sensor: <a class="urllink" href="https://github.com/markruys/arduino-DHT" rel="nofollow">https://github.com/markruys/arduino-DHT</a>.
+</li></ul><p class="vspace"></p><h2>Connection (hardware)</h2>
+<p>The <span class="wikiword">DHT11</span>/21/22 has three lines, GND, +5V and a single dataline. By means of a handshake the values are clocked out over the single digital line.  Details about the protocol see datasheet: <a class="urllink" href="http://www.micro4you.com/files/sensor/DHT11.pdf" rel="nofollow">http://www.micro4you.com/files/sensor/DHT11.pdf</a> (handshake for <span class="wikiword">DHT21</span>/22 is identical, dataformat differs)
+</p>
+<p class="vspace"></p><p>Simkard added a picture for the pinlayout which is not in the datasheet, see =&gt; 
+<a class="urllink" href="http://arduino.cc/forum/index.php/topic,58531.msg421787.html#msg421787" rel="nofollow">http://arduino.cc/forum/index.php/topic,58531.msg421787.html#msg421787</a>
+</p>
+<p class="vspace"></p><p>From left to right 
+</p><ul><li>1 : VCC (5V)
+</li><li>2 : <span class="wikiword">SIGnal</span>
+</li><li>3 : NC Not connected
+</li><li>4 : GND 
+</li></ul><p class="vspace"></p><p>There have been reports that some sensors have pin 3 and 4 reversed, probably as a quality control/manufacturing issue. If you have issues, consider grounding both pins 3 and 4.
+</p>
+<p class="vspace"></p><h2>DHT library</h2>
+<p>The library at the end of this article is rewritten from scratch although inspired by earlier work of George Hadjikyriacou. While I wrote, Simkard did the testing so we can say it is an international library ;).
+</p>
+<p class="vspace"></p><p>The library is <strong>not</strong> compatible with earlier DHT libraries to be able to support both DHT's and stay as simple as possible and to minimize footprint. 
+</p>
+<p class="vspace"></p><p>The interface of the class supports only one function for reading the humidity and temperature from the sensors and store it in two members of the class. The read() function verifies the checksum of the datatransmission and it has a timeout function. 
+</p>
+<p class="vspace"></p><p>The class has two read functions read11(PIN) and read22(PIN) which have the same interface. They read the DHT connected to PIN, and fill the two class members temperature and humidity. 
+</p>
+<p class="vspace"></p><p>The readXX() functions return:
+</p><ul><li>DHTLIB_OK (0) : if the sensor sample and its checksum is OK.
+</li><li>DHTLIB_ERROR_CHECKSUM (-1) : if the checksum test failed. This means that data was received but may be incorrect. 
+</li><li>DHTLIB_ERROR_TIMEOUT (-2) : if a timeout occured, communication failed.
+</li></ul><p class="vspace"></p><p>In case of a DHTLIB_ERROR_TIMEOUT, humidity and temperature will both get the value DHTLIB_INVALID_VALUE. 
+In case of DHTLIB_ERROR_CHECKSUM the values of humidity and temperature are left unchanged as it is impossible to determine which byte failed in the checksum. The programmer should decide based upon previous readings.
+</p>
+<p class="vspace"></p><p>The class is kept simple and with one instance it is possible to read multiple sensors, provided each sensor has a separate pin. Please note that the values of temperature and humidity will be overwritten with every call. So either copy those values asap of use an instance of the class per sensor.
+Since version 0.1.04 the temperature and humidity are set to DHTLIB_INVALID_VALUE if there is a DHTLIB_ERROR_TIMEOUT to make explicit there is something wrong. 
+</p>
+<p class="vspace"></p><p>If one only needs the <span class="wikiword">DHT22</span> part one could comment/remove the read11() function in the .cpp and .h files so the footprint is a few bytes smaller. 
+</p>
+<p class="vspace"></p><h3>Usage</h3>
+<p>A sketch shows how the library can be used to read the sensor.
+---
+Note: the max frequency the sensor can be sampled is about once per 2 seconds
+</p>
+<p class="vspace"></p><p><code> 
+</code></p><div class="sourceblock " id="sourceblock1"><code>
+  <div class="sourceblocktext"><div class="c"><span class="co1">//</span><br>
+<span class="co1">// &nbsp; &nbsp;FILE: dht_test.ino</span><br>
+<span class="co1">// &nbsp;AUTHOR: Rob Tillaart</span><br>
+<span class="co1">// VERSION: 0.1.07</span><br>
+<span class="co1">// PURPOSE: DHT Temperature &amp; Humidity Sensor library for Arduino</span><br>
+<span class="co1">// &nbsp; &nbsp; URL: http://arduino.cc/playground/Main/DHTLib</span><br>
+<span class="co1">//</span><br>
+<span class="co1">// Released to the public domain</span><br>
+<span class="co1">//</span><br>
+<br>
+<span class="co2">#include &lt;dht.h&gt;</span><br>
+<br>
+dht DHT<span class="sy0">;</span><br>
+<br>
+<span class="co2">#define DHT11_PIN 4</span><br>
+<span class="co2">#define DHT21_PIN 5</span><br>
+<span class="co2">#define DHT22_PIN 6</span><br>
+<br>
+<span class="kw4">void</span> setup<span class="br0">(</span><span class="br0">)</span><br>
+<span class="br0">{</span><br>
+&nbsp; Serial.<span class="me1">begin</span><span class="br0">(</span><span class="nu0">115200</span><span class="br0">)</span><span class="sy0">;</span><br>
+&nbsp; Serial.<span class="me1">println</span><span class="br0">(</span><span class="st0">"DHT TEST PROGRAM "</span><span class="br0">)</span><span class="sy0">;</span><br>
+&nbsp; Serial.<span class="me1">print</span><span class="br0">(</span><span class="st0">"LIBRARY VERSION: "</span><span class="br0">)</span><span class="sy0">;</span><br>
+&nbsp; Serial.<span class="me1">println</span><span class="br0">(</span>DHT_LIB_VERSION<span class="br0">)</span><span class="sy0">;</span><br>
+&nbsp; Serial.<span class="me1">println</span><span class="br0">(</span><span class="br0">)</span><span class="sy0">;</span><br>
+&nbsp; Serial.<span class="me1">println</span><span class="br0">(</span><span class="st0">"Type,<span class="es1">\t</span>status,<span class="es1">\t</span>Humidity (%),<span class="es1">\t</span>Temperature (C)"</span><span class="br0">)</span><span class="sy0">;</span><br>
+<span class="br0">}</span><br>
+<br>
+<span class="kw4">void</span> loop<span class="br0">(</span><span class="br0">)</span><br>
+<span class="br0">{</span><br>
+&nbsp; <span class="co1">// READ DATA</span><br>
+&nbsp; Serial.<span class="me1">print</span><span class="br0">(</span><span class="st0">"DHT22, <span class="es1">\t</span>"</span><span class="br0">)</span><span class="sy0">;</span><br>
+&nbsp; <span class="kw4">int</span> chk <span class="sy0">=</span> DHT.<span class="me1">read22</span><span class="br0">(</span>DHT22_PIN<span class="br0">)</span><span class="sy0">;</span><br>
+&nbsp; <span class="kw1">switch</span> <span class="br0">(</span>chk<span class="br0">)</span><br>
+&nbsp; <span class="br0">{</span><br>
+&nbsp; &nbsp; <span class="kw1">case</span> DHTLIB_OK<span class="sy0">:</span> &nbsp;<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Serial.<span class="me1">print</span><span class="br0">(</span><span class="st0">"OK,<span class="es1">\t</span>"</span><span class="br0">)</span><span class="sy0">;</span> <br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw2">break</span><span class="sy0">;</span><br>
+&nbsp; &nbsp; <span class="kw1">case</span> DHTLIB_ERROR_CHECKSUM<span class="sy0">:</span> <br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Serial.<span class="me1">print</span><span class="br0">(</span><span class="st0">"Checksum error,<span class="es1">\t</span>"</span><span class="br0">)</span><span class="sy0">;</span> <br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw2">break</span><span class="sy0">;</span><br>
+&nbsp; &nbsp; <span class="kw1">case</span> DHTLIB_ERROR_TIMEOUT<span class="sy0">:</span> <br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Serial.<span class="me1">print</span><span class="br0">(</span><span class="st0">"Time out error,<span class="es1">\t</span>"</span><span class="br0">)</span><span class="sy0">;</span> <br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw2">break</span><span class="sy0">;</span><br>
+&nbsp; &nbsp; <span class="kw1">default</span><span class="sy0">:</span> <br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Serial.<span class="me1">print</span><span class="br0">(</span><span class="st0">"Unknown error,<span class="es1">\t</span>"</span><span class="br0">)</span><span class="sy0">;</span> <br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw2">break</span><span class="sy0">;</span><br>
+&nbsp; <span class="br0">}</span><br>
+&nbsp; <span class="co1">// DISPLAY DATA</span><br>
+&nbsp; Serial.<span class="me1">print</span><span class="br0">(</span>DHT.<span class="me1">humidity</span><span class="sy0">,</span> <span class="nu0">1</span><span class="br0">)</span><span class="sy0">;</span><br>
+&nbsp; Serial.<span class="me1">print</span><span class="br0">(</span><span class="st0">",<span class="es1">\t</span>"</span><span class="br0">)</span><span class="sy0">;</span><br>
+&nbsp; Serial.<span class="me1">println</span><span class="br0">(</span>DHT.<span class="me1">temperature</span><span class="sy0">,</span> <span class="nu0">1</span><span class="br0">)</span><span class="sy0">;</span><br>
+<br>
+&nbsp; delay<span class="br0">(</span><span class="nu0">1000</span><span class="br0">)</span><span class="sy0">;</span><br>
+<br>
+<br>
+&nbsp; &nbsp; <span class="co1">// READ DATA</span><br>
+&nbsp; Serial.<span class="me1">print</span><span class="br0">(</span><span class="st0">"DHT21, <span class="es1">\t</span>"</span><span class="br0">)</span><span class="sy0">;</span><br>
+&nbsp; chk <span class="sy0">=</span> DHT.<span class="me1">read21</span><span class="br0">(</span>DHT21_PIN<span class="br0">)</span><span class="sy0">;</span><br>
+&nbsp; <span class="kw1">switch</span> <span class="br0">(</span>chk<span class="br0">)</span><br>
+&nbsp; <span class="br0">{</span><br>
+&nbsp; &nbsp; <span class="kw1">case</span> DHTLIB_OK<span class="sy0">:</span> &nbsp;<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Serial.<span class="me1">print</span><span class="br0">(</span><span class="st0">"OK,<span class="es1">\t</span>"</span><span class="br0">)</span><span class="sy0">;</span> <br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw2">break</span><span class="sy0">;</span><br>
+&nbsp; &nbsp; <span class="kw1">case</span> DHTLIB_ERROR_CHECKSUM<span class="sy0">:</span> <br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Serial.<span class="me1">print</span><span class="br0">(</span><span class="st0">"Checksum error,<span class="es1">\t</span>"</span><span class="br0">)</span><span class="sy0">;</span> <br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw2">break</span><span class="sy0">;</span><br>
+&nbsp; &nbsp; <span class="kw1">case</span> DHTLIB_ERROR_TIMEOUT<span class="sy0">:</span> <br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Serial.<span class="me1">print</span><span class="br0">(</span><span class="st0">"Time out error,<span class="es1">\t</span>"</span><span class="br0">)</span><span class="sy0">;</span> <br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw2">break</span><span class="sy0">;</span><br>
+&nbsp; &nbsp; <span class="kw1">default</span><span class="sy0">:</span> <br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Serial.<span class="me1">print</span><span class="br0">(</span><span class="st0">"Unknown error,<span class="es1">\t</span>"</span><span class="br0">)</span><span class="sy0">;</span> <br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw2">break</span><span class="sy0">;</span><br>
+&nbsp; <span class="br0">}</span><br>
+&nbsp; <span class="co1">// DISPLAY DATA</span><br>
+&nbsp; Serial.<span class="me1">print</span><span class="br0">(</span>DHT.<span class="me1">humidity</span><span class="sy0">,</span> <span class="nu0">1</span><span class="br0">)</span><span class="sy0">;</span><br>
+&nbsp; Serial.<span class="me1">print</span><span class="br0">(</span><span class="st0">",<span class="es1">\t</span>"</span><span class="br0">)</span><span class="sy0">;</span><br>
+&nbsp; Serial.<span class="me1">println</span><span class="br0">(</span>DHT.<span class="me1">temperature</span><span class="sy0">,</span> <span class="nu0">1</span><span class="br0">)</span><span class="sy0">;</span><br>
+<br>
+&nbsp; delay<span class="br0">(</span><span class="nu0">1000</span><span class="br0">)</span><span class="sy0">;</span><br>
+<br>
+&nbsp; <span class="co1">// READ DATA</span><br>
+&nbsp; Serial.<span class="me1">print</span><span class="br0">(</span><span class="st0">"DHT11, <span class="es1">\t</span>"</span><span class="br0">)</span><span class="sy0">;</span><br>
+&nbsp; chk <span class="sy0">=</span> DHT.<span class="me1">read11</span><span class="br0">(</span>DHT11_PIN<span class="br0">)</span><span class="sy0">;</span><br>
+&nbsp; <span class="kw1">switch</span> <span class="br0">(</span>chk<span class="br0">)</span><br>
+&nbsp; <span class="br0">{</span><br>
+&nbsp; &nbsp; <span class="kw1">case</span> DHTLIB_OK<span class="sy0">:</span> &nbsp;<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Serial.<span class="me1">print</span><span class="br0">(</span><span class="st0">"OK,<span class="es1">\t</span>"</span><span class="br0">)</span><span class="sy0">;</span> <br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw2">break</span><span class="sy0">;</span><br>
+&nbsp; &nbsp; <span class="kw1">case</span> DHTLIB_ERROR_CHECKSUM<span class="sy0">:</span> <br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Serial.<span class="me1">print</span><span class="br0">(</span><span class="st0">"Checksum error,<span class="es1">\t</span>"</span><span class="br0">)</span><span class="sy0">;</span> <br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw2">break</span><span class="sy0">;</span><br>
+&nbsp; &nbsp; <span class="kw1">case</span> DHTLIB_ERROR_TIMEOUT<span class="sy0">:</span> <br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Serial.<span class="me1">print</span><span class="br0">(</span><span class="st0">"Time out error,<span class="es1">\t</span>"</span><span class="br0">)</span><span class="sy0">;</span> <br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw2">break</span><span class="sy0">;</span><br>
+&nbsp; &nbsp; <span class="kw1">default</span><span class="sy0">:</span> <br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Serial.<span class="me1">print</span><span class="br0">(</span><span class="st0">"Unknown error,<span class="es1">\t</span>"</span><span class="br0">)</span><span class="sy0">;</span> <br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw2">break</span><span class="sy0">;</span><br>
+&nbsp; <span class="br0">}</span><br>
+&nbsp;<span class="co1">// DISPLAY DATA</span><br>
+&nbsp; Serial.<span class="me1">print</span><span class="br0">(</span>DHT.<span class="me1">humidity</span><span class="sy0">,</span><span class="nu0">1</span><span class="br0">)</span><span class="sy0">;</span><br>
+&nbsp; Serial.<span class="me1">print</span><span class="br0">(</span><span class="st0">",<span class="es1">\t</span>"</span><span class="br0">)</span><span class="sy0">;</span><br>
+&nbsp; Serial.<span class="me1">println</span><span class="br0">(</span>DHT.<span class="me1">temperature</span><span class="sy0">,</span><span class="nu0">1</span><span class="br0">)</span><span class="sy0">;</span><br>
+<br>
+&nbsp; delay<span class="br0">(</span><span class="nu0">1000</span><span class="br0">)</span><span class="sy0">;</span><br>
+<span class="br0">}</span><br>
+<span class="co1">//</span><br>
+<span class="co1">// END OF FILE</span><br>
+<span class="co1">//</span></div></div>
+  <div class="sourceblocklink"><a href="http://playground.arduino.cc//Main/DHTLib?action=sourceblock&num=1" type="text/plain">[Get Code]</a></div>
+</code></div><code>
+ </code>
+<p></p>
+<p class="vspace"></p><p>In setup() The version of the library (a define) is displayed. This is for debugging purpose only.
+</p>
+<p class="vspace"></p><p>In loop() a <span class="wikiword">DHT22</span>, a <span class="wikiword">DHT21</span> and a <span class="wikiword">DHT11</span> sensor are read and the fields temperature and humidity are filled. The return value of the readXX function is checked and displayed. Then the temperature and humidity are shown. 
+</p>
+<p class="vspace"></p><ul><li>see - <a class="urllink" href="http://playground.arduino.cc/Main/DHT11Lib" rel="nofollow">http://playground.arduino.cc/Main/DHT11Lib</a> - for a dewpoint function.
+</li></ul><p class="vspace"></p><h3>Notes</h3>
+<p>To use the library, make a folder in your SKETCHBOOKPATH\libaries with the name DHT and put the .h and .cpp there. Optionally make a examples subdirectory to place the sample app.
+</p><ul><li><span class="wikiword">DHT22</span> and multiplexing is discussed <a class="urllink" href="http://arduino.cc/forum/index.php/topic,148206.msg1114387.html#msg1114387" rel="nofollow">here</a>
+</li></ul><p class="vspace"></p><h3>Todo</h3>
+<ul><li>test test test test and ...
+</li><li>test humidity range
+</li><li>investigate non blocking version ? as current version is blocking while reading; 
+</li><li>make the TIMEOUT depending on the CPU used #define TIMEOUT (F_CPU/1600) so the lib works with DUE too.
+</li></ul><pre> (should be tested too)
+</pre><ul><li>lastRead timestamp to check time to calibrate (2 seconds) ==&gt; should be per sensor ==&gt; other design needed
+</li></ul><p class="vspace"></p><p>Enjoy tinkering,
+</p>
+<p class="vspace"></p><p>rob.tillaart@removethisgmail.com
+</p>
+<p class="vspace"></p><h3>dht.h </h3>
+<p><code> 
+</code></p><div class="sourceblock " id="sourceblock2"><code>
+  <div class="sourceblocktext"><div class="c"><span class="co1">//</span><br>
+<span class="co1">// &nbsp; &nbsp;FILE: dht.h</span><br>
+<span class="co1">// &nbsp;AUTHOR: Rob Tillaart</span><br>
+<span class="co1">// VERSION: 0.1.07</span><br>
+<span class="co1">// PURPOSE: DHT Temperature &amp; Humidity Sensor library for Arduino</span><br>
+<span class="co1">// &nbsp; &nbsp; URL: http://arduino.cc/playground/Main/DHTLib</span><br>
+<span class="co1">//</span><br>
+<span class="co1">// HISTORY:</span><br>
+<span class="co1">// see dht.cpp file</span><br>
+<span class="co1">// </span><br>
+<br>
+<span class="co2">#ifndef dht_h</span><br>
+<span class="co2">#define dht_h</span><br>
+<br>
+<span class="co2">#if ARDUINO &lt; 100</span><br>
+<span class="co2">#include &lt;WProgram.h&gt;</span><br>
+<span class="co2">#else</span><br>
+<span class="co2">#include &lt;Arduino.h&gt;</span><br>
+<span class="co2">#endif</span><br>
+<br>
+<span class="co2">#define DHT_LIB_VERSION "0.1.07"</span><br>
+<br>
+<span class="co2">#define DHTLIB_OK &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 0</span><br>
+<span class="co2">#define DHTLIB_ERROR_CHECKSUM &nbsp; -1</span><br>
+<span class="co2">#define DHTLIB_ERROR_TIMEOUT&nbsp; &nbsp; -2</span><br>
+<span class="co2">#define DHTLIB_INVALID_VALUE&nbsp; &nbsp; -999</span><br>
+<br>
+class dht<br>
+<span class="br0">{</span><br>
+public<span class="sy0">:</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="kw4">int</span> read11<span class="br0">(</span><span class="kw4">uint8_t</span> pin<span class="br0">)</span><span class="sy0">;</span><br>
+&nbsp; &nbsp; <span class="kw4">int</span> read21<span class="br0">(</span><span class="kw4">uint8_t</span> pin<span class="br0">)</span><span class="sy0">;</span><br>
+&nbsp; &nbsp; <span class="kw4">int</span> read22<span class="br0">(</span><span class="kw4">uint8_t</span> pin<span class="br0">)</span><span class="sy0">;</span><br>
+<br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="kw4">double</span> humidity<span class="sy0">;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="kw4">double</span> temperature<span class="sy0">;</span><br>
+<br>
+private<span class="sy0">:</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="kw4">uint8_t</span> bits<span class="br0">[</span><span class="nu0">5</span><span class="br0">]</span><span class="sy0">;</span> &nbsp;<span class="co1">// buffer to receive data</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="kw4">int</span> read<span class="br0">(</span><span class="kw4">uint8_t</span> pin<span class="br0">)</span><span class="sy0">;</span><br>
+<span class="br0">}</span><span class="sy0">;</span><br>
+<span class="co2">#endif</span><br>
+<span class="co1">//</span><br>
+<span class="co1">// END OF FILE</span><br>
+<span class="co1">//</span></div></div>
+  <div class="sourceblocklink"><a href="http://playground.arduino.cc//Main/DHTLib?action=sourceblock&num=2" type="text/plain">[Get Code]</a></div>
+</code></div><code>
+ </code>
+<p></p>
+<p class="vspace"></p><h3>dht.cpp</h3>
+<p><code> 
+</code></p><div class="sourceblock " id="sourceblock3"><code>
+  <div class="sourceblocktext"><div class="c"><span class="co1">//</span><br>
+<span class="co1">// &nbsp; &nbsp;FILE: dht.cpp</span><br>
+<span class="co1">// &nbsp;AUTHOR: Rob Tillaart</span><br>
+<span class="co1">// VERSION: 0.1.07</span><br>
+<span class="co1">// PURPOSE: DHT Temperature &amp; Humidity Sensor library for Arduino</span><br>
+<span class="co1">// &nbsp; &nbsp; URL: http://arduino.cc/playground/Main/DHTLib</span><br>
+<span class="co1">//</span><br>
+<span class="co1">// HISTORY:</span><br>
+<span class="co1">// 0.1.07 added support for DHT21</span><br>
+<span class="co1">// 0.1.06 minimize footprint (2012-12-27)</span><br>
+<span class="co1">// 0.1.05 fixed negative temperature bug (thanks to Roseman)</span><br>
+<span class="co1">// 0.1.04 improved readability of code using DHTLIB_OK in code</span><br>
+<span class="co1">// 0.1.03 added error values for temp and humidity when read failed</span><br>
+<span class="co1">// 0.1.02 added error codes</span><br>
+<span class="co1">// 0.1.01 added support for Arduino 1.0, fixed typos (31/12/2011)</span><br>
+<span class="co1">// 0.1.0 by Rob Tillaart (01/04/2011)</span><br>
+<span class="co1">//</span><br>
+<span class="co1">// inspired by DHT11 library</span><br>
+<span class="co1">//</span><br>
+<span class="co1">// Released to the public domain</span><br>
+<span class="co1">//</span><br>
+<br>
+<span class="co2">#include "dht.h"</span><br>
+<br>
+<span class="co2">#define TIMEOUT 10000</span><br>
+<br>
+<span class="co1">/////////////////////////////////////////////////////</span><br>
+<span class="co1">//</span><br>
+<span class="co1">// PUBLIC</span><br>
+<span class="co1">//</span><br>
+<br>
+<span class="co1">// return values:</span><br>
+<span class="co1">// DHTLIB_OK</span><br>
+<span class="co1">// DHTLIB_ERROR_CHECKSUM</span><br>
+<span class="co1">// DHTLIB_ERROR_TIMEOUT</span><br>
+<span class="kw4">int</span> dht<span class="sy0">::</span><span class="me2">read11</span><span class="br0">(</span><span class="kw4">uint8_t</span> pin<span class="br0">)</span><br>
+<span class="br0">{</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="co1">// READ VALUES</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="kw4">int</span> rv <span class="sy0">=</span> read<span class="br0">(</span>pin<span class="br0">)</span><span class="sy0">;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">if</span> <span class="br0">(</span>rv <span class="sy0">!=</span> DHTLIB_OK<span class="br0">)</span><br>
+&nbsp; &nbsp; <span class="br0">{</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; humidity &nbsp; &nbsp;<span class="sy0">=</span> DHTLIB_INVALID_VALUE<span class="sy0">;</span> <span class="co1">// invalid value, or is NaN prefered?</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; temperature <span class="sy0">=</span> DHTLIB_INVALID_VALUE<span class="sy0">;</span> <span class="co1">// invalid value</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">return</span> rv<span class="sy0">;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">}</span><br>
+<br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="co1">// CONVERT AND STORE</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; humidity &nbsp; &nbsp;<span class="sy0">=</span> bits<span class="br0">[</span><span class="nu0">0</span><span class="br0">]</span><span class="sy0">;</span> &nbsp;<span class="co1">// bit[1] == 0;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; temperature <span class="sy0">=</span> bits<span class="br0">[</span><span class="nu0">2</span><span class="br0">]</span><span class="sy0">;</span> &nbsp;<span class="co1">// bits[3] == 0;</span><br>
+<br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="co1">// TEST CHECKSUM</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="co1">// bits[1] &amp;&amp; bits[3] both 0</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="kw4">uint8_t</span> sum <span class="sy0">=</span> bits<span class="br0">[</span><span class="nu0">0</span><span class="br0">]</span> <span class="sy0">+</span> bits<span class="br0">[</span><span class="nu0">2</span><span class="br0">]</span><span class="sy0">;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">if</span> <span class="br0">(</span>bits<span class="br0">[</span><span class="nu0">4</span><span class="br0">]</span> <span class="sy0">!=</span> sum<span class="br0">)</span> <span class="kw1">return</span> DHTLIB_ERROR_CHECKSUM<span class="sy0">;</span><br>
+<br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">return</span> DHTLIB_OK<span class="sy0">;</span><br>
+<span class="br0">}</span><br>
+<br>
+<span class="co1">// return values:</span><br>
+<span class="co1">// DHTLIB_OK</span><br>
+<span class="co1">// DHTLIB_ERROR_CHECKSUM</span><br>
+<span class="co1">// DHTLIB_ERROR_TIMEOUT</span><br>
+<span class="kw4">int</span> dht<span class="sy0">::</span><span class="me2">read21</span><span class="br0">(</span><span class="kw4">uint8_t</span> pin<span class="br0">)</span><br>
+<span class="br0">{</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">return</span> read22<span class="br0">(</span>pin<span class="br0">)</span><span class="sy0">;</span> &nbsp;<span class="co1">// dataformat identical to DHT22</span><br>
+<span class="br0">}</span><br>
+<br>
+<span class="co1">// return values:</span><br>
+<span class="co1">// DHTLIB_OK</span><br>
+<span class="co1">// DHTLIB_ERROR_CHECKSUM</span><br>
+<span class="co1">// DHTLIB_ERROR_TIMEOUT</span><br>
+<span class="kw4">int</span> dht<span class="sy0">::</span><span class="me2">read22</span><span class="br0">(</span><span class="kw4">uint8_t</span> pin<span class="br0">)</span><br>
+<span class="br0">{</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="co1">// READ VALUES</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="kw4">int</span> rv <span class="sy0">=</span> read<span class="br0">(</span>pin<span class="br0">)</span><span class="sy0">;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">if</span> <span class="br0">(</span>rv <span class="sy0">!=</span> DHTLIB_OK<span class="br0">)</span><br>
+&nbsp; &nbsp; <span class="br0">{</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; humidity &nbsp; &nbsp;<span class="sy0">=</span> DHTLIB_INVALID_VALUE<span class="sy0">;</span> &nbsp;<span class="co1">// invalid value, or is NaN prefered?</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; temperature <span class="sy0">=</span> DHTLIB_INVALID_VALUE<span class="sy0">;</span> &nbsp;<span class="co1">// invalid value</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">return</span> rv<span class="sy0">;</span> <span class="co1">// propagate error value</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">}</span><br>
+<br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="co1">// CONVERT AND STORE</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; humidity <span class="sy0">=</span> word<span class="br0">(</span>bits<span class="br0">[</span><span class="nu0">0</span><span class="br0">]</span><span class="sy0">,</span> bits<span class="br0">[</span><span class="nu0">1</span><span class="br0">]</span><span class="br0">)</span> <span class="sy0">*</span> <span class="nu16">0.1</span><span class="sy0">;</span><br>
+<br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">if</span> <span class="br0">(</span>bits<span class="br0">[</span><span class="nu0">2</span><span class="br0">]</span> <span class="sy0">&amp;</span> <span class="nu12">0x80</span><span class="br0">)</span> <span class="co1">// negative temperature</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">{</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; temperature <span class="sy0">=</span> <span class="sy0">-</span><span class="nu16">0.1</span> <span class="sy0">*</span> word<span class="br0">(</span>bits<span class="br0">[</span><span class="nu0">2</span><span class="br0">]</span> <span class="sy0">&amp;</span> <span class="nu12">0x7F</span><span class="sy0">,</span> bits<span class="br0">[</span><span class="nu0">3</span><span class="br0">]</span><span class="br0">)</span><span class="sy0">;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">}</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">else</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">{</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; temperature <span class="sy0">=</span> <span class="nu16">0.1</span> <span class="sy0">*</span> word<span class="br0">(</span>bits<span class="br0">[</span><span class="nu0">2</span><span class="br0">]</span><span class="sy0">,</span> bits<span class="br0">[</span><span class="nu0">3</span><span class="br0">]</span><span class="br0">)</span><span class="sy0">;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">}</span><br>
+<br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="co1">// TEST CHECKSUM</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="kw4">uint8_t</span> sum <span class="sy0">=</span> bits<span class="br0">[</span><span class="nu0">0</span><span class="br0">]</span> <span class="sy0">+</span> bits<span class="br0">[</span><span class="nu0">1</span><span class="br0">]</span> <span class="sy0">+</span> bits<span class="br0">[</span><span class="nu0">2</span><span class="br0">]</span> <span class="sy0">+</span> bits<span class="br0">[</span><span class="nu0">3</span><span class="br0">]</span><span class="sy0">;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">if</span> <span class="br0">(</span>bits<span class="br0">[</span><span class="nu0">4</span><span class="br0">]</span> <span class="sy0">!=</span> sum<span class="br0">)</span> <span class="kw1">return</span> DHTLIB_ERROR_CHECKSUM<span class="sy0">;</span><br>
+<br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">return</span> DHTLIB_OK<span class="sy0">;</span><br>
+<span class="br0">}</span><br>
+<br>
+<span class="co1">/////////////////////////////////////////////////////</span><br>
+<span class="co1">//</span><br>
+<span class="co1">// PRIVATE</span><br>
+<span class="co1">//</span><br>
+<br>
+<span class="co1">// return values:</span><br>
+<span class="co1">// DHTLIB_OK</span><br>
+<span class="co1">// DHTLIB_ERROR_TIMEOUT</span><br>
+<span class="kw4">int</span> dht<span class="sy0">::</span><span class="me2">read</span><span class="br0">(</span><span class="kw4">uint8_t</span> pin<span class="br0">)</span><br>
+<span class="br0">{</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="co1">// INIT BUFFERVAR TO RECEIVE DATA</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="kw4">uint8_t</span> cnt <span class="sy0">=</span> <span class="nu0">7</span><span class="sy0">;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="kw4">uint8_t</span> idx <span class="sy0">=</span> <span class="nu0">0</span><span class="sy0">;</span><br>
+<br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="co1">// EMPTY BUFFER</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">for</span> <span class="br0">(</span><span class="kw4">uint8_t</span> i<span class="sy0">=</span><span class="nu0">0</span><span class="sy0">;</span> i<span class="sy0">&lt;</span> <span class="nu0">5</span><span class="sy0">;</span> i<span class="sy0">++</span><span class="br0">)</span> bits<span class="br0">[</span>i<span class="br0">]</span> <span class="sy0">=</span> <span class="nu0">0</span><span class="sy0">;</span><br>
+<br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="co1">// REQUEST SAMPLE</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; pinMode<span class="br0">(</span>pin<span class="sy0">,</span> OUTPUT<span class="br0">)</span><span class="sy0">;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; digitalWrite<span class="br0">(</span>pin<span class="sy0">,</span> LOW<span class="br0">)</span><span class="sy0">;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; delay<span class="br0">(</span><span class="nu0">20</span><span class="br0">)</span><span class="sy0">;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; digitalWrite<span class="br0">(</span>pin<span class="sy0">,</span> HIGH<span class="br0">)</span><span class="sy0">;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; delayMicroseconds<span class="br0">(</span><span class="nu0">40</span><span class="br0">)</span><span class="sy0">;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; pinMode<span class="br0">(</span>pin<span class="sy0">,</span> INPUT<span class="br0">)</span><span class="sy0">;</span><br>
+<br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="co1">// GET ACKNOWLEDGE or TIMEOUT</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="kw4">unsigned</span> <span class="kw4">int</span> loopCnt <span class="sy0">=</span> TIMEOUT<span class="sy0">;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">while</span><span class="br0">(</span>digitalRead<span class="br0">(</span>pin<span class="br0">)</span> <span class="sy0">==</span> LOW<span class="br0">)</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">if</span> <span class="br0">(</span>loopCnt<span class="sy0">--</span> <span class="sy0">==</span> <span class="nu0">0</span><span class="br0">)</span> <span class="kw1">return</span> DHTLIB_ERROR_TIMEOUT<span class="sy0">;</span><br>
+<br>
+&nbsp; &nbsp; &nbsp; &nbsp; loopCnt <span class="sy0">=</span> TIMEOUT<span class="sy0">;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">while</span><span class="br0">(</span>digitalRead<span class="br0">(</span>pin<span class="br0">)</span> <span class="sy0">==</span> HIGH<span class="br0">)</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">if</span> <span class="br0">(</span>loopCnt<span class="sy0">--</span> <span class="sy0">==</span> <span class="nu0">0</span><span class="br0">)</span> <span class="kw1">return</span> DHTLIB_ERROR_TIMEOUT<span class="sy0">;</span><br>
+<br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="co1">// READ THE OUTPUT - 40 BITS =&gt; 5 BYTES</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">for</span> <span class="br0">(</span><span class="kw4">uint8_t</span> i<span class="sy0">=</span><span class="nu0">0</span><span class="sy0">;</span> i<span class="sy0">&lt;</span><span class="nu0">40</span><span class="sy0">;</span> i<span class="sy0">++</span><span class="br0">)</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">{</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; loopCnt <span class="sy0">=</span> TIMEOUT<span class="sy0">;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">while</span><span class="br0">(</span>digitalRead<span class="br0">(</span>pin<span class="br0">)</span> <span class="sy0">==</span> LOW<span class="br0">)</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">if</span> <span class="br0">(</span>loopCnt<span class="sy0">--</span> <span class="sy0">==</span> <span class="nu0">0</span><span class="br0">)</span> <span class="kw1">return</span> DHTLIB_ERROR_TIMEOUT<span class="sy0">;</span><br>
+<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw4">unsigned</span> <span class="kw4">long</span> t <span class="sy0">=</span> micros<span class="br0">(</span><span class="br0">)</span><span class="sy0">;</span><br>
+<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; loopCnt <span class="sy0">=</span> TIMEOUT<span class="sy0">;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">while</span><span class="br0">(</span>digitalRead<span class="br0">(</span>pin<span class="br0">)</span> <span class="sy0">==</span> HIGH<span class="br0">)</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">if</span> <span class="br0">(</span>loopCnt<span class="sy0">--</span> <span class="sy0">==</span> <span class="nu0">0</span><span class="br0">)</span> <span class="kw1">return</span> DHTLIB_ERROR_TIMEOUT<span class="sy0">;</span><br>
+<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">if</span> <span class="br0">(</span><span class="br0">(</span>micros<span class="br0">(</span><span class="br0">)</span> <span class="sy0">-</span> t<span class="br0">)</span> <span class="sy0">&gt;</span> <span class="nu0">40</span><span class="br0">)</span> bits<span class="br0">[</span>idx<span class="br0">]</span> <span class="sy0">|=</span> <span class="br0">(</span><span class="nu0">1</span> <span class="sy0">&lt;&lt;</span> cnt<span class="br0">)</span><span class="sy0">;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">if</span> <span class="br0">(</span>cnt <span class="sy0">==</span> <span class="nu0">0</span><span class="br0">)</span> &nbsp; <span class="co1">// next byte?</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">{</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; cnt <span class="sy0">=</span> <span class="nu0">7</span><span class="sy0">;</span> &nbsp; <br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; idx<span class="sy0">++;</span> &nbsp; &nbsp; &nbsp;<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">}</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">else</span> cnt<span class="sy0">--;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">}</span><br>
+<br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">return</span> DHTLIB_OK<span class="sy0">;</span><br>
+<span class="br0">}</span><br>
+<span class="co1">//</span><br>
+<span class="co1">// END OF FILE</span><br>
+<span class="co1">//</span></div></div>
+  <div class="sourceblocklink"><a href="http://playground.arduino.cc//Main/DHTLib?action=sourceblock&num=3" type="text/plain">[Get Code]</a></div>
+</code></div><code>
+ </code>
+<p></p>
+</div>
+
+				
+				
+				<!-- AddThis Button BEGIN -->
+				<div class="addthis_toolbox addthis_default_style ">
+				<a class="addthis_button_facebook_like at300b" fb:like:layout="button_count"><div class="fb-like fb_edge_widget_with_comment fb_iframe_widget" data-ref=".UlO1qOR-i4Q.like" data-layout="button_count" data-show_faces="false" data-action="like" data-width="90" data-font="arial" data-href="http://playground.arduino.cc/Main/DHTLib" data-send="false" fb-xfbml-state="rendered"><span style="height: 20px; width: 73px;"><iframe id="f3584c4d0c" name="f30f63dbe8" scrolling="no" title="Like this content on Facebook." class="fb_ltr" src="./Arduino Playground - DHTLib_files/like.html" style="border: none; overflow: hidden; height: 20px; width: 73px;"></iframe></span></div></a>
+				<a class="addthis_button_tweet at300b"><iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" src="./Arduino Playground - DHTLib_files/tweet_button.1380844203.html" class="twitter-share-button twitter-tweet-button twitter-count-horizontal" title="Twitter Tweet Button" data-twttr-rendered="true" style="width: 107px; height: 20px;"></iframe></a>
+				<a class="addthis_button_pinterest_pinit at300b" pi:pinit:layout="horizontal"><iframe frameborder="0" role="presentation" scrolling="no" allowtransparency="true" scrollbars="no" style="width:100px; height:25px;" src="./Arduino Playground - DHTLib_files/pinit016.html"></iframe></a>
+				<a class="addthis_counter addthis_pill_style addthis_nonzero" href="http://playground.arduino.cc/Main/DHTLib#" style="display: inline-block;"><a class="atc_s addthis_button_compact"><span></span></a><a class="addthis_button_expanded" target="_blank" title="View more services" href="http://playground.arduino.cc/Main/DHTLib#">1</a></a>
+				<div class="atclear"></div></div>
+				<script type="text/javascript" src="./Arduino Playground - DHTLib_files/addthis_widget.js"></script><div id="_atssh" style="visibility: hidden; height: 1px; width: 1px; position: absolute; z-index: 100000;"><iframe id="_atssh882" title="AddThis utility frame" style="height: 1px; width: 1px; position: absolute; z-index: 100000; border: 0px; left: 0px; top: 0px;" src="./Arduino Playground - DHTLib_files/sh138.html"></iframe></div><script type="text/javascript" src="./Arduino Playground - DHTLib_files/core103.js"></script>
+				<!-- AddThis Button END -->
+			</div> <!-- eof pagetext -->
+			
+	</div> <!-- eof page -->
+		
+	<!--PageFooterFmt-->
+	<div id="pagefooter">
+		<div class="row">
+  <div class="small-8 columns">
+	<ul class="inline-list">
+		<li class="monospace">©Arduino</li>
+		<li><a href="http://arduino.cc/en/Main/CopyrightNotice">Copyright Notice</a></li>
+<!--		<li><a href='#'>About us</a></li>-->
+		<li><a href="http://arduino.cc/en/Main/ContactUs">Contact us</a></li>
+	</ul>
+</div>
+
+	</div>
+	<!--/PageFooterFmt-->
+	
+		
+	<script src="./Arduino Playground - DHTLib_files/jquery.js"></script>
+	<!--[if gte IE 9]><!-->
+	<script src="./Arduino Playground - DHTLib_files/foundation.min.js"></script>
+	<script src="./Arduino Playground - DHTLib_files/foundation.topbar.custom.js"></script>
+	<script>
+	  $(document).foundation();
+	</script>
+	<!--<![endif]-->
+	<!--[if IE 8]>
+	<script src="http://id.arduino.cc/js/foundation_ie8.min.js"></script>
+	<script src="http://id.arduino.cc/js/jquery.foundation.alerts.js"></script>
+	<script src="http://id.arduino.cc/js/app.js"></script>
+	<![endif]-->
+	
+	<script type="text/javascript">
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-22581631-3']);
+	  _gaq.push(['_setDomainName', 'arduino.cc']);
+	  _gaq.push(['_trackPageview']);
+	
+	    (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+	</script>
+
+
+
+</div><div id="fb-root" class=" fb_reset"><script src="./Arduino Playground - DHTLib_files/all.js" async=""></script><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe name="f15c62d2ac" frameborder="0" allowtransparency="true" scrolling="no" src="./Arduino Playground - DHTLib_files/ping.html" style="display: none;"></iframe></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe name="fb_xdm_frame_http" frameborder="0" allowtransparency="true" scrolling="no" id="fb_xdm_frame_http" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tab-index="-1" src="./Arduino Playground - DHTLib_files/xd_arbiter.html" style="border: none;"></iframe><iframe name="fb_xdm_frame_https" frameborder="0" allowtransparency="true" scrolling="no" id="fb_xdm_frame_https" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tab-index="-1" src="./Arduino Playground - DHTLib_files/xd_arbiter(1).html" style="border: none;"></iframe></div></div></div></body></html>

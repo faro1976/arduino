@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<!-- saved from url=(0046)http://www.adafruit.com/products/992#Tutorials -->
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>MPL115A2 - I2C Barometric Pressure/Temperature Sensor ID: 992 - $11.95 : Adafruit Industries, Unique &amp; fun DIY electronics and kits</title><link rel="alternate" type="application/rss+xml" title="adafruit industries blog  RSS Feed" href="http://www.adafruit.com/blog/feed/">  
+<script type="text/javascript" async="" src="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/gtmp_compiled_dPxOuwO6AMA.js"></script><script type="text/javascript" async="" src="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/gtmp_compiled.js"></script><script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/ga.js" type="text/javascript"></script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-7723544-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+
+<!-- BEGIN: Google Trusted Store -->
+<script type="text/javascript">
+      var gts = gts || [];
+    gts.push(["id", "27251"]);
+    gts.push(["google_base_offer_id", "992"]);
+    gts.push(["google_base_subaccount_id", "5543303"]);
+    gts.push(["google_base_country", "US"]);
+    gts.push(["google_base_language", ""]);
+    (function() {
+      var scheme = (("https:" == document.location.protocol) ? "https://" : "http://");
+      var gts = document.createElement("script");
+      gts.type = "text/javascript";
+      gts.async = true;
+      gts.src = scheme + "www.googlecommerce.com/trustedstores/gtmp_compiled.js";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(gts, s);
+    })();
+    </script>
+	<!-- END: Google Trusted Store -->
+	
+<meta name="keywords" content="MPL115A2 - I2C Barometric Pressure/Temperature Sensor ID: 992 MiniPOV SpokePOV Tools MintyBoost Gift Certificates Arduino BoArduino TV-B-Gone Game of Life SIM reader Drawdio XBee Tweet-a-Watt Cables Robotics Sensors/Parts separator0 LEDs Clocks &amp; Watches Books Project packs Breakout Boards Batteries &amp; Power Bunnie Studios Brain Machine EL Wire/Tape/Panel Microtouch NETduino Enclosures/Cases Components &amp; Parts RFID / NFC LCDs &amp; Displays Wearables Solar FPGA Skill badges Discover Electronics BeagleBone Prototyping FLORA Stickers Snap Circuits littleBits Raspberry Pi mbed Android iDevices Wireless Circuit Playground Young Engineers Lasers MaKey MaKey CNC 3D printing More DIY Kits separator0 separator0 separator0 Materials More Dev Boards Trinket ecommerce, open source, shop, online shopping">
+<meta name="description" content="Adafruit Industries, Unique &amp; fun DIY electronics and kits MPL115A2 - I2C Barometric Pressure/Temperature Sensor ID: 992 - This pressure sensor from Freescale is a great low-cost sensing solution for measuring barometric pressure. At 1.5 hPa resolution, it&#39;s not as precise as our favorite pressure sensor, the BMP085, which has up to 0.03 hPa resolution so we don&#39;t suggest it as a precision altimeter. However, it&#39;s great for ">
+<meta http-equiv="imagetoolbar" content="no">
+<meta name="author" content="The Zen Cart™ Team and others">
+<meta name="generator" content="shopping cart program by Zen Cart™, http://www.zen-cart.com eCommerce">
+    
+
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://www.adafruit.com/apple-touch-icon-144x144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://www.adafruit.com/apple-touch-icon-114x114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://www.adafruit.com/apple-touch-icon-72x72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="http://www.adafruit.com/apple-touch-icon-precomposed.png">
+
+
+<!--<base href="http://www.adafruit.com/">--><base href=".">
+
+<script type="text/javascript" src="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/jquery-ui-1.8.21.custom.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/style_jquery-ui-1.8.21.custom.css">
+<link rel="stylesheet" type="text/css" href="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/stylesheet.css">
+<link rel="stylesheet" type="text/css" href="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/stylesheet_css_buttons.css">
+<link rel="stylesheet" type="text/css" media="print" href="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/print_stylesheet.css">
+<script type="text/javascript" src="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/jscript_menu.js"></script>
+<script type="text/javascript" src="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/jscript_search_autocomplete.js"></script>
+<script type="text/javascript" src="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/jscript_ticker.js"></script>
+<script type="text/javascript" src="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/jscript_textarea_counter.js"></script>
+<script language="javascript" type="text/javascript"><!--
+function popupWindow(url) {
+  window.open(url,'popupWindow','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no,resizable=yes,copyhistory=no,width=100,height=100,screenX=150,screenY=150,top=150,left=150')
+}
+function popupWindowPrice(url) {
+  window.open(url,'popupWindow','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,copyhistory=no,width=600,height=400,screenX=150,screenY=150,top=150,left=150')
+}
+//--></script>
+
+
+
+
+<script language="javascript" type="text/javascript">
+
+$(document).ready(function(){
+
+    if($('#stacky_num').length)
+    {
+	$("#cart_quantity").keyup(function(){
+	    stacky_val = $("#cart_quantity").val();
+	    if( isNaN(stacky_val) || (parseFloat(stacky_val) != parseInt(stacky_val) ) )
+		stacky_val = 1;
+	    $("#stacky_num").html(parseInt(stacky_val));
+	    $("#stacky_price").html(stacky_val * parseFloat($('#price_diff').val()));
+	});
+    }
+
+});
+
+
+
+var reqs = new Array();
+function pollFlickr(rand, cat)
+{
+	
+		xmlhttp = GetXmlHttpObject();
+		if (xmlhttp==null)
+  		{			alert ("Your browser does not support AJAX!");  			return;  		}
+		
+		url = "flickrPickr.php";
+		url = url + "?pic=" + rand;
+		url = url + "&cat=" + cat;
+
+		xmlhttp.onreadystatechange=stateChanged;
+		xmlhttp.open("GET",url,true);
+		xmlhttp.send(null);
+		reqs.push(xmlhttp);
+	//xmlDoc = xmlhttp.responseXML;
+}	
+
+function GetXmlHttpObject()
+{
+	if (window.XMLHttpRequest)
+  	{
+	  	// code for IE7+, Firefox, Chrome, Opera, Safari
+  		return new XMLHttpRequest();
+  	}
+	if (window.ActiveXObject)
+  	{
+  		// code for IE6, IE5
+  		return new ActiveXObject("Microsoft.XMLHTTP");
+  	}
+	return null;
+}
+
+function stateChanged()
+{	
+	
+	if (xmlhttp.readyState==4)
+  	{
+  		for(i = 0; i< reqs.length; i++)
+		{
+			document.getElementById('flickrPhoto' + (i + 1)).innerHTML = reqs[i].responseText;
+		}
+  	}
+}
+
+</script>
+
+
+
+<link href="https://plus.google.com/112526208786662512291/" rel="publisher">
+
+<!-- oh yeah hack time -->
+
+<!--[if IE 7 ]>
+<style type="text/css">
+#shopBanner {margin-left:20px !important;}
+</style>
+<![endif]--> 
+
+<!--[if IE 6 ]>
+<style type="text/css">
+#shopBanner {left: 180px;}
+</style>
+<![endif]--> 
+
+
+<script>window["_GOOG_TRANS_EXT_VER"] = "1";</script><script>window["_GOOG_TRANS_EXT_VER"] = "1";</script><script>window["_GOOG_TRANS_EXT_VER"] = "1";</script><script>window["_GOOG_TRANS_EXT_VER"] = "1";</script></head>
+
+
+<body id="productinfoBody">
+
+<div id="mainWrapper">
+
+
+
+
+
+<!--bof-header logo and navigation display-->
+
+
+
+
+<div id="headerWrapper">
+
+<!--bof-navigation display-->
+
+
+
+
+
+<!--eof-navigation display-->
+
+
+
+<!--bof-branding display-->
+
+
+
+<div id="logoWrapper">
+   
+   
+ <div id="shopBanner" style="position: absolute; height: 75px; width: 475px; margin-top: 5px; margin-left: 355px;">
+<a href="http://www.adafruit.com/blog/2013/10/01/maketheworld-announcing-make-the-world-prosthetics-friday-1042013-8pm-et-on-google/"><img src="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/prosthetics.gif" height="75" width="475"></a>
+</div>
+  
+    <ul class="back">
+<br>
+
+
+
+ <br>
+    <li><a href="https://www.adafruit.com/index.php?main_page=login">LOG IN</a></li>
+
+
+
+
+
+
+</ul>
+
+
+    <div id="logo" style="height: 84px;">
+
+<a href="http://www.adafruit.com/"><img src="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/logo.gif" alt="Adafruit Industries, Unique &amp; fun DIY electronics and kits	" title="Adafruit Industries, Unique &amp; fun DIY electronics and kits	" width="271" height="84"></a></div>
+
+
+</div>
+
+
+<!--eof-branding display-->
+
+
+
+<!--eof-header logo and navigation display-->
+
+
+
+<!--bof-optional categories tabs navigation display-->
+
+
+<!--eof-optional categories tabs navigation display-->
+
+
+
+<!--bof-header ezpage links-->
+
+
+
+
+<div id="navEZPagesTop">
+
+
+
+<a href="http://www.adafruit.com/">
+
+<img id="homeMenu" alt="home" src="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/home.jpg" onmouseover="swapImage(&#39;homeMenu&#39;, &#39;homeOver.jpg&#39;)" onmouseout="swapImage(&#39;homeMenu&#39;, &#39;home.jpg&#39;)">
+</a><img src="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/navEZ_div.gif" alt="|">
+
+
+
+<a href="http://www.adafruit.com/blog/">
+
+<img id="blogMenu" alt="blog" src="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/blog.jpg" onmouseover="swapImage(&#39;blogMenu&#39;, &#39;blogOver.jpg&#39;)" onmouseout="swapImage(&#39;blogMenu&#39;, &#39;blog.jpg&#39;)">
+</a><img src="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/navEZ_div.gif" alt="|">
+
+
+
+<a href="http://forums.adafruit.com/">
+
+<img id="forumsMenu" alt="forums" src="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/forums.jpg" onmouseover="swapImage(&#39;forumsMenu&#39;, &#39;forumsOver.jpg&#39;)" onmouseout="swapImage(&#39;forumsMenu&#39;, &#39;forums.jpg&#39;)">
+</a><img src="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/navEZ_div.gif" alt="|">
+
+
+
+<a href="http://www.adafruit.com/support">
+
+<img id="supportMenu" alt="support" src="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/support.jpg" onmouseover="swapImage(&#39;supportMenu&#39;, &#39;supportOver.jpg&#39;)" onmouseout="swapImage(&#39;supportMenu&#39;, &#39;support.jpg&#39;)">
+</a><img src="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/navEZ_div.gif" alt="|">
+
+
+
+<a href="http://learn.adafruit.com/" target="_blank">
+
+<img id="tutorialsMenu" alt="tutorials" src="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/tutorials.jpg" onmouseover="swapImage(&#39;tutorialsMenu&#39;, &#39;tutorialsOver.jpg&#39;)" onmouseout="swapImage(&#39;tutorialsMenu&#39;, &#39;tutorials.jpg&#39;)">
+</a><img src="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/navEZ_div.gif" alt="|">
+
+
+
+<a href="http://www.adafruit.com/chat/">
+
+<img id="chatMenu" alt="chat" src="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/chat.jpg" onmouseover="swapImage(&#39;chatMenu&#39;, &#39;chatOver.jpg&#39;)" onmouseout="swapImage(&#39;chatMenu&#39;, &#39;chat.jpg&#39;)">
+</a><img src="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/navEZ_div.gif" alt="|">
+
+
+
+<a href="http://www.adafruit.com/videos/">
+
+<img id="videosMenu" alt="videos" src="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/videos.jpg" onmouseover="swapImage(&#39;videosMenu&#39;, &#39;videosOver.jpg&#39;)" onmouseout="swapImage(&#39;videosMenu&#39;, &#39;videos.jpg&#39;)">
+</a><img src="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/navEZ_div.gif" alt="|">
+
+
+
+<a href="http://www.adafruit.com/contact/">
+
+<img id="contactMenu" alt="contact" src="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/contact.jpg" onmouseover="swapImage(&#39;contactMenu&#39;, &#39;contactOver.jpg&#39;)" onmouseout="swapImage(&#39;contactMenu&#39;, &#39;contact.jpg&#39;)">
+</a><img src="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/navEZ_div.gif" alt="|">
+
+
+
+<a href="http://www.adafruit.com/jobs/">
+
+<img id="jobsMenu" alt="jobs" src="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/jobs.jpg" onmouseover="swapImage(&#39;jobsMenu&#39;, &#39;jobsOver.jpg&#39;)" onmouseout="swapImage(&#39;jobsMenu&#39;, &#39;jobs.jpg&#39;)">
+</a><img src="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/navEZ_div.gif" alt="|">
+
+
+
+<a href="http://www.adafruit.com/about/">
+
+<img id="aboutMenu" alt="about" src="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/about.jpg" onmouseover="swapImage(&#39;aboutMenu&#39;, &#39;aboutOver.jpg&#39;)" onmouseout="swapImage(&#39;aboutMenu&#39;, &#39;about.jpg&#39;)">
+</a><img src="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/navEZ_div.gif" alt="|">
+
+<div id="search_header"><form name="quick_find_header&quot; id=&quot;quick_find_header" action="http://www.adafruit.com/index.php?main_page=adasearch" method="get"><input type="hidden" name="main_page" value="adasearch"><input type="text" name="q" size="6" maxlength="30" style="width: 130px; height: 20px" id="adasearch_box" class="ui-autocomplete-input" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true">&nbsp;<button type="submit" value="Search"><img src="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/go.jpg"></button></form></div></div>
+
+
+
+
+
+
+<!--eof-header ezpage links-->
+
+</div>
+
+<!-- bof force currency to USD -->
+<!-- eof force currency to USD -->
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0" id="contentMainWrapper">
+  <tbody><tr>
+
+ <td id="navColumnOne" class="columnLeft" style="width: 200px">
+<div id="navColumnOneWrapper" style="width: 200px"><!--// bof: categories //-->
+
+
+<div class="leftBoxContainer" id="categories" style="width: 200px">
+<h3 class="leftBoxHeading" id="categoriesHeading">
+<!-- Categories --> </h3>
+<div id="categoriesContent" class="sideBoxContent">
+<a style="margin-left:10px" class="category-links" href="http://www.adafruit.com/new/">New Products [100]</a><br><br>
+<div class="categoryplus">&nbsp;</div><a class="category-top" href="http://www.adafruit.com/category/109"><span class="category-subs-parent">Android</span>&nbsp;(6)</a><br>
+<div class="categoryplus"><a href="javascript:toggleSubcats(17)" id="category17">▼</a></div><a class="category-top" href="http://www.adafruit.com/category/17"><span class="category-subs-parent">Arduino</span>&nbsp;(67)</a><br>
+<div id="subcategory17"><a class="category-products" href="http://www.adafruit.com/category/17_64"><div class="category-subs-parent" style="margin-left:20px">Boards &amp; Packs&nbsp;[19]</div></a><a class="category-products" href="http://www.adafruit.com/category/17_21"><div class="category-subs-parent" style="margin-left:20px">Shields&nbsp;[36]</div></a><a class="category-products" href="http://www.adafruit.com/category/17_22"><div class="category-subs-parent" style="margin-left:20px">Accessories&nbsp;[12]</div></a></div><div class="categoryplus">&nbsp;</div><a class="category-top" href="http://www.adafruit.com/category/75"><span class="category-subs-parent">BeagleBone</span>&nbsp;(23)</a><br>
+<div class="categoryplus">&nbsp;</div><a class="category-top" href="http://www.adafruit.com/category/46"><span class="category-subs-parent">Bunnie Studios</span>&nbsp;(9)</a><br>
+<div class="categoryplus">&nbsp;</div><a class="category-top" href="http://www.adafruit.com/category/92"><span class="category-subs-parent">FLORA</span>&nbsp;(25)</a><br>
+<div class="categoryplus">&nbsp;</div><a class="category-top" href="http://www.adafruit.com/category/69"><span class="category-subs-parent">FPGA</span>&nbsp;(1)</a><br>
+<div class="categoryplus">&nbsp;</div><a class="category-top" href="http://www.adafruit.com/category/108"><span class="category-subs-parent">mbed</span>&nbsp;(12)</a><br>
+<div class="categoryplus">&nbsp;</div><a class="category-top" href="http://www.adafruit.com/category/52"><span class="category-subs-parent">NETduino</span>&nbsp;(14)</a><br>
+<div class="categoryplus"><a href="javascript:toggleSubcats(105)" id="category105">►</a></div><a class="category-top" href="http://www.adafruit.com/category/105"><span class="category-subs-parent">Raspberry Pi</span>&nbsp;(90)</a><br>
+<div id="subcategory105" class="subcategorybox"><a class="category-products" href="http://www.adafruit.com/category/105_159"><div class="category-subs-parent" style="margin-left:20px">Cases&nbsp;[16]</div></a><a class="category-products" href="http://www.adafruit.com/category/105_160"><div class="category-subs-parent" style="margin-left:20px">Displays&nbsp;[12]</div></a><a class="category-products" href="http://www.adafruit.com/category/105_161"><div class="category-subs-parent" style="margin-left:20px">Cables&nbsp;[12]</div></a><a class="category-products" href="http://www.adafruit.com/category/105_162"><div class="category-subs-parent" style="margin-left:20px">Boards &amp; Packs&nbsp;[9]</div></a><a class="category-products" href="http://www.adafruit.com/category/105_163"><div class="category-subs-parent" style="margin-left:20px">Prototyping&nbsp;[7]</div></a><a class="category-products" href="http://www.adafruit.com/category/105_164"><div class="category-subs-parent" style="margin-left:20px">Essentials&nbsp;[16]</div></a><a class="category-products" href="http://www.adafruit.com/category/105_165"><div class="category-subs-parent" style="margin-left:20px">Books&nbsp;[3]</div></a><a class="category-products" href="http://www.adafruit.com/category/105_166"><div class="category-subs-parent" style="margin-left:20px">Accessories&nbsp;[15]</div></a></div><div class="categoryplus">&nbsp;</div><a class="category-top" href="http://www.adafruit.com/category/167"><span class="category-subs-parent">Trinket</span>&nbsp;(3)</a><br>
+<div class="categoryplus">&nbsp;</div><a class="category-top" href="http://www.adafruit.com/category/29"><span class="category-subs-parent">XBee</span>&nbsp;(9)</a><br>
+<div class="categoryplus"><a href="javascript:toggleSubcats(149)" id="category149">►</a></div><a class="category-top" href="http://www.adafruit.com/category/149"><span class="category-subs-parent">More Dev Boards</span>&nbsp;(30)</a><br>
+<div id="subcategory149" class="subcategorybox"><a class="category-products" href="http://www.adafruit.com/category/149_16"><div class="category-subs-parent" style="margin-left:20px">AVR Development&nbsp;[8]</div></a><a class="category-products" href="http://www.adafruit.com/category/149_26"><div class="category-subs-parent" style="margin-left:20px">Propeller&nbsp;[10]</div></a><a class="category-products" href="http://www.adafruit.com/category/149_47"><div class="category-subs-parent" style="margin-left:20px">ARM Development&nbsp;[10]</div></a><a class="category-products" href="http://www.adafruit.com/category/149_71"><div class="category-subs-parent" style="margin-left:20px">PIC&nbsp;[2]</div></a></div><hr id="catBoxDivider"><div class="categoryplus">&nbsp;</div><a class="category-top" href="http://www.adafruit.com/category/19"><span class="category-subs-parent">BoArduino</span>&nbsp;(8)</a><br>
+<div class="categoryplus">&nbsp;</div><a class="category-top" href="http://www.adafruit.com/category/48"><span class="category-subs-parent">Brain Machine</span>&nbsp;(1)</a><br>
+<div class="categoryplus">&nbsp;</div><a class="category-top" href="http://www.adafruit.com/category/39"><span class="category-subs-parent">Clocks &amp; Watches</span>&nbsp;(19)</a><br>
+<div class="categoryplus">&nbsp;</div><a class="category-top" href="http://www.adafruit.com/category/28"><span class="category-subs-parent">Drawdio</span>&nbsp;(4)</a><br>
+<div class="categoryplus">&nbsp;</div><a class="category-top" href="http://www.adafruit.com/category/24"><span class="category-subs-parent">Game of Life</span>&nbsp;(1)</a><br>
+<div class="categoryplus">&nbsp;</div><a class="category-top" href="http://www.adafruit.com/category/51"><span class="category-subs-parent">Microtouch</span>&nbsp;(5)</a><br>
+<div class="categoryplus">&nbsp;</div><a class="category-top" href="http://www.adafruit.com/category/5"><span class="category-subs-parent">MiniPOV</span>&nbsp;(3)</a><br>
+<div class="categoryplus">&nbsp;</div><a class="category-top" href="http://www.adafruit.com/category/10"><span class="category-subs-parent">MintyBoost</span>&nbsp;(2)</a><br>
+<div class="categoryplus">&nbsp;</div><a class="category-top" href="http://www.adafruit.com/category/27"><span class="category-subs-parent">SIM reader</span>&nbsp;(3)</a><br>
+<div class="categoryplus">&nbsp;</div><a class="category-top" href="http://www.adafruit.com/category/6"><span class="category-subs-parent">SpokePOV</span>&nbsp;(4)</a><br>
+<div class="categoryplus">&nbsp;</div><a class="category-top" href="http://www.adafruit.com/category/20"><span class="category-subs-parent">TV-B-Gone</span>&nbsp;(2)</a><br>
+<div class="categoryplus"><a href="javascript:toggleSubcats(129)" id="category129">►</a></div><a class="category-top" href="http://www.adafruit.com/category/129"><span class="category-subs-parent">More DIY Kits</span>&nbsp;(18)</a><br>
+<div id="subcategory129" class="subcategorybox"><a class="category-products" href="http://www.adafruit.com/category/129_130"><div class="category-subs-parent" style="margin-left:20px">Spikenzie&nbsp;[4]</div></a><a class="category-products" href="http://www.adafruit.com/category/129_49"><div class="category-subs-parent" style="margin-left:20px">EMSL &amp; EggBot&nbsp;[10]</div></a><a class="category-products" href="http://www.adafruit.com/category/129_30"><div class="category-subs-parent" style="margin-left:20px">Uzebox&nbsp;[4]</div></a></div><hr id="catBoxDivider"><div class="categoryplus">&nbsp;</div><a class="category-top" href="http://www.adafruit.com/category/74"><span class="category-subs-parent">Discover Electronics</span>&nbsp;(2)</a><br>
+<div class="categoryplus">&nbsp;</div><a class="category-top" href="http://www.adafruit.com/category/95"><span class="category-subs-parent">littleBits</span>&nbsp;(3)</a><br>
+<div class="categoryplus">&nbsp;</div><a class="category-top" href="http://www.adafruit.com/category/120"><span class="category-subs-parent">MaKey MaKey</span>&nbsp;(3)</a><br>
+<div class="categoryplus">&nbsp;</div><a class="category-top" href="http://www.adafruit.com/category/41"><span class="category-subs-parent">Project packs</span>&nbsp;(10)</a><br>
+<div class="categoryplus">&nbsp;</div><a class="category-top" href="http://www.adafruit.com/category/94"><span class="category-subs-parent">Snap Circuits</span>&nbsp;(4)</a><br>
+<div class="categoryplus">&nbsp;</div><a class="category-top" href="http://www.adafruit.com/category/32"><span class="category-subs-parent">Tweet-a-Watt</span>&nbsp;(5)</a><br>
+<div class="categoryplus">&nbsp;</div><a class="category-top" href="http://www.adafruit.com/category/117"><span class="category-subs-parent">Young Engineers</span>&nbsp;(43)</a><br>
+<hr id="catBoxDivider"><div class="categoryplus"><a href="javascript:toggleSubcats(44)" id="category44">►</a></div><a class="category-top" href="http://www.adafruit.com/category/44"><span class="category-subs-parent">Batteries &amp;  Power</span>&nbsp;(58)</a><br>
+<div id="subcategory44" class="subcategorybox"><a class="category-products" href="http://www.adafruit.com/category/44_134"><div class="category-subs-parent" style="margin-left:20px">Wall Adapters&nbsp;[8]</div></a><a class="category-products" href="http://www.adafruit.com/category/44_135"><div class="category-subs-parent" style="margin-left:20px">Battery Holders&nbsp;[11]</div></a><a class="category-products" href="http://www.adafruit.com/category/44_136"><div class="category-subs-parent" style="margin-left:20px">Batteries&nbsp;[4]</div></a><a class="category-products" href="http://www.adafruit.com/category/44_137"><div class="category-subs-parent" style="margin-left:20px">Cables &amp; Adapters&nbsp;[15]</div></a><a class="category-products" href="http://www.adafruit.com/category/44_138"><div class="category-subs-parent" style="margin-left:20px">LiIon &amp; LiPoly&nbsp;[8]</div></a><a class="category-products" href="http://www.adafruit.com/category/44_139"><div class="category-subs-parent" style="margin-left:20px">Power Converters&nbsp;[8]</div></a><a class="category-products" href="http://www.adafruit.com/category/44_140"><div class="category-subs-parent" style="margin-left:20px">Power Switch&nbsp;[4]</div></a></div><div class="categoryplus">&nbsp;</div><a class="category-top" href="http://www.adafruit.com/category/42"><span class="category-subs-parent">Breakout Boards</span>&nbsp;(41)</a><br>
+<div class="categoryplus"><a href="javascript:toggleSubcats(33)" id="category33">►</a></div><a class="category-top" href="http://www.adafruit.com/category/33"><span class="category-subs-parent">Cables</span>&nbsp;(72)</a><br>
+<div id="subcategory33" class="subcategorybox"><a class="category-products" href="http://www.adafruit.com/category/33_142"><div class="category-subs-parent" style="margin-left:20px">USB Cables&nbsp;[29]</div></a><a class="category-products" href="http://www.adafruit.com/category/33_143"><div class="category-subs-parent" style="margin-left:20px">Audio &amp; Video&nbsp;[10]</div></a><a class="category-products" href="http://www.adafruit.com/category/33_144"><div class="category-subs-parent" style="margin-left:20px">Ethernet&nbsp;[6]</div></a><a class="category-products" href="http://www.adafruit.com/category/33_146"><div class="category-subs-parent" style="margin-left:20px">Cable Assemblies&nbsp;[20]</div></a><a class="category-products" href="http://www.adafruit.com/category/33_148"><div class="category-subs-parent" style="margin-left:20px">Accessories&nbsp;[7]</div></a></div><div class="categoryplus"><a href="javascript:toggleSubcats(54)" id="category54">►</a></div><a class="category-top" href="http://www.adafruit.com/category/54"><span class="category-subs-parent">Components &amp; Parts</span>&nbsp;(76)</a><br>
+<div id="subcategory54" class="subcategorybox"><a class="category-products" href="http://www.adafruit.com/category/54_151"><div class="category-subs-parent" style="margin-left:20px">Heat Sinks&nbsp;[7]</div></a><a class="category-products" href="http://www.adafruit.com/category/54_152"><div class="category-subs-parent" style="margin-left:20px">Storage&nbsp;[7]</div></a><a class="category-products" href="http://www.adafruit.com/category/54_153"><div class="category-subs-parent" style="margin-left:20px">IC &amp; Transistors&nbsp;[14]</div></a><a class="category-products" href="http://www.adafruit.com/category/54_154"><div class="category-subs-parent" style="margin-left:20px">Header&nbsp;[6]</div></a><a class="category-products" href="http://www.adafruit.com/category/54_155"><div class="category-subs-parent" style="margin-left:20px">Switches &amp; Buttons&nbsp;[14]</div></a><a class="category-products" href="http://www.adafruit.com/category/54_156"><div class="category-subs-parent" style="margin-left:20px">Passives&nbsp;[5]</div></a><a class="category-products" href="http://www.adafruit.com/category/54_157"><div class="category-subs-parent" style="margin-left:20px">Sockets/Connectors&nbsp;[8]</div></a><a class="category-products" href="http://www.adafruit.com/category/54_158"><div class="category-subs-parent" style="margin-left:20px">Other&nbsp;[15]</div></a></div><div class="categoryplus"><a href="javascript:toggleSubcats(50)" id="category50">►</a></div><a class="category-top" href="http://www.adafruit.com/category/50"><span class="category-subs-parent">EL Wire/Tape/Panel</span>&nbsp;(76)</a><br>
+<div id="subcategory50" class="subcategorybox"><a class="category-products" href="http://www.adafruit.com/category/50_77"><div class="category-subs-parent" style="margin-left:20px">EL Starter Packs&nbsp;[5]</div></a><a class="category-products" href="http://www.adafruit.com/category/50_78"><div class="category-subs-parent" style="margin-left:20px">EL Wire&nbsp;[12]</div></a><a class="category-products" href="http://www.adafruit.com/category/50_113"><div class="category-subs-parent" style="margin-left:20px">Flowing EL Wire&nbsp;[3]</div></a><a class="category-products" href="http://www.adafruit.com/category/50_123"><div class="category-subs-parent" style="margin-left:20px">Flowing USB Cables&nbsp;[6]</div></a><a class="category-products" href="http://www.adafruit.com/category/50_79"><div class="category-subs-parent" style="margin-left:20px">EL Tape&nbsp;[8]</div></a><a class="category-products" href="http://www.adafruit.com/category/50_81"><div class="category-subs-parent" style="margin-left:20px">EL Panel&nbsp;[5]</div></a><a class="category-products" href="http://www.adafruit.com/category/50_80"><div class="category-subs-parent" style="margin-left:20px">Inverters &amp; Extras&nbsp;[13]</div></a></div><div class="categoryplus">&nbsp;</div><a class="category-top" href="http://www.adafruit.com/category/53"><span class="category-subs-parent">Enclosures/Cases</span>&nbsp;(12)</a><br>
+<div class="categoryplus">&nbsp;</div><a class="category-top" href="http://www.adafruit.com/category/118"><span class="category-subs-parent">Lasers</span>&nbsp;(6)</a><br>
+<div class="categoryplus"><a href="javascript:toggleSubcats(63)" id="category63">►</a></div><a class="category-top" href="http://www.adafruit.com/category/63"><span class="category-subs-parent">LCDs &amp; Displays</span>&nbsp;(53)</a><br>
+<div id="subcategory63" class="subcategorybox"><a class="category-products" href="http://www.adafruit.com/category/63_96"><div class="category-subs-parent" style="margin-left:20px">Character&nbsp;[12]</div></a><a class="category-products" href="http://www.adafruit.com/category/63_121"><div class="category-subs-parent" style="margin-left:20px">HDMI/VGA/NTSC/PAL Displays&nbsp;[3]</div></a><a class="category-products" href="http://www.adafruit.com/category/63_110"><div class="category-subs-parent" style="margin-left:20px">NTSC/PAL TFTs&nbsp;[8]</div></a><a class="category-products" href="http://www.adafruit.com/category/63_102"><div class="category-subs-parent" style="margin-left:20px">Other&nbsp;[1]</div></a><a class="category-products" href="http://www.adafruit.com/category/63_101"><div class="category-subs-parent" style="margin-left:20px">VFD&nbsp;[2]</div></a><a class="category-products" href="http://www.adafruit.com/category/63_100"><div class="category-subs-parent" style="margin-left:20px">Graphic LED&nbsp;[4]</div></a><a class="category-products" href="http://www.adafruit.com/category/63_99"><div class="category-subs-parent" style="margin-left:20px">Graphic LCD&nbsp;[6]</div></a><a class="category-products" href="http://www.adafruit.com/category/63_98"><div class="category-subs-parent" style="margin-left:20px">OLED&nbsp;[6]</div></a><a class="category-products" href="http://www.adafruit.com/category/63_97"><div class="category-subs-parent" style="margin-left:20px">Graphic TFT&nbsp;[7]</div></a><a class="category-products" href="http://www.adafruit.com/category/63_150"><div class="category-subs-parent" style="margin-left:20px">eInk / ePaper&nbsp;[4]</div></a></div><div class="categoryplus"><a href="javascript:toggleSubcats(37)" id="category37">►</a></div><a class="category-top" href="http://www.adafruit.com/category/37"><span class="category-subs-parent">LEDs</span>&nbsp;(141)</a><br>
+<div id="subcategory37" class="subcategorybox"><a class="category-products" href="http://www.adafruit.com/category/37_86"><div class="category-subs-parent" style="margin-left:20px">LED Strips&nbsp;[27]</div></a><a class="category-products" href="http://www.adafruit.com/category/37_87"><div class="category-subs-parent" style="margin-left:20px">LED Pixels&nbsp;[13]</div></a><a class="category-products" href="http://www.adafruit.com/category/37_88"><div class="category-subs-parent" style="margin-left:20px">LED Matrix&nbsp;[37]</div></a><a class="category-products" href="http://www.adafruit.com/category/37_90"><div class="category-subs-parent" style="margin-left:20px">Bare LEDs&nbsp;[28]</div></a><a class="category-products" href="http://www.adafruit.com/category/37_103"><div class="category-subs-parent" style="margin-left:20px">Segmented&nbsp;[22]</div></a><a class="category-products" href="http://www.adafruit.com/category/37_168"><div class="category-subs-parent" style="margin-left:20px">NeoPixels&nbsp;[14]</div></a></div><div class="categoryplus"><a href="javascript:toggleSubcats(35)" id="category35">►</a></div><a class="category-top" href="http://www.adafruit.com/category/35"><span class="category-subs-parent">Sensors/Parts</span>&nbsp;(163)</a><br>
+<div id="subcategory35" class="subcategorybox"><a class="category-products" href="http://www.adafruit.com/category/35_119"><div class="category-subs-parent" style="margin-left:20px">Sound&nbsp;[2]</div></a><a class="category-products" href="http://www.adafruit.com/category/35_115"><div class="category-subs-parent" style="margin-left:20px">Biometric&nbsp;[3]</div></a><a class="category-products" href="http://www.adafruit.com/category/35_114"><div class="category-subs-parent" style="margin-left:20px">Barometric / Pressure&nbsp;[2]</div></a><a class="category-products" href="http://www.adafruit.com/category/35_106"><div class="category-subs-parent" style="margin-left:20px">Liquid/Flow&nbsp;[4]</div></a><a class="category-products" href="http://www.adafruit.com/category/35_104"><div class="category-subs-parent" style="margin-left:20px">Money / Coin&nbsp;[2]</div></a><a class="category-products" href="http://www.adafruit.com/category/35_73"><div class="category-subs-parent" style="margin-left:20px">Radiation / Geiger&nbsp;[2]</div></a><a class="category-products" href="http://www.adafruit.com/category/35_72"><div class="category-subs-parent" style="margin-left:20px">Buttons &amp; Switches&nbsp;[54]</div></a><a class="category-products" href="http://www.adafruit.com/category/35_68"><div class="category-subs-parent" style="margin-left:20px">Camera&nbsp;[3]</div></a><a class="category-products" href="http://www.adafruit.com/category/35_66"><div class="category-subs-parent" style="margin-left:20px">Humidity&nbsp;[6]</div></a><a class="category-products" href="http://www.adafruit.com/category/35_61"><div class="category-subs-parent" style="margin-left:20px">Light/Photo&nbsp;[7]</div></a><a class="category-products" href="http://www.adafruit.com/category/35_60"><div class="category-subs-parent" style="margin-left:20px">Touch&nbsp;[22]</div></a><a class="category-products" href="http://www.adafruit.com/category/35_59"><div class="category-subs-parent" style="margin-left:20px">Movement&nbsp;[7]</div></a><a class="category-products" href="http://www.adafruit.com/category/35_58"><div class="category-subs-parent" style="margin-left:20px">Location (GPS)&nbsp;[6]</div></a><a class="category-products" href="http://www.adafruit.com/category/35_57"><div class="category-subs-parent" style="margin-left:20px">Proximity&nbsp;[17]</div></a><a class="category-products" href="http://www.adafruit.com/category/35_56"><div class="category-subs-parent" style="margin-left:20px">Temperature&nbsp;[17]</div></a><a class="category-products" href="http://www.adafruit.com/category/35_62"><div class="category-subs-parent" style="margin-left:20px">Other&nbsp;[9]</div></a></div><div class="categoryplus">&nbsp;</div><a class="category-top" href="http://www.adafruit.com/category/67"><span class="category-subs-parent">Solar</span>&nbsp;(14)</a><br>
+<div class="categoryplus">&nbsp;</div><a class="category-top" href="http://www.adafruit.com/category/112"><span class="category-subs-parent">Wireless</span>&nbsp;(24)</a><br>
+<div class="categoryplus">&nbsp;</div><a class="category-top" href="http://www.adafruit.com/category/55"><span class="category-subs-parent">RFID / NFC</span>&nbsp;(15)</a><br>
+<div class="categoryplus"><a href="javascript:toggleSubcats(82)" id="category82">►</a></div><a class="category-top" href="http://www.adafruit.com/category/82"><span class="category-subs-parent">Prototyping</span>&nbsp;(79)</a><br>
+<div id="subcategory82" class="subcategorybox"><a class="category-products" href="http://www.adafruit.com/category/82_124"><div class="category-subs-parent" style="margin-left:20px">Breadboards &amp; Protoboards&nbsp;[13]</div></a><a class="category-products" href="http://www.adafruit.com/category/82_125"><div class="category-subs-parent" style="margin-left:20px">Jumper Wire&nbsp;[17]</div></a><a class="category-products" href="http://www.adafruit.com/category/82_126"><div class="category-subs-parent" style="margin-left:20px">SMT / SMD&nbsp;[24]</div></a><a class="category-products" href="http://www.adafruit.com/category/82_145"><div class="category-subs-parent" style="margin-left:20px">Wiring Help&nbsp;[14]</div></a><a class="category-products" href="http://www.adafruit.com/category/82_127"><div class="category-subs-parent" style="margin-left:20px">Other&nbsp;[11]</div></a></div><div class="categoryplus">&nbsp;</div><a class="category-top" href="http://www.adafruit.com/category/111"><span class="category-subs-parent">iDevices</span>&nbsp;(13)</a><br>
+<div class="categoryplus"><a href="javascript:toggleSubcats(8)" id="category8">►</a></div><a class="category-top" href="http://www.adafruit.com/category/8"><span class="category-subs-parent">Tools</span>&nbsp;(76)</a><br>
+<div id="subcategory8" class="subcategorybox"><a class="category-products" href="http://www.adafruit.com/category/8_83"><div class="category-subs-parent" style="margin-left:20px">Hand tools&nbsp;[30]</div></a><a class="category-products" href="http://www.adafruit.com/category/8_84"><div class="category-subs-parent" style="margin-left:20px">Soldering&nbsp;[17]</div></a><a class="category-products" href="http://www.adafruit.com/category/8_85"><div class="category-subs-parent" style="margin-left:20px">Test Equipment&nbsp;[29]</div></a></div><div class="categoryplus">&nbsp;</div><a class="category-top" href="http://www.adafruit.com/category/128"><span class="category-subs-parent">3D printing</span>&nbsp;(2)</a><br>
+<div class="categoryplus">&nbsp;</div><a class="category-top" href="http://www.adafruit.com/category/122"><span class="category-subs-parent">CNC</span>&nbsp;(37)</a><br>
+<div class="categoryplus">&nbsp;</div><a class="category-top" href="http://www.adafruit.com/category/141"><span class="category-subs-parent">Materials</span>&nbsp;(25)</a><br>
+<div class="categoryplus">&nbsp;</div><a class="category-top" href="http://www.adafruit.com/category/34"><span class="category-subs-parent">Robotics</span>&nbsp;(36)</a><br>
+<div class="categoryplus">&nbsp;</div><a class="category-top" href="http://www.adafruit.com/category/65"><span class="category-subs-parent">Wearables</span>&nbsp;(44)</a><br>
+<hr id="catBoxDivider"><div class="categoryplus">&nbsp;</div><a class="category-top" href="http://www.adafruit.com/category/40"><span class="category-subs-parent">Books</span>&nbsp;(27)</a><br>
+<div class="categoryplus">&nbsp;</div><a class="category-top" href="http://www.adafruit.com/category/70"><span class="category-subs-parent">Skill badges</span>&nbsp;(55)</a><br>
+<div class="categoryplus">&nbsp;</div><a class="category-top" href="http://www.adafruit.com/category/93"><span class="category-subs-parent">Stickers</span>&nbsp;(41)</a><br>
+<div class="categoryplus">&nbsp;</div><a class="category-top" href="http://www.adafruit.com/category/116"><span class="category-subs-parent">Circuit Playground</span>&nbsp;(7)</a><br>
+<div class="categoryplus">&nbsp;</div><a class="category-top" href="http://www.adafruit.com/category/14"><span class="category-subs-parent">Gift Certificates</span>&nbsp;(4)</a><br>
+<hr id="catBoxDivider">
+<a style="margin-left:10px" class="category-links" href="http://www.adafruit.com/specials/">Specials</a><br>
+<a style="margin-left:10px" class="category-links" href="http://www.adafruit.com/all/">View All</a>
+<hr id="catBoxDivider">
+ <br><a href="http://www.adafruit.com/catalogs/catalog.pdf" target="_blank"><img src="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/adafruit_catalog.png" style="display: block; float: left">Printable catalog (PDF)</a> or <a target="_blank" href="http://www.adafruit.com/catalogs/epub/catalog.epub">(EPUB)</a><br><br><br><br><div style="color: #000;font-weight: normal">"We are what we celebrate"</div> <br><div style="text-align:right; margin-right: 10px;"> - <a style="font-weight: normal" href="http://en.wikipedia.org/wiki/Dean_Kamen" target="_blank">Dean Kamen</a></div></div></div>
+<!--// eof: categories //-->
+
+<!--// bof: featured //-->
+
+
+<div class="leftBoxContainer" id="featured" style="width: 200px">
+<h3 class="leftBoxHeading" id="featuredHeading">
+<!-- <a href="http://www.adafruit.com/index.php?main_page=featured_products">Featured&nbsp;&nbsp;[more]</a> --> </h3>
+<div class="sideBoxContent centeredContent"><a href="http://www.adafruit.com/products/1141"><img src="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/1141.jpg" alt="Adafruit Assembled Data Logging shield for Arduino" title=" Adafruit Assembled Data Logging shield for Arduino " width="130" height="100"><br>Adafruit Assembled Data Logging shield for Arduino</a><div>$19.95</div></div></div>
+<!--// eof: featured //-->
+
+</div></td>
+    <td valign="top">
+
+
+
+<!-- bof upload alerts -->
+<!-- eof upload alerts -->
+
+<div class="centerColumn" id="productGeneral" style="float:left">
+
+<!-- bof  breadcrumb -->
+    
+<div id="navBreadCrumb">
+  <a href="http://www.adafruit.com/">HOME</a>&nbsp;<b>⇒</b>&nbsp;
+  <a href="http://www.adafruit.com/category/42">Breakout Boards</a>&nbsp;<b>⇒</b>&nbsp;
+MPL115A2 - I2C Barometric Pressure/Temperature Sensor
+</div>
+<!-- eof breadcrumb -->
+
+<!--bof Form start-->
+  <form name="cart_quantity" action="http://www.adafruit.com/index.php?main_page=product_info&hidden=yes&products_id=992&action=add_product" method="post" enctype="multipart/form-data">
+<!--eof Form start-->
+
+
+<!--bof Category Icon -->
+<!--eof Category Icon -->
+
+<!--bof Prev/Next top position -->
+<!--eof Prev/Next top position-->
+
+<div id="productTop">
+
+
+
+
+<!--bof Product Name-->
+<h1 id="productName" class="productGeneral">
+MPL115A2 - I2C Barometric Pressure/Temperature Sensor - <span id="productModel"> </span>
+</h1>
+  &nbsp;  ID: 992<br>
+
+
+
+
+<!--eof Product Name-->
+</div>
+
+
+<div id="productCenter">
+<div id="productImagesWrapper" style="width:450px;float: left;">
+<div id="productImage">
+<!--bof Main Product Image -->
+ 
+<div id="productMainImage">
+<script language="javascript" type="text/javascript"><!--
+document.write('<a href="javascript:popupWindow(\'http://www.adafruit.com/index.php?main_page=popup_image&amp;pID=992\')" id="mainImageLink"><img id="mainReplaceableImage" src="images/medium/992_MED.jpg" alt="MPL115A2 - I2C Barometric Pressure/Temperature Sensor" title="MPL115A2 - I2C Barometric Pressure/Temperature Sensor" width="400" /><br /><span class="imgLink">larger image</span></a>');
+//--></script><a href="javascript:popupWindow('http://www.adafruit.com/index.php?main_page=popup_image&pID=992')" id="mainImageLink"><img id="mainReplaceableImage" src="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/992_MED.jpg" alt="MPL115A2 - I2C Barometric Pressure/Temperature Sensor" title="MPL115A2 - I2C Barometric Pressure/Temperature Sensor" width="400"><br><span class="imgLink">larger image</span></a>
+<noscript>
+&lt;a href="http://www.adafruit.com/index.php?main_page=popup_image&amp;amp;pID=992" target="_blank"&gt;&lt;img src="/images/medium/992_MED.jpg" alt="MPL115A2 - I2C Barometric Pressure/Temperature Sensor" title=" MPL115A2 - I2C Barometric Pressure/Temperature Sensor " width="390" height="300" /&gt;&lt;br /&gt;&lt;span class="imgLink"&gt;larger image&lt;/span&gt;&lt;/a&gt;</noscript>
+</div><!--eof Main Product Image-->
+
+</div>
+ <div id="productAdditionalImages">
+
+    <div class="additionalImages centeredContent">
+      <script language="javascript" type="text/javascript"><!--
+document.write('<a href="javascript:swapImage2(\'mainReplaceableImage\',\'mainImageLink\',\'images/medium/992bottom_MED.jpg\',\'http://www.adafruit.com/index.php?main_page=popup_image_additional&amp;pID=992&amp;pic=0&amp;products_image_large_additional=images/large/992bottom_LRG.jpg\')"><img src="/images/992bottom.jpg" alt="MPL115A2 - I2C Barometric Pressure/Temperature Sensor" title=" MPL115A2 - I2C Barometric Pressure/Temperature Sensor " width="130" height="100" /><br /><span class="imgLinkAdditional">larger image</span></a>');
+//--></script><a href="javascript:swapImage2('mainReplaceableImage','mainImageLink','images/medium/992bottom_MED.jpg','http://www.adafruit.com/index.php?main_page=popup_image_additional&pID=992&pic=0&products_image_large_additional=images/large/992bottom_LRG.jpg')"><img src="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/992bottom.jpg" alt="MPL115A2 - I2C Barometric Pressure/Temperature Sensor" title=" MPL115A2 - I2C Barometric Pressure/Temperature Sensor " width="130" height="100"><br><span class="imgLinkAdditional">larger image</span></a>
+      <noscript>&lt;a href="http://www.adafruit.com/index.php?main_page=popup_image_additional&amp;amp;pID=992&amp;amp;pic=0&amp;amp;products_image_large_additional=images/large/992bottom_LRG.jpg" target="_blank"&gt;&lt;img src="/images/992bottom.jpg" alt="MPL115A2 - I2C Barometric Pressure/Temperature Sensor" title=" MPL115A2 - I2C Barometric Pressure/Temperature Sensor " width="130" height="100" /&gt;&lt;br /&gt;&lt;span class="imgLinkAdditional"&gt;larger image&lt;/span&gt;&lt;/a&gt;</noscript></div>
+    <div class="additionalImages centeredContent">
+      <script language="javascript" type="text/javascript"><!--
+document.write('<a href="javascript:swapImage2(\'mainReplaceableImage\',\'mainImageLink\',\'images/medium/992_MED.jpg\',\'http://www.adafruit.com/index.php?main_page=popup_image_additional&amp;pID=992&amp;pic=1&amp;products_image_large_additional=images/large/992_LRG.jpg\')"><img src="/images/992.jpg" alt="MPL115A2 - I2C Barometric Pressure/Temperature Sensor" title=" MPL115A2 - I2C Barometric Pressure/Temperature Sensor " width="130" height="100" /><br /><span class="imgLinkAdditional">larger image</span></a>');
+//--></script><a href="javascript:swapImage2('mainReplaceableImage','mainImageLink','images/medium/992_MED.jpg','http://www.adafruit.com/index.php?main_page=popup_image_additional&pID=992&pic=1&products_image_large_additional=images/large/992_LRG.jpg')"><img src="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/992.jpg" alt="MPL115A2 - I2C Barometric Pressure/Temperature Sensor" title=" MPL115A2 - I2C Barometric Pressure/Temperature Sensor " width="130" height="100"><br><span class="imgLinkAdditional">larger image</span></a>
+      <noscript>&lt;a href="http://www.adafruit.com/index.php?main_page=popup_image_additional&amp;amp;pID=992&amp;amp;pic=1&amp;amp;products_image_large_additional=images/large/992_LRG.jpg" target="_blank"&gt;&lt;img src="/images/992.jpg" alt="MPL115A2 - I2C Barometric Pressure/Temperature Sensor" title=" MPL115A2 - I2C Barometric Pressure/Temperature Sensor " width="130" height="100" /&gt;&lt;br /&gt;&lt;span class="imgLinkAdditional"&gt;larger image&lt;/span&gt;&lt;/a&gt;</noscript></div>
+<br class="clearBoth">
+ 
+</div>
+<!--eof Additional Product Images -->
+
+</div>
+
+
+<div id="productPricesDiv">
+
+
+<h2 id="productPrices" class="productGeneral">
+$11.95</h2><!--eof Product Price block -->
+
+
+
+<!--bof free ship icon  -->
+<!--eof free ship icon  -->
+
+<!--bof Quantity Discounts table --><div id="productQuantityDiscounts">
+  <table id="quantityDiscount" border="0" cellspacing="2" cellpadding="2">
+
+	<tbody><tr id="quantityDiscountsHeading"><td>Qty.</td><td>Discount</td></tr>
+      <tr><td>1-9</td><td>$11.95</td></tr>
+
+<tr><td>10-99</td><td>$10.76</td></tr>
+<tr><td>100+</td><td>$9.56</td></tr>
+    
+  </tbody></table>
+</div>
+<!-- Begin Meta Mod -->
+
+<!-- End Meta Mod -->
+
+<!--bof Add to Cart Box -->
+<div id="cartAdd">    Add to Cart: <input type="text" id="cart_quantity" name="cart_quantity" value="1" maxlength="6" size="4"><br><br><input type="hidden" name="products_id" value="992"><input type="image" src="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/button_in_cart.gif" alt="Add to Cart" title=" Add to Cart "> 
+</div>
+ 
+
+
+<!--eof Add to Cart Box-->
+
+
+<style>
+.availability form
+{
+margin: 0;
+}
+</style>
+<div class="availability" style="width:250px">
+ IN STOCK
+ <br><br><input type="image" src="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/button_add_to_wishlist.gif" alt="Add to Wishlist" title=" Add to Wishlist " onclick="document.getElementsByName(&#39;cart_quantity&#39;)[0].action=&#39;https://www.adafruit.com/index.php?main_page=wishlist&amp;add=992&#39;; document.getElementsByName(&#39;cart_quantity&#39;)[0].submit()">
+
+
+
+</div> <!-- end availability -->
+
+
+</div>
+
+
+</div></form>
+
+
+<style type="text/css">
+#tab_wrapper
+    {
+      float:left;
+    }
+.tab
+   {
+   
+     border-top: 1px solid #e2e2e2;
+     border-left: 1px solid #e2e2e2;
+     border-right: 1px solid #e2e2e2;
+     border-bottom: 1px solid #e2e2e2;
+     margin-left: 10px;
+     display: inline-block;
+     background-color: #EEE;
+     font-weight: bold;
+   padding: 5px;
+   }
+#.learn_tab{
+#background-image: url('includes/templates/adafruit/images/als_tabheader.png');
+#background-repeat: no-repeat;
+#background-position: center center;
+#width:150px;
+#}
+.tab:focus {
+outline: 0;
+}
+
+.invizzy
+   {
+   border: 1px solid #e2e2e2;
+     margin-left: 10px;
+     margin-top: -1px;
+     z-index: 10;
+   }
+
+.guides_table_text
+{
+    font-size: 14pt;
+    font-weight: bold;
+    color: #666;
+}
+.guide_image{
+    max-width: 50px;
+}
+.guide_title{
+    font-weight:bold;
+}
+
+
+</style>
+    <script>
+    
+    var numTabs = 5;
+
+    function changeTab(tab)
+    {
+    for( i = 0; i < numTabs; i++)
+	{
+	        document.getElementById('tab_' + i).style.display = 'none';
+		document.getElementById('tab_top_' + i).style.backgroundColor = '#EEE';
+		document.getElementById('tab_top_' + i).style.borderBottomWidth = '1px';
+		document.getElementById('tab_top_' + i).style.borderBottomColor = '#E2E2E2';
+	}
+      document.getElementById('tab_' + tab).style.display = 'inline';
+      document.getElementById('tab_top_' + tab).style.borderBottomWidth = '1px';
+      document.getElementById('tab_top_' + tab).style.borderBottomColor = '#FFFFFF';
+      document.getElementById('tab_top_' + tab).style.backgroundColor = '#FFFFFF';      
+    }
+
+</script>
+<div id="tab_wrapper" style="width:100%">
+      <a href="http://www.adafruit.com/products/992#Description" onclick="javascript:changeTab(0)"><div class="tab" id="tab_top_0" style="margin-left: 15px; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(226, 226, 226); background-color: rgb(238, 238, 238);">
+      Description</div></a>      
+      <a href="http://www.adafruit.com/products/992#Technical_Details" onclick="javascript:changeTab(1)"><div class="tab" id="tab_top_1" style="background-color: rgb(238, 238, 238); border-bottom-width: 1px; border-bottom-color: rgb(226, 226, 226);">
+      Technical Details</div></a>      
+      <a href="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits.html" onclick="javascript:changeTab(2)"><div class="tab" id="tab_top_2" style="background-color: rgb(255, 255, 255); border-bottom-width: 1px; border-bottom-color: rgb(255, 255, 255);">
+      Tutorials</div></a>      
+      <a href="http://www.adafruit.com/products/992#Downloads" onclick="javascript:changeTab(3)"><div class="tab" id="tab_top_3" style="background-color: rgb(238, 238, 238); border-bottom-width: 1px; border-bottom-color: rgb(226, 226, 226);">
+      Downloads</div></a>      
+      <a href="http://www.adafruit.com/products/992#Distributors" onclick="javascript:changeTab(4)"><div class="tab" id="tab_top_4" style="background-color: rgb(238, 238, 238); border-bottom-width: 1px; border-bottom-color: rgb(226, 226, 226);">
+      Distributors</div></a>      
+<div id="tab_0" class="invizzy" style="display: none;">
+<!--bof Product description -->
+<div id="productDescription" class="productGeneral biggerText">
+This pressure sensor from Freescale is a great low-cost sensing solution for measuring barometric pressure. At 1.5 hPa resolution, it's not as precise as our favorite pressure sensor, the BMP085, which has up to 0.03 hPa resolution so we don't suggest it as a precision altimeter. However, it's great for basic barometric pressure sensing. The sensor is soldered onto a PCB with 10K pull-up resistors on the I2C pins. 
+<br><br>
+This chip is good for use with power and logic voltages ranging from 2.4V to 5.5V so you can use it with your 3V or 5V microcontroller. There's a basic temperature sensor inside but there's no specifications in the datasheet so we're not sure how accurate it is.
+<br><br>
+Using the sensor is easy. For example, if you're using an Arduino, simply connect the VDD pin to the 5V voltage pin, GND to ground, SCL to I2C Clock (Analog 5 on an UNO) and SDA to I2C Data (Analog 4 on an UNO). Then download our <a href="https://github.com/adafruit/Adafruit_MPL115A2">MPL115A2 Arduino library and example code for temperature, pressure and basic altitude calculation.</a> Install the library, and load the example sketch. Immediately you'll have the  temperature, pressure and altitude data printed in the serial console.</div><!--eof Product description -->
+<br class="clearBoth">
+</div> 
+<div id="tab_1" class="invizzy" style="display: none;">
+<div id="productTechnicalDetails" class="productGeneral biggerText" style="float: left;
+    font-size: 1.1em;
+    margin-left: 15px;
+    width: 500px; padding: 0.5em">
+	      <img src="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/rohs_icon.jpg" style="max-width: 50px; max-height: 50px;"><br class="clearBoth"><ul>
+<li>PCB weight: 0.61g</li>
+<li>Vin: 2.4 to 5.5 VDC</li>
+<li>Logic: 3 to 5V compliant</li>
+<li>Pressure sensing range: 500-1150 hPa (up to 10Km altitude)</li>
+<li>1.5 hPa / 50 m altitude resolution</li>
+</ul>	      
+</div>
+<br class="clearBoth">
+</div> 	    <div id="tab_2" class="invizzy" style="display: inline;">
+<div id="productTechnicalDetails" class="productGeneral biggerText" style="float: left;
+    font-size: 1.1em;
+    margin-left: 15px;
+    width: 500px; padding: 0.5em">
+	      Using the sensor is easy. For example, if you're using an Arduino, simply connect the VIN pin to the 5V voltage pin, GND to ground, SCL to I2C Clock (Analog 5 on an UNO) and SDA to I2C Data (Analog 4 on an UNO). Then download our <a href="https://github.com/adafruit/Adafruit_MPL115A2">MPL115A2 Arduino library and example code for temperature, pressure and basic altitude calculation.</a> Install the library, and load the example sketch. Immediately you'll have the  temperature, pressure and altitude data printed in the serial console.</div>
+<br class="clearBoth">
+	      </div>
+	      	    <div id="tab_3" class="invizzy" style="display: none;">
+<div id="productTechnicalDetails" class="productGeneral biggerText" style="float: left;
+    font-size: 1.1em;
+    margin-left: 15px;
+    width: 500px; padding: 0.5em">
+	    <a href="http://www.adafruit.com/datasheets/MPL115A2.pdf">MPL115A2 Datasheet</a>
+</div>
+<br class="clearBoth">
+</div>
+	    <div id="tab_4" class="invizzy" style="display: none;">
+	      <table width="100%">
+	      		<tbody><tr>
+		<td><h2>LAWICEL AB</h2><a href="http://www.lawicel-shop.se/" target="_blank">http://www.lawicel-shop.se</a><br>(Sweden)</td>
+		<td align="right"><a href="http://www.lawicel-shop.se/" target="_blank"><img style="max-width: 270px; max-height: 65px" src="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/LawEyesCOL_195.jpg"></a></td>
+		</tr>
+				<tr>
+		<td><h2>EZtronics</h2><a href="http://www.eztronics.nl/" target="_blank">http://www.eztronics.nl/</a><br>(Netherlands)</td>
+		<td align="right"><a href="http://www.eztronics.nl/" target="_blank"><img style="max-width: 270px; max-height: 65px" src="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/eztronics.jpg"></a></td>
+		</tr>
+				<tr>
+		<td><h2>EZtronics</h2><a href="http://www.eztronics.se/" target="_blank">http://www.eztronics.se/</a><br>(Sweden)</td>
+		<td align="right"><a href="http://www.eztronics.se/" target="_blank"><img style="max-width: 270px; max-height: 65px" src="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/eztronics.jpg"></a></td>
+		</tr>
+				<tr>
+		<td><h2>Lextronic</h2><a href="http://www.lextronic.fr/" target="_blank">http://www.lextronic.fr/</a><br>(France)</td>
+		<td align="right"><a href="http://www.lextronic.fr/" target="_blank"><img style="max-width: 270px; max-height: 65px" src="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/lextronic.jpeg"></a></td>
+		</tr>
+				<tr>
+		<td><h2>Micro Robotics</h2><a href="http://www.robotics.org.za/" target="_blank">http://www.robotics.org.za</a><br>(South Africa)</td>
+		<td align="right"><a href="http://www.robotics.org.za/" target="_blank"><img style="max-width: 270px; max-height: 65px" src="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/microrobo.jpeg"></a></td>
+		</tr>
+				<tr>
+		<td><h2>RH Electronics</h2><a href="http://radiohobbystore.com/" target="_blank">http://radiohobbystore.com/</a><br>(Israel)</td>
+		<td align="right"><a href="http://radiohobbystore.com/" target="_blank"><img style="max-width: 270px; max-height: 65px" src="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/rh-electronics.png"></a></td>
+		</tr>
+				<tr>
+		<td><h2>Phenoptix</h2><a href="http://www.phenoptix.com/" target="_blank">http://www.phenoptix.com/</a><br>(United Kingdom)</td>
+		<td align="right"><a href="http://www.phenoptix.com/" target="_blank"><img style="max-width: 270px; max-height: 65px" src="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/phenoptix.png"></a></td>
+		</tr>
+				<tr>
+		<td><h2>ModMyPi</h2><a href="https://www.modmypi.com/" target="_blank">https://www.modmypi.com/</a><br>(United Kingdom)</td>
+		<td align="right"><a href="https://www.modmypi.com/" target="_blank"><img style="max-width: 270px; max-height: 65px" src="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/modmypi.jpg"></a></td>
+		</tr>
+				<tr>
+		<td><h2>Floris.cc</h2><a href="http://www.floris.cc/" target="_blank">http://www.floris.cc</a><br>(Netherlands)</td>
+		<td align="right"><a href="http://www.floris.cc/" target="_blank"><img style="max-width: 270px; max-height: 65px" src="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/floris_adafruit.jpg"></a></td>
+		</tr>
+				<tr>
+		<td><h2>Open Hacks</h2><a href="http://www.openhacks.com/" target="_blank">http://www.openhacks.com</a><br>(Argentina)</td>
+		<td align="right"><a href="http://www.openhacks.com/" target="_blank"><img style="max-width: 270px; max-height: 65px" src="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/bjfhddie.png"></a></td>
+		</tr>
+				<tr>
+		<td><h2>Galago</h2><a href="http://www.galagomarket.com/" target="_blank">http://www.galagomarket.com/</a><br>(Slovenia)</td>
+		<td align="right"><a href="http://www.galagomarket.com/" target="_blank"><img style="max-width: 270px; max-height: 65px" src="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/galago.jpg"></a></td>
+		</tr>
+				<tr>
+		<td><h2>ABRA Electronics</h2><a href="http://www.abra-electronics.com/" target="_blank">http://www.abra-electronics.com</a><br>(Canada)</td>
+		<td align="right"><a href="http://www.abra-electronics.com/" target="_blank"><img style="max-width: 270px; max-height: 65px" src="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/Abra-ElectronicInc.jpg"></a></td>
+		</tr>
+				<tr>
+		<td><h2>RLX COMPONENTS</h2><a href="http://www.rlx.sk/" target="_blank">http://www.rlx.sk/</a><br>(Slovakia)</td>
+		<td align="right"><a href="http://www.rlx.sk/" target="_blank"><img style="max-width: 270px; max-height: 65px" src="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/RLX_logo.jpg"></a></td>
+		</tr>
+				<tr>
+		<td><h2>3E Gadgets</h2><a href="http://3egadgets.com/" target="_blank">http://3egadgets.com/</a><br>(Singapore)</td>
+		<td align="right"><a href="http://3egadgets.com/" target="_blank"><img style="max-width: 270px; max-height: 65px" src="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/LogoGadgets.png"></a></td>
+		</tr>
+				<tr>
+		<td><h2>pi-shop</h2><a href="http://www.pi-shop.ch/" target="_blank">http://www.pi-shop.ch/</a><br>(Switzerland)</td>
+		<td align="right"><a href="http://www.pi-shop.ch/" target="_blank"><img style="max-width: 270px; max-height: 65px" src="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/logo_sw.jpg"></a></td>
+		</tr>
+				<tr>
+		<td><h2>In Motion</h2><a href="http://www.inmotion.pt/store/" target="_blank">http://www.inmotion.pt/store/</a><br>(Portugal)</td>
+		<td align="right"><a href="http://www.inmotion.pt/store/" target="_blank"><img style="max-width: 270px; max-height: 65px" src="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/inmotion-logo.jpg"></a></td>
+		</tr>
+				<tr>
+		<td><h2>Exp-tech</h2><a href="http://www.exp-tech.de/" target="_blank">http://www.exp-tech.de/</a><br>(Germany)</td>
+		<td align="right"><a href="http://www.exp-tech.de/" target="_blank"><img style="max-width: 270px; max-height: 65px" src="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/exp-tech-logo.jpeg"></a></td>
+		</tr>
+				<tr>
+		<td><h2>Robot Italy</h2><a href="http://www.robot-italy.com/" target="_blank">http://www.robot-italy.com</a><br>(Italy)</td>
+		<td align="right"><a href="http://www.robot-italy.com/" target="_blank"><img style="max-width: 270px; max-height: 65px" src="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/robotitaly_logo.gif"></a></td>
+		</tr>
+			    </tbody></table>
+		<br><br><br>
+		See our <a href="http://www.adafruit.com/distributors/">Distributors page</a> for a complete list of distributors. 
+	      </div>
+	    
+
+</div> <!-- eof tab_wrapper -->
+<br class="clearBoth">
+
+<!-- xsell_products //-->
+<!-- xsell_products //-->
+<!-- bof: tpl_modules_xsell_products -->
+<br>
+    <div class="also_bought_container"> 
+       
+       <div class="fadeBoxHeader">May we Also Suggest...</div>
+
+
+    <div class="centerBoxContentsCrossSell centeredContent " style="width:33%; float:left"><a href="http://www.adafruit.com/products/391"><img src="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/391.jpg" alt="BMP085 Barometric Pressure/Temperature/Altitude Sensor- 5V ready" title=" BMP085 Barometric Pressure/Temperature/Altitude Sensor- 5V ready " width="130" height="100"></a><br><a href="http://www.adafruit.com/products/391">BMP085 Barometric Pressure/Temperature/Altitude Sensor- 5V ready</a></div>
+    <div class="centerBoxContentsCrossSell centeredContent " style="width:33%; float:left"><a href="http://www.adafruit.com/products/385"><img src="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/dht22.jpg" alt="DHT22 temperature-humidity sensor + extras" title=" DHT22 temperature-humidity sensor + extras " width="130" height="100"></a><br><a href="http://www.adafruit.com/products/385">DHT22  temperature-humidity sensor + extras</a></div>
+    <div class="centerBoxContentsCrossSell centeredContent " style="width:33%; float:left"><a href="http://www.adafruit.com/products/386"><img src="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/dht11.jpg" alt="DHT11 basic temperature-humidity sensor + extras" title=" DHT11 basic temperature-humidity sensor + extras " width="130" height="100"></a><br><a href="http://www.adafruit.com/products/386">DHT11 basic temperature-humidity sensor + extras</a></div>
+<br class="clearBoth">
+
+    <div class="centerBoxContentsCrossSell centeredContent " style="width:33%; float:left"><a href="http://www.adafruit.com/products/393"><img src="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/am2302.jpg" alt="AM2302 (wired DHT22) temperature-humidity sensor" title=" AM2302 (wired DHT22) temperature-humidity sensor " width="130" height="100"></a><br><a href="http://www.adafruit.com/products/393">AM2302 (wired DHT22)  temperature-humidity sensor</a></div>
+<br class="clearBoth">
+ 
+</div>
+<!-- eof: tpl_modules_xsell_products -->
+
+
+
+
+</div>
+<script>
+    // change tab based on anchor
+    tabs = Array();
+    tabs['#description'] = 0;
+tabs['#technical details'] = 1;
+tabs['#tutorials'] = 2;
+tabs['#downloads'] = 3;
+tabs['#distributors'] = 4;
+
+    if (location.hash != '')      {
+        if (typeof tabs[decodeURIComponent(location.hash.toLowerCase().replace('_', ' '))] != 'undefined')     {
+           changeTab(tabs[decodeURIComponent(location.hash.toLowerCase().replace('_', ' '))]);
+       }
+ }
+</script>
+    
+</td>
+
+  </tr>
+</tbody></table>
+
+
+
+
+<!--bof-navigation display -->
+<div id="navSuppWrapper" style="width:100%">
+
+<table style="width:100%">
+<tbody><tr>
+<td width="445px">
+<ul class="footer_ul">
+<li>
+  <a href="http://www.adafruit.com/faq/">F. A. Q.</a>
+&nbsp;::&nbsp;
+  <a href="http://www.adafruit.com/shippinginfo/">SHIPPING &amp; RETURNS</a>
+&nbsp;::&nbsp;
+  <a href="http://www.adafruit.com/distributors/">DISTRIBUTORS</a>
+&nbsp;::&nbsp;
+  <a href="http://www.adafruit.com/hacker_spaces/">HACKER SPACES</a>
+&nbsp;::&nbsp;
+  <a href="http://www.adafruit.com/educators">EDUCATORS</a>
+
+  <a href="http://www.adafruit.com/support">CUSTOMER SERVICE</a>
+&nbsp;::&nbsp;
+  <a href="http://www.adafruit.com/contact">CONTACT</a>
+&nbsp;::&nbsp;
+  <a href="http://www.adafruit.com/about/">ABOUT US</a>
+&nbsp;::&nbsp;
+  <a href="http://www.adafruit.com/terms_of_service/">TERMS OF USE</a>
+&nbsp;::&nbsp;
+  <a href="http://www.adafruit.com/privacy">PRIVACY</a>
+&nbsp;::&nbsp;
+  <a href="http://www.adafruit.com/blog/feed/"><img src="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/feed.gif" id="footerfeedimg"> FEED</a>
+</li>
+</ul>
+<br>
+
+
+<ul class="footer_ul2">
+<li><a href="http://nytm.org/made/">ENGINEERED IN NYC</a></li>
+<li> :: Adafruit ® -  is a trademarked name of Adafruit Industries</li>
+</ul>
+</td>
+<td>
+<div id="authsealImage">
+<a href="http://verify.authorize.net/anetseal/?pid=1de2c247-f7e6-492b-99d8-fb648be79ff1&rurl=http%3A//www.adafruit.com/"><img src="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/secure90x72.gif"></a>
+</div>
+</td>
+<td>
+
+<div id="footer_social">
+<ul class="footer_social">
+<li class="thingiverse_icon"><a title="Thingiverse" href="http://www.thingiverse.com/adafruit" target="_blank"><span>Thingiverse</span></a></li>
+<li class="rss_icon"><a title="RSS" href="http://www.adafruit.com/blog/feed/" target="_blank"><span>RSS</span></a></li>
+<li class="twitter_icon"><a title="Twitter" href="https://twitter.com/adafruit" target="_blank"><span>Twitter</span></a></li>
+<li class="flickr_icon"><a title="Flickr" href="http://www.flickr.com/photos/adafruit/" target="_blank"><span>Flickr</span></a></li>
+<li class="youtube_icon"><a title="YouTube" href="http://www.youtube.com/user/adafruit" target="_blank"><span>YouTube</span></a></li>
+<li class="vimeo_icon"><a title="Vimeo" href="https://vimeo.com/adafruit/" target="_blank"><span>Vimeo</span></a></li>
+<li class="facebook_icon"><a title="Facebook" href="http://www.facebook.com/pages/Adafruit-Industries/67836792577" target="_blank"><span>Facebook</span></a></li>
+<li class="googleplus_icon"><a title="Google+" href="https://plus.google.com/u/0/b/112526208786662512291/112526208786662512291/posts" target="_blank"><span>Google+</span></a></li>
+<li class="github_icon"><a title="Github" href="https://github.com/adafruit" target="_blank"><span>Github</span></a></li>
+<li class="apple_icon"><a title="Apple Store" href="http://itunes.apple.com/us/app/circuit-playground/id492487671" target="_blank"><span>Apple Store</span></a></li>
+
+</ul>
+</div>
+
+
+
+
+<!--// bof:  //-->
+<div class="footerContainer" id="">
+<h3 class="footerBoxHeading" id="Heading"><!-- <label>Currencies</label> --></h3>
+<div id="Content" class="footerContent">DISPLAY PRICES IN:<form name="currencies_form" action="http://www.adafruit.com/index.php?main_page=index" method="get"><select name="currency" onchange="this.form.submit();">
+  <option value="USD" selected="selected">US Dollar</option>
+  <option value="EUR">Euro</option>
+  <option value="GBP">British Pound</option>
+  <option value="JPY">Japanese Yen</option>
+  <option value="CAD">Canadian Dollar</option>
+  <option value="AUD">Australian Dollar</option>
+  <option value="CNY">Chinese Yuan</option>
+</select>
+<input type="hidden" name="hidden" value="yes"><input type="hidden" name="main_page" value="product_info"><input type="hidden" name="products_id" value="992"></form><span class="footerSmaller">(Exchange is Estimated)</span></div></div>
+<!--// eof:  //-->
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="3">
+<div id="ccImage">
+<img src="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/visamcamexppgwuspsups.jpg">
+</div>
+</td>
+</tr>
+</tbody></table>
+
+
+</div>	
+
+
+
+</div>
+<!--bof- parse time display -->
+<!--eof- parse time display -->
+<!--bof- banner #6 display -->
+<!--eof- banner #6 display -->
+
+<div id="gts-comm" style="display: none;"><iframe name="xpcpeerAmoe" id="xpcpeerAmoe" src="./MPL115A2 - I2C Barometric Pressure Temperature Sensor ID  992 - $11.95   Adafruit Industries, Unique & fun DIY electronics and kits_files/tm2.html" style="display: none;"></iframe></div><ul class="ui-autocomplete ui-menu ui-widget ui-widget-content ui-corner-all" role="listbox" aria-activedescendant="ui-active-menuitem" style="z-index: 1; top: 0px; left: 0px; display: none;"></ul></body></html>
