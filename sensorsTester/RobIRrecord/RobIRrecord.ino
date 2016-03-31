@@ -16,7 +16,7 @@
  */
 
 
-//by rob
+//by rob2
 #include <IRremote.h>
 
 int RECV_PIN = 11;
